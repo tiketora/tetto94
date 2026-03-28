@@ -37,8 +37,15 @@ export default function Navbar() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              className="flex items-center"
             >
-              <Tetto94Logo variant="light" height={34} />
+              {/* Mobile: symbol only to save space; md+: full wordmark */}
+              <span className="md:hidden">
+                <Tetto94Logo variant="symbol" height={32} />
+              </span>
+              <span className="hidden md:inline-flex">
+                <Tetto94Logo variant="light" height={36} />
+              </span>
             </motion.div>
           </a>
 

@@ -1,71 +1,87 @@
+'use client'
+
 import Image from 'next/image'
 
 /**
- * Tetto94 Official Brand Logo
+ * Tetto94 Official Logo
  *
- * Uses the designer's exact PNG assets — no hand-drawn SVG.
+ * Uses the designer's transparent PNG symbol (red + white paths).
+ * Works on any background — white stem visible on dark, red dominant everywhere.
  *
- * Variants:
- *   "light"   → white symbol + white wordmark  (for dark / colored backgrounds)
- *   "dark"    → red symbol + charcoal wordmark  (for light / white backgrounds)
- *   "symbol"  → red symbol only, no wordmark    (for favicon / small uses)
+ * Wordmark "Tetto dal 94" is rendered in HTML text so its color adapts:
+ *   - "light"  → white text   (for dark backgrounds: navbar, footer)
+ *   - "dark"   → #494949 text (for light backgrounds: sections)
+ *   - "symbol" → symbol only, no wordmark
  *
- * The `height` prop controls rendered size in px. Width scales automatically
- * via the natural aspect ratio of each asset.
- *
- * Asset aspect ratios (measured from designer files):
- *   logo-dark.png  (full horizontal) → ~504 × 84  ≈ 6 : 1
- *   logo-light.png (full horizontal) → ~556 × 84  ≈ 6.6 : 1
- *   logo-symbol-red.png              → ~397 × 280 ≈ 1.42 : 1
+ * The `height` prop controls the symbol height in px. Wordmark scales with it.
+ * Natural aspect ratio of symbol PNG: 1452 × 760 → ~1.91 : 1
  */
 
 interface Tetto94LogoProps {
-  /** Color variant */
   variant?: 'light' | 'dark' | 'symbol'
-  /** Rendered height in px. Width is calculated automatically. */
+  /** Symbol height in px */
   height?: number
   className?: string
 }
 
-const ASSETS = {
-  light: {
-    src: '/images/logo-dark.png',
-    alt: 'Tetto94 – logo versione chiara',
-    // natural dimensions of the file
-    naturalW: 504,
-    naturalH: 84,
-  },
-  dark: {
-    src: '/images/logo-light.png',
-    alt: 'Tetto94 – logo versione scura',
-    naturalW: 556,
-    naturalH: 84,
-  },
-  symbol: {
-    src: '/images/logo-symbol-red.png',
-    alt: 'Tetto94 – simbolo',
-    naturalW: 397,
-    naturalH: 280,
-  },
-} as const
+const SYMBOL_ASPECT = 1452 / 760 // natural w / h of the PNG
 
 export default function Tetto94Logo({
   variant = 'light',
-  height = 36,
+  height = 40,
   className = '',
 }: Tetto94LogoProps) {
-  const asset = ASSETS[variant]
-  const width = Math.round((asset.naturalW / asset.naturalH) * height)
+  const symbolW = Math.round(SYMBOL_ASPECT * height)
+
+  const wordmarkColor =
+    variant === 'dark' ? 'text-[#494949]' : 'text-white'
+
+  const accentColor =
+    variant === 'dark' ? 'text-[#EB1C26]' : 'text-[#EB1C26]'
+
+  const fontSize = Math.round(height * 0.82)
+  const dalSize  = Math.round(height * 0.38)
 
   return (
-    <Image
-      src={asset.src}
-      alt={asset.alt}
-      width={width}
-      height={height}
-      className={className}
-      priority
-      style={{ objectFit: 'contain', width, height }}
-    />
+    <span
+      className={`inline-flex items-center gap-0 leading-none select-none ${className}`}
+      aria-label="Tetto94"
+    >
+      {/* Symbol */}
+      <Image
+        src="/images/logo-symbol.png"
+        alt=""
+        aria-hidden="true"
+        width={symbolW}
+        height={height}
+        priority
+        style={{ width: symbolW, height }}
+        className="flex-shrink-0"
+      />
+
+      {/* Wordmark — hidden when variant is "symbol" */}
+      {variant !== 'symbol' && (
+        <span
+          className={`flex flex-col justify-center ml-2 font-display tracking-wide ${wordmarkColor}`}
+          style={{ lineHeight: 1 }}
+        >
+          {/* "Tetto" main word */}
+          <span
+            className="block font-display font-bold uppercase"
+            style={{ fontSize: fontSize, letterSpacing: '0.02em' }}
+          >
+            Tetto
+          </span>
+          {/* "dal 94" tag line */}
+          <span
+            className="block font-sans font-semibold uppercase tracking-widest"
+            style={{ fontSize: dalSize, marginTop: Math.round(height * 0.04) }}
+          >
+            <span className="opacity-60">dal </span>
+            <span className={accentColor}>94</span>
+          </span>
+        </span>
+      )}
+    </span>
   )
 }
