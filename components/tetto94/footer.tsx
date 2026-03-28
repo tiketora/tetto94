@@ -14,6 +14,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 pb-12 border-b border-white/5">
           {/* Brand */}
+          
           <div className="lg:col-span-2">
             <Tetto94Logo variant="light" height={40} />
             <p className="mt-4 text-sm text-[#494949] leading-relaxed max-w-sm">
