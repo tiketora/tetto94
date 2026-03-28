@@ -1,3 +1,4 @@
+
 import { Phone, Mail, MapPin, Instagram, Facebook } from 'lucide-react'
 import Tetto94Logo from './logo'
 
@@ -14,9 +15,8 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4 pb-12 border-b border-white/5">
           {/* Brand */}
-          
           <div className="lg:col-span-2">
-            <Tetto94Logo variant="light" height={40} />
+            <Tetto94Logo className="h-14 md:h-16 w-auto" />
             <p className="mt-4 text-sm text-[#494949] leading-relaxed max-w-sm">
               Artigiani del tetto dal 1994. Oltre 30 anni al servizio delle abitazioni italiane,
               con professionalità, materiali certificati e garanzia scritta su ogni lavoro.

@@ -35,17 +35,11 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group" aria-label="Tetto94 - Homepage">
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.03 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              className="flex items-center"
+              className="flex items-center h-14 md:h-16"
             >
-              {/* Mobile: symbol only to save space; md+: full wordmark */}
-              <span className="md:hidden">
-                <Tetto94Logo variant="symbol" height={32} />
-              </span>
-              <span className="hidden md:inline-flex">
-                <Tetto94Logo variant="light" height={36} />
-              </span>
+              <Tetto94Logo className="h-14 md:h-16 w-auto" />
             </motion.div>
           </a>
 
