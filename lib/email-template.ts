@@ -41,13 +41,13 @@ interface ContactEmailProps {
 //               <table width="100%" cellpadding="0" cellspacing="0" border="0">
 //                 <tr>
 //                   <td style="padding:24px 36px 22px;">
-//                     <!-- Real logo PNG — white T stem + red roof crossbar, transparent bg -->
+//                     <!-- Logo: full white version (dark/red bg variant) via Vercel Blob CDN -->
 //                     <img
-//                       src="https://www.tetto94.it/images/logo-symbol.png"
+//                       src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-tLssgXZKczF77a18AcoSHHaAG0zige.png"
 //                       alt="Tetto94"
-//                       width="90"
+//                       width="160"
 //                       height="47"
-//                       style="display:block;width:90px;height:auto;border:0;outline:none;text-decoration:none;"
+//                       style="display:block;width:160px;height:auto;border:0;outline:none;text-decoration:none;"
 //                     />
 //                   </td>
 //                   <td style="padding:28px 36px 24px;text-align:right;vertical-align:middle;">
@@ -164,11 +164,11 @@ interface ContactEmailProps {
 //                   </td>
 //                   <td style="text-align:right;white-space:nowrap;padding-left:16px;">
 //                     <img
-//                       src="https://www.tetto94.it/images/logo-symbol.png"
+//                       src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-tLssgXZKczF77a18AcoSHHaAG0zige.png"
 //                       alt="Tetto94"
-//                       width="50"
-//                       height="26"
-//                       style="display:block;width:50px;height:auto;border:0;outline:none;opacity:0.25;"
+//                       width="80"
+//                       height="24"
+//                       style="display:block;width:80px;height:auto;border:0;outline:none;opacity:0.2;"
 //                     />
 //                   </td>
 //                 </tr>
@@ -184,6 +184,7 @@ interface ContactEmailProps {
 // </body>
 // </html>`
 // }
+
 
 export function buildContactEmailHtml(data: ContactEmailProps): string {
   const { nome, cognome, telefono, citta, servizio, messaggio } = data
@@ -348,6 +349,7 @@ export function buildContactEmailHtml(data: ContactEmailProps): string {
 </body>
 </html>`
 }
+
 export function buildContactEmailText(data: ContactEmailProps): string {
   const { nome, cognome, telefono, citta, servizio, messaggio } = data
   return `NUOVA RICHIESTA DI PREVENTIVO – TETTO94
