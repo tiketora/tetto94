@@ -299,7 +299,8 @@ interface FormData {
 export default function ContactSection() {
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-8%' })
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success'>('idle')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState('')
   const [form, setForm] = useState<FormData>({
     nome: '',
     cognome: '',
@@ -318,9 +319,24 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
-    // Simulate submission
-    await new Promise((r) => setTimeout(r, 1500))
-    setStatus('success')
+    setErrorMsg('')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const json = await res.json()
+      if (!res.ok) {
+        setErrorMsg(json.error ?? 'Errore durante l\'invio. Riprova.')
+        setStatus('error')
+        return
+      }
+      setStatus('success')
+    } catch {
+      setErrorMsg('Errore di rete. Controlla la connessione e riprova.')
+      setStatus('error')
+    }
   }
 
   const inputClass =
@@ -363,6 +379,7 @@ export default function ContactSection() {
                 <button
                   onClick={() => {
                     setStatus('idle')
+                    setErrorMsg('')
                     setForm({ nome: '', cognome: '', telefono: '', citta: '', servizio: '', messaggio: '' })
                   }}
                   className="mt-4 text-sm text-[#EB1C26] underline underline-offset-4"
@@ -460,6 +477,12 @@ export default function ContactSection() {
                     className={`${inputClass} resize-none`}
                   />
                 </div>
+
+                {status === 'error' && errorMsg && (
+                  <div className="rounded-sm border border-[#EB1C26]/40 bg-[#EB1C26]/8 px-4 py-3 text-sm text-[#EB1C26]">
+                    {errorMsg}
+                  </div>
+                )}
 
                 <motion.button
                   type="submit"
