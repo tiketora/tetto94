@@ -517,7 +517,7 @@ export default function ContactSection() {
           >
             {/* Info cards */}
             {[
-              { icon: Phone, label: 'Telefono', value: '+39 329 829 7679', href: 'tel:+393298297679' },
+              { icon: Phone, label: 'Telefono', value: '+39 351 651 9363', href: 'tel:+393516519363' },
               { icon: Mail, label: 'Email', value: 'info@tetto94.it', href: 'mailto:info@tetto94.it' },
               { icon: MapPin, label: 'Indirizzo', value: 'Via Benedetto Veruda, 30100 Venezia VE, Italia', href: 'https://maps.app.goo.gl/dzGd69uJaH4x34W9A' },
               { icon: Clock, label: 'Orari', value: 'Lun – Sab: 8:00 – 18:00', href: undefined },
@@ -545,7 +545,7 @@ export default function ContactSection() {
 
             {/* WhatsApp quick */}
             <a
-              href="https://wa.me/393298297679?text=Salve%2C%20vorrei%20richiedere%20un%27ispezione%20gratuita%20del%20tetto."
+              href="https://wa.me/393516519363?text=Salve%2C%20vorrei%20richiedere%20un%27ispezione%20gratuita%20del%20tetto."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 rounded-sm bg-[#25D366]/10 border border-[#25D366]/30 px-5 py-4 hover:bg-[#25D366]/15 transition-colors"
@@ -565,4 +565,4 @@ export default function ContactSection() {
       </div>
     </section>
   )
-} 
+}

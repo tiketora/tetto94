@@ -203,11 +203,11 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
             <a
-              href="tel:+393298297679"
+              href="tel:+393516519363"
               className="flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition-colors"
             >
               <Phone className="size-3.5" />
-              <span>+39 329 829 7679</span>
+              <span>+39 351 651 9363</span>
             </a>
             <motion.a
               href="#contatti"

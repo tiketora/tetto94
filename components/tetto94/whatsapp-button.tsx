@@ -35,7 +35,7 @@ import { MessageCircle } from 'lucide-react'
 export default function WhatsAppButton() {
   return (
     <motion.a
-      href="https://wa.me/393298297679?text=Salve%2C%20vorrei%20richiedere%20un%27ispezione%20gratuita%20del%20tetto."
+      href="https://wa.me/393516519363?text=Salve%2C%20vorrei%20richiedere%20un%27ispezione%20gratuita%20del%20tetto."
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Scrivici su WhatsApp"
