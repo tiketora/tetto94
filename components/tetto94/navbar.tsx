@@ -180,9 +180,9 @@ export default function Navbar() {
             <motion.div
               whileHover={{ scale: 1.03 }}
               transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              className="flex items-center h-24 md:h-20"
+              className="flex items-center"
             >
-              <Tetto94Logo className="h-24 md:h-20 w-auto" />
+              <Tetto94Logo className="w-36 md:w-auto md:h-20 h-auto" />
             </motion.div>
           </a>
 
@@ -282,4 +282,5 @@ export default function Navbar() {
     </>
   )
 }
+
 
