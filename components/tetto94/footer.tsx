@@ -108,8 +108,6 @@
 // }
 
 
-'use client'
-
 import { Instagram, Facebook } from 'lucide-react'
 import Image from 'next/image'
 
@@ -212,23 +210,7 @@ export default function Footer() {
               </a>
             </div>
 
-            {/* Newsletter */}
-            <form
-              onSubmit={(e) => e.preventDefault()}
-              className="flex"
-            >
-              <input
-                type="email"
-                placeholder="Il tuo indirizzo email"
-                className="flex-1 min-w-0 bg-white text-[#161616] placeholder:text-[#888] text-xs px-3 py-2.5 outline-none"
-              />
-              <button
-                type="submit"
-                className="shrink-0 bg-[#161616] text-white text-xs font-bold uppercase tracking-wider px-4 py-2.5 hover:bg-black transition-colors"
-              >
-                Iscriviti
-              </button>
-            </form>
+
           </div>
         </div>
 

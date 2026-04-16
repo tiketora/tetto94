@@ -273,12 +273,12 @@ export default function DroneSection() {
 
         {/* Heading */}
         <div className="px-5 pt-8 pb-5">
-          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/80 block mb-1">
+          <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#161616] block mb-1">
             Tecnologia Avanzata
           </span>
           <h2 className="font-display leading-none text-white">
             <span className="block text-[1.9rem] font-black">ISPEZIONE CON DRONE.</span>
-            <span className="block text-[1.35rem] font-normal text-white/90 mt-0.5">COMPLETAMENTE GRATUITA</span>
+            <span className="block text-[1.35rem] font-normal text-[#161616] mt-0.5">COMPLETAMENTE GRATUITA</span>
           </h2>
         </div>
 
@@ -320,7 +320,7 @@ export default function DroneSection() {
 
           <a
             href="#contatti"
-            className="mt-7 flex items-center justify-center bg-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-[#EB1C26]"
+            className="mt-7 flex items-center justify-center bg-white px-6 py-3.5 text-sm font-bold uppercase tracking-wider text-[#161616]"
           >
             Prenota Ora — Senza Costi
           </a>
