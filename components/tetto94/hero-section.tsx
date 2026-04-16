@@ -179,85 +179,51 @@ const fadeUp = {
 export default function HeroSection() {
   return (
     <section className="relative bg-[#161616] overflow-hidden pt-[72px]">
-      {/* ── 2-col split ───────────────────────────────────── */}
-      <div className="flex flex-col lg:flex-row">
 
-        {/* LEFT — text content */}
-        <div className="relative z-10 flex flex-col justify-center
-                        px-6 pt-10 pb-8
-                        lg:pt-16 lg:pb-14 lg:pl-16 xl:pl-24
-                        lg:w-[54%] lg:pr-6">
+      {/* ══ DESKTOP (≥ lg): 2-col side-by-side — unchanged ══ */}
+      <div className="hidden lg:flex flex-row min-h-[calc(100vh-72px)]">
 
-          {/* Heading — 4 lines matching the design exactly */}
+        {/* LEFT — text */}
+        <div className="relative z-10 flex flex-col justify-center pt-16 pb-14 pl-16 xl:pl-24 w-[54%] pr-6">
           <div>
-            {/* Line 1: MAESTRIA  [red]IN OGNI */}
             <motion.div
-              custom={0.2}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
+              custom={0.2} variants={fadeUp} initial="hidden" animate="visible"
               className="font-display text-[clamp(2.6rem,5.5vw,5rem)] leading-[0.95] text-white"
             >
               MAESTRIA <span className="text-[#EB1C26]">IN OGNI</span>
             </motion.div>
-
-            {/* Line 2: [red]DETTAGLIO  SICUREZZA */}
             <motion.div
-              custom={0.35}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
+              custom={0.35} variants={fadeUp} initial="hidden" animate="visible"
               className="font-display text-[clamp(2.6rem,5.5vw,5rem)] leading-[0.95]"
             >
               <span className="text-[#EB1C26]">DETTAGLIO</span>
               <span className="text-white"> SICUREZZA</span>
             </motion.div>
-
-            {/* Line 3: SU OGNI TETTO */}
             <motion.div
-              custom={0.5}
-              variants={fadeUp}
-              initial="hidden"
-              animate="visible"
+              custom={0.5} variants={fadeUp} initial="hidden" animate="visible"
               className="font-display text-[clamp(2.6rem,5.5vw,5rem)] leading-[0.95] text-white"
             >
               SU OGNI TETTO
             </motion.div>
           </div>
-
-          {/* Subtitle */}
           <motion.p
-            custom={0.7}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
+            custom={0.7} variants={fadeUp} initial="hidden" animate="visible"
             className="mt-6 text-sm text-white/60 max-w-sm leading-relaxed"
           >
             Riparazioni, rifacimenti, impermeabilizzazione
             e ispezione gratuita con drone. Oltre 30 anni al
             servizio dei tetti italiani.
           </motion.p>
-
-          {/* CTA Buttons */}
           <motion.div
-            custom={0.9}
-            variants={fadeUp}
-            initial="hidden"
-            animate="visible"
+            custom={0.9} variants={fadeUp} initial="hidden" animate="visible"
             className="mt-8 flex flex-wrap gap-3"
           >
-            <motion.a
-              href="#contatti"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+            <motion.a href="#contatti" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
               className="inline-flex items-center justify-center bg-[#EB1C26] px-6 py-3 text-sm font-bold text-white uppercase tracking-wider"
             >
               Ispezione gratuita con drone
             </motion.a>
-            <motion.a
-              href="#galleria"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+            <motion.a href="#galleria" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
               className="inline-flex items-center justify-center border border-white/30 px-6 py-3 text-sm font-semibold text-white uppercase tracking-wider hover:border-white/60 transition-colors"
             >
               Guarda i Lavori
@@ -265,25 +231,85 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* RIGHT — roof photo, contained within hero bounds (no overflow past navbar) */}
-        <div className="relative lg:w-[46%] h-[55vw] lg:h-auto bg-[#161616]">
+        {/* RIGHT — diagonal PNG */}
+        <div className="relative w-[46%] bg-[#161616]">
           <motion.div
             className="absolute inset-0"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <Image
               src="/images/hero-roof-diagonal.png"
               alt="Tetto italiano restaurato da Tetto94"
-              fill
-              priority
+              fill priority
               className="object-contain object-right-top"
-              sizes="(max-width: 1024px) 100vw, 46vw"
+              sizes="46vw"
             />
           </motion.div>
         </div>
       </div>
+
+      {/* ══ MOBILE (< lg): stacked — heading → photo → text + CTA ══ */}
+      <div className="flex flex-col lg:hidden">
+
+        {/* 1) Heading */}
+        <motion.div
+          custom={0.1} variants={fadeUp} initial="hidden" animate="visible"
+          className="px-5 pt-8"
+        >
+          <div className="font-display text-[2.4rem] leading-[0.93] text-white">
+            MAESTRIA <span className="text-[#EB1C26]">IN OGNI</span>
+          </div>
+          <div className="font-display text-[2.4rem] leading-[0.93]">
+            <span className="text-[#EB1C26]">DETTAGLIO</span>
+            <span className="text-white"> SICUREZZA</span>
+          </div>
+          <div className="font-display text-[2.4rem] leading-[0.93] text-white">
+            SU OGNI TETTO
+          </div>
+        </motion.div>
+
+        {/* 2) Full-width clean roof photo with red top border */}
+        <motion.div
+          className="relative w-full mt-5 border-t-[3px] border-[#EB1C26]"
+          style={{ height: '56vw', minHeight: 200 }}
+          initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+          transition={{ duration: 0.9, delay: 0.2 }}
+        >
+          <Image
+            src="/images/hero-roof-mobile.jpg"
+            alt="Tetto italiano restaurato da Tetto94"
+            fill priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </motion.div>
+
+        {/* 3) Description + CTA */}
+        <motion.div
+          custom={0.45} variants={fadeUp} initial="hidden" animate="visible"
+          className="px-5 pt-6 pb-10"
+        >
+          <p className="text-sm text-white/60 leading-relaxed max-w-sm">
+            Riparazioni, rifacimenti, impermeabilizzazione
+            e ispezione gratuita con drone. Oltre 30 anni al
+            servizio dei tetti italiani.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a href="#contatti"
+              className="inline-flex items-center justify-center bg-[#EB1C26] px-5 py-3 text-sm font-bold text-white uppercase tracking-wider"
+            >
+              Ispezione gratuita con drone
+            </a>
+            <a href="#galleria"
+              className="inline-flex items-center justify-center border border-white/30 px-5 py-3 text-sm font-semibold text-white uppercase tracking-wider"
+            >
+              Guarda i lavori
+            </a>
+          </div>
+        </motion.div>
+      </div>
+
     </section>
   )
 }
