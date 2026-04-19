@@ -162,40 +162,35 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
-import { Hammer, Layers, Droplets, Thermometer, Shield, Wind, ScanLine } from 'lucide-react'
+import { Hammer, Layers, Droplets, Shield, Wind, ScanLine } from 'lucide-react'
 
 import { ArrowRight } from 'lucide-react'
 
 const services = [
   {
     icon: Hammer,
-    title: 'Riparazione e Costruzione',
-    desc: "Interventi mirati e rifacimento completo. Lavoriamo su ogni tipo di copertura con eccellenza.",
+    title: 'Manutenzione e Ripristino',
+    desc: "Interventi mirati e riparazioni specializzate. Operiamo con la massima competenza su ogni tipo di copertura.",
   },
   {
     icon: Layers,
     title: 'Sostituzione Tegole',
-    desc: 'Rimpiazzo di tegole danneggiate, rotte o mancanti con materiali certificati di prima scelta.',
+    desc: "Sostituzione di tegole danneggiate, rotte o mancanti con l'impiego di materiali certificati di prima scelta.",
   },
   {
     icon: Droplets,
     title: 'Stop alle Infiltrazioni',
-    desc: "Individuazione e risoluzione definitiva di perdite e infiltrazioni d'acqua.",
-  },
-  {
-    icon: Thermometer,
-    title: 'Isolamento Termico',
-    desc: "Miglioramento dell'efficienza energetica con isolamento termico e acustico professionale.",
+    desc: "Individuazione accurata e risoluzione definitiva di ogni problema di infiltrazione d'acqua.",
   },
   {
     icon: Shield,
     title: 'Impermeabilizzazione',
-    desc: 'Guaine e membrane impermeabili di alta qualità per una protezione duratura nel tempo.',
+    desc: 'Applicazione di guaine e membrane di alta qualità per una protezione totale e duratura nel tempo.',
   },
   {
     icon: Wind,
-    title: 'Pulizia Grondaie',
-    desc: 'Rimozione foglie, detriti e muschi. Manutenzione grondaie e pluviali in ogni stagione.',
+    title: 'Pulizia Grondaie e Pluviali',
+    desc: 'Rimozione di foglie, detriti e muschi per garantire il corretto deflusso delle acque in ogni stagione.',
   },
 ]
 

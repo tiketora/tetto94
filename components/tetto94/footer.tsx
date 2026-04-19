@@ -121,7 +121,7 @@ const navLinks = [
 const contacts = [
   '+39 351 651 9363',
   'info@tetto94.it',
-  'Lombardia e province limitrofe',
+  'Venezia e province limitrofe',
   'www.tetto94.it',
 ]
 
