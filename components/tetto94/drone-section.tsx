@@ -152,7 +152,7 @@ const benefits = [
   {
     icon: ScanEye,
     title: "Visione completa al 100%",
-    desc: "Il drone raggiunge ogni angolo del tetto, anche quelli inaccessibili in sicurezza dall'operaio.",
+    desc: "Il drone raggiunge ogni angolo del tetto, anche quelli inaccessibili in sicurezza per un operatore.",
   },
   {
     icon: RadioTower,
@@ -162,7 +162,7 @@ const benefits = [
   {
     icon: CheckCircle2,
     title: "Zero costi, zero vincoli",
-    desc: "L'ispezione è completamente gratuita e senza obbligo di acquisto. Decidi tu dopo.",
+    desc: "L'ispezione è completamente gratuita e senza obbligo di acquisto. Decidi tu dopo la visione.",
   },
 ]
 
@@ -225,7 +225,7 @@ export default function DroneSection() {
             className="flex flex-col justify-start pt-2"
           >
             <p className="text-sm text-white/85 leading-relaxed">
-              Prima di qualsiasi intervento, sappiamo esattamente cosa c&apos;è. Il nostro drone
+              Prima di qualsiasi intervento, analizziamo esattamente lo stato della copertura. Il nostro drone
               identifica infiltrazioni, tegole rotte e deterioramenti invisibili a occhio nudo.{' '}
               <strong className="text-white">Senza salire sul tetto. Senza costi.</strong>
             </p>
@@ -296,7 +296,7 @@ export default function DroneSection() {
         {/* Text content */}
         <div className="px-5 pt-6 pb-10">
           <p className="text-sm text-white/85 leading-relaxed">
-            Prima di qualsiasi intervento, sappiamo esattamente cosa c&apos;è. Il nostro drone
+            Prima di qualsiasi intervento, analizziamo esattamente lo stato della copertura. Il nostro drone
             identifica infiltrazioni, tegole rotte e deterioramenti invisibili a occhio nudo.{' '}
             <strong className="text-white">Senza salire sul tetto. Senza costi.</strong>
           </p>

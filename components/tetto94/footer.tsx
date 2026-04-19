@@ -143,7 +143,7 @@ export default function Footer() {
               className="object-contain object-left"
             />
             <p className="text-xs text-white/80 leading-relaxed max-w-[220px]">
-              Artigiani del tetto dal 1994. Oltre 30 anni al servizio
+              Artigiani del tetto dal 1994. Da Oltre 30 anni al servizio
               delle abitazioni italiane, con professionalità, materiali
               certificati e garanzia scritta su ogni lavoro.
             </p>

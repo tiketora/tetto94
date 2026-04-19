@@ -157,22 +157,22 @@ const features = [
   {
     icon: BadgeCheck,
     title: 'Garanzia Totale',
-    desc: 'Ogni lavoro viene garantito per iscritto. Se qualcosa non va, torniamo senza costi aggiuntivi.',
+    desc: 'Ogni intervento è garantito per iscritto. In caso di necessità, torniamo tempestivamente senza alcun costo aggiuntivo.',
   },
   {
     icon: Microscope,
-    title: 'Ispezione Con Drone',
-    desc: 'Tecnologia al servizio della trasparenza. Vedi ogni angolo del tuo tetto prima di decidere.',
+    title: 'Ispezione con Drone',
+    desc: 'Tecnologia al servizio della trasparenza: analizziamo ogni angolo del tuo tetto per una diagnosi precisa prima di decidere.',
   },
   {
     icon: Clock,
     title: 'Intervento Rapido',
-    desc: 'In caso di emergenza siamo operativi entro 24 ore. Perché un tetto non aspetta.',
+    desc: "In caso di emergenza garantiamo l'uscita entro 24 ore. Perché un tetto danneggiato non può aspettare.",
   },
   {
     icon: Award,
-    title: 'Certificazioni ISO',
-    desc: 'Lavoriamo secondo gli standard europei di sicurezza e qualità. Materiali certificati.',
+    title: 'Certificazioni e Qualità ISO',
+    desc: 'Operiamo secondo i più alti standard di sicurezza e qualità, utilizzando esclusivamente materiali certificati e garantiti.',
   },
 ]
 
