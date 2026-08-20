@@ -1,0 +1,24 @@
+diff --git a/dist/build/index.js b/dist/build/index.js
+index 89d32321d1129ad910307c2fdbe0f4a23fb52c6b..5146421aba0cb808791fd80408e1ffc4ad1c7f57 100644
+--- a/dist/build/index.js
++++ b/dist/build/index.js
+@@ -346,8 +346,17 @@ function createStaticWorker(config, options) {
+         },
+         debuggerPortOffset,
+         enableSourceMaps: config.enablePrerenderSourceMaps,
+-        // remove --max-old-space-size flag as it can cause memory issues.
+-        isolatedMemory: true,
++        // PATCHED (tetto94): upstream hardcodes `isolatedMemory: true`, which makes
++        // lib/worker.js *delete* any --max-old-space-size we pass via NODE_OPTIONS
++        // before forking the static-generation worker process. That means our
++        // `cross-env NODE_OPTIONS=--max-old-space-size=4096` in package.json's
++        // "build" script was silently discarded, and the worker fell back to
++        // V8's machine-RAM-derived default heap ceiling (~2GB on Vercel's smaller
++        // 4-core/8GB build machines) — causing repeated OOM crashes regardless of
++        // what we configured. Setting this to false lets our explicit heap size
++        // actually reach the worker, independent of whatever build machine size
++        // Vercel happens to assign.
++        isolatedMemory: false,
+         enableWorkerThreads: config.experimental.workerThreads,
+         exposedMethods: staticWorkerExposedMethods,
+         forkOptions: {
