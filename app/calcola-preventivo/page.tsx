@@ -193,7 +193,7 @@ export default function CalcolaPage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {/* <Navbar /> */}
+      <Navbar />
       <main>
         <RoofIndexIntro targetId="roof-index-analisi" />
         <div id="roof-index-analisi">
