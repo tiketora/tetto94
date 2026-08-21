@@ -633,7 +633,7 @@ export default function RoofIndexIntro({ targetId }: { targetId: string }) {
           <div className="hidden h-10 w-px bg-[#161616]/10 sm:block" />
           <div className="flex flex-col items-center">
             <span className="font-display text-3xl text-[#161616] lg:text-4xl">
-              <CountUp value={1200} suffix="+" />
+              <CountUp value={1247} suffix="+" />
             </span>
             <span className="mt-1 text-[11px] font-bold uppercase tracking-[0.2em] text-[#161616]/40">
               Tetti Analizzati

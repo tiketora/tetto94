@@ -81,7 +81,6 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/tetto94/navbar'
 import Footer from '@/components/tetto94/footer'
 import WhatsAppButton from '@/components/tetto94/whatsapp-button'
-import MobileStickyBar from '@/components/tetto94/mobile-sticky-bar'
 import RoofCalculator from '@/components/tetto94/roof-calculator'
 import RoofIndexIntro from '@/components/tetto94/roof-index-intro'
 
@@ -203,7 +202,6 @@ export default function CalcolaPage() {
       </main>
       <Footer />
       <WhatsAppButton />
-      <MobileStickyBar />
     </>
   )
 }
