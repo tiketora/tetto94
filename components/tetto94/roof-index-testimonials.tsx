@@ -62,16 +62,6 @@ export default function RoofIndexTestimonials() {
           <h2 className="mt-3 font-display text-[clamp(2rem,4.5vw,3.6rem)] leading-none text-[#161616]">
             COSA DICONO I NOSTRI <span className="text-[#EB1C26]">CLIENTI</span>
           </h2>
-
-          <div className="mt-5 inline-flex items-center gap-2 rounded-full border border-[#161616]/10 bg-white px-4 py-1.5">
-            <div className="flex gap-0.5">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-3.5 fill-[#EB1C26] text-[#EB1C26]" />
-              ))}
-            </div>
-            <span className="text-xs font-bold text-[#161616]">4.9/5</span>
-            <span className="text-xs text-[#494949]">su 210+ recensioni</span>
-          </div>
         </motion.div>
 
         {/* Stacked card deck */}

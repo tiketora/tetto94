@@ -2795,6 +2795,7 @@ import {
   formatCost,
 } from '@/lib/roof-calculator'
 import { trackCTAClick } from '@/lib/gtag'
+import { incrementAnalyzedCount } from '@/lib/roof-index-stats'
 
 // ─── Step definitions ─────────────────────────────────────────────────────────
 
@@ -3215,6 +3216,7 @@ export default function RoofCalculator() {
       // Calculate result
       const input = answers as CalcoloInput
       setResult(calcolaRischio(input))
+      incrementAnalyzedCount()
     }
   }, [currentStep, answers])
 
@@ -3238,6 +3240,7 @@ export default function RoofCalculator() {
       } else {
         const input = { ...answers, [field]: value } as CalcoloInput
         setResult(calcolaRischio(input))
+        incrementAnalyzedCount()
       }
     }, 280)
   }, [currentStep, answers])
