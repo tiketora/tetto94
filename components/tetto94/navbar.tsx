@@ -241,12 +241,25 @@
 //             </motion.a>
 //           </div>
 
-//           {/* Mobile hamburger */}
-//           <button
-//             onClick={() => setMobileOpen(!mobileOpen)}
-//             className="md:hidden text-white p-1"
-//             aria-label={mobileOpen ? 'Chiudi menu' : 'Apri menu'}
-//           >
+//           {/* Mobile: Roof Index shortcut + hamburger — surfaced outside the
+//               drawer since it's the primary conversion tool and shouldn't be
+//               hidden an extra tap away behind the burger menu. */}
+//           <div className="flex md:hidden items-center gap-2">
+//             <motion.a
+//               href="/calcola-preventivo"
+//               onClick={() => trackCTAClick('navbar_mobile_header', '/calcola-preventivo')}
+//               className="flex items-center gap-1.5 rounded-sm border border-[#EB1C26]/50 bg-[#EB1C26]/10 px-2.5 py-1.5 text-xs font-semibold text-white"
+//               whileTap={{ scale: 0.96 }}
+//             >
+//               <Gauge className="size-3.5 text-[#EB1C26]" />
+//               Roof Index
+//             </motion.a>
+
+//             <button
+//               onClick={() => setMobileOpen(!mobileOpen)}
+//               className="text-white p-1"
+//               aria-label={mobileOpen ? 'Chiudi menu' : 'Apri menu'}
+//             >
 //             <AnimatePresence mode="wait">
 //               {mobileOpen ? (
 //                 <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
@@ -258,7 +271,8 @@
 //                 </motion.div>
 //               )}
 //             </AnimatePresence>
-//           </button>
+//             </button>
+//           </div>
 //         </nav>
 //       </motion.header>
 
@@ -712,6 +726,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, Phone, MapPin, ChevronDown, ChevronLeft, ArrowRight, Layers, Droplets, Hammer, CloudRain, Wind, Gauge } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
@@ -766,11 +781,11 @@ const ZONES = [
 const ALL_CITIES = ZONES.flatMap((z) => z.cities)
 
 const navLinks = [
-  { label: 'Servizi',    href: '/#servizi' },
-  { label: 'Perché Noi', href: '/#perche-noi' },
-  { label: 'Garanzie',   href: '/garanzie' },
-  { label: 'Galleria',   href: '/#galleria' },
-  { label: 'Contatti',   href: '/contatti' },
+  { label: 'Servizi',       href: '/#servizi' },
+  { label: 'Perché Noi',    href: '/#perche-noi' },
+  { label: 'Garanzie',      href: '/garanzie' },
+  { label: 'Galleria',      href: '/#galleria' },
+  { label: 'Contatti',      href: '/contatti' },
 ]
 
 /* ── Service picker — step 1 of the città dropdown ──────────────
@@ -1034,10 +1049,12 @@ export default function Navbar() {
                             className="group relative flex flex-col overflow-hidden border border-white/8 bg-white/2 text-left transition-all duration-200 hover:border-[#EB1C26]/50 hover:bg-white/4"
                           >
                             <div className="relative h-24 w-full overflow-hidden">
-                              <img
+                              <Image
                                 src={SERVICE_THUMBNAILS[service.slug] || '/images/service-rifacimento.png'}
                                 alt=""
-                                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                fill
+                                sizes="(max-width: 1024px) 100vw, 280px"
+                                className="object-cover transition-transform duration-500 group-hover:scale-105"
                               />
                               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/25 to-transparent" />
                               <div className="absolute bottom-2 left-2 flex size-7 items-center justify-center bg-[#EB1C26]">
@@ -1185,14 +1202,16 @@ export default function Navbar() {
                             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
                             className="relative overflow-hidden border border-white/8 h-[200px]"
                           >
-                            <img
+                            <Image
                               src={
                                 activeService.slug === 'rifacimento-tetto'
                                   ? `/images/og/rifacimento-tetto-${hoveredCity.slug}.png`
                                   : SERVICE_THUMBNAILS[activeService.slug] || '/images/service-rifacimento.png'
                               }
                               alt={`${activeService.name} a ${hoveredCity.name}`}
-                              className="absolute inset-0 w-full h-full object-cover object-[center_30%]"
+                              fill
+                              sizes="(max-width: 1024px) 100vw, 520px"
+                              className="object-cover object-[center_30%]"
                             />
                             <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, #111 0%, #111 20%, rgba(17,17,17,0.65) 50%, rgba(17,17,17,0.1) 100%)' }} />
                             <div className="absolute left-0 inset-y-0 w-[3px] bg-[#EB1C26]" />
@@ -1354,10 +1373,12 @@ export default function Navbar() {
                                         transition={{ delay: ci * 0.05 }}
                                         className="group relative h-[62px] overflow-hidden border border-white/8 active:border-[#EB1C26]/60"
                                       >
-                                        <img
+                                        <Image
                                           src={`/images/og/rifacimento-tetto-${city.slug}.png`}
                                           alt={city.name}
-                                          className="absolute inset-0 w-full h-full object-cover object-[center_30%] scale-105 transition-transform duration-500 group-active:scale-100"
+                                          fill
+                                          sizes="100vw"
+                                          className="object-cover object-[center_30%] scale-105 transition-transform duration-500 group-active:scale-100"
                                         />
                                         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #161616 0%, #161616 28%, rgba(22,22,22,0.7) 58%, rgba(22,22,22,0.2) 100%)' }} />
                                         <div className="absolute left-0 inset-y-0 w-[3px] bg-[#EB1C26]" />
