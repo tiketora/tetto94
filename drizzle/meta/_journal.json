@@ -15,6 +15,20 @@
       "when": 1788521231208,
       "tag": "0001_oval_paper_doll",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788824454568,
+      "tag": "0002_marvelous_wendell_vaughn",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1788946081327,
+      "tag": "0003_glamorous_pretty_boy",
+      "breakpoints": true
     }
   ]
 }
