@@ -7,6 +7,7 @@ export default async function EditPostPage({ params }: { params: Promise<{ id: s
   const post = await getPostById(id)
   if (!post) notFound()
 
+    
   return (
     <div>
       <h1 className="mb-6 text-xl font-bold text-white">Edit Post</h1>
