@@ -119,14 +119,14 @@ export default async function BlogIndexPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(blogSchema) }} />
       <Navbar />
-      <main className="bg-[#161616] pt-24 pb-20">
+      <main className="bg-background pt-24 pb-20">
         <div className="mx-auto max-w-6xl px-6">
           <header className="mb-12 max-w-2xl">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-[#EB1C26]">Blog Tetto94</p>
-            <h1 className="text-3xl font-bold text-white sm:text-4xl">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-primary">Blog Tetto94</p>
+            <h1 className="text-3xl font-bold text-foreground sm:text-4xl">
               Guide e Consigli sulla Manutenzione del Tetto
             </h1>
-            <p className="mt-4 text-sm leading-relaxed text-white/60">
+            <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Approfondimenti tecnici scritti dal nostro team, per aiutarti a capire quando intervenire, quali
               materiali scegliere e come riconoscere i primi segnali di un problema alla copertura.
             </p>
@@ -138,7 +138,7 @@ export default async function BlogIndexPage() {
                 <Link
                   key={tag}
                   href={`/blog/tag/${tag}`}
-                  className="border border-white/15 px-3 py-1.5 text-xs font-medium uppercase tracking-wide text-white/60 transition-colors hover:border-[#EB1C26] hover:text-[#EB1C26]"
+                  className="border border-border px-3 py-1.5 text-xs font-medium uppercase tracking-wide text-muted-foreground transition-colors hover:border-primary hover:text-primary"
                 >
                   {tag}
                 </Link>
@@ -147,7 +147,7 @@ export default async function BlogIndexPage() {
           )}
 
           {posts.length === 0 ? (
-            <p className="border border-white/10 bg-white/[0.03] p-10 text-center text-sm text-white/50">
+            <p className="border border-border bg-muted p-10 text-center text-sm text-muted-foreground">
               Nuovi articoli in arrivo a breve.
             </p>
           ) : (
