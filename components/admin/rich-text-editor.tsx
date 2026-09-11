@@ -71,7 +71,7 @@ export default function RichTextEditor({ content, onChange }: RichTextEditorProp
   function addLink() {
     const url = window.prompt('URL del link:')
     if (!url) return
-    editor.chain().focus().setLink({ href: url }).run()
+    editor?.chain().focus().setLink({ href: url }).run()
   }
 
   return (
