@@ -1761,7 +1761,7 @@ export default function InsulationLandingPageTemplate({ config }: Props) {
             >
               <div className="overflow-hidden rounded-2xl shadow-[0_30px_70px_-30px_rgba(22,22,22,0.35)]">
                 <Image
-                  src="/images/coibentazione-hero.png"
+                  src="/images/coibentazione-hero.jpeg"
                   alt={`Posa di isolamento termico sul tetto in ${config.region} — Tetto94`}
                   width={720}
                   height={540}
