@@ -237,7 +237,7 @@ const services = [
     short: 'Riparazione',
     desc: "Interventi mirati e riparazioni specializzate. Operiamo con la massima competenza su ogni tipo di copertura.",
     href: '/riparazione-tetto',
-    img: '/images/service-riparazione.png',
+    img: '/images/Riprazione Tetto.jfif.jpeg',
     tag: 'Intervento rapido',
   },
   {
@@ -246,7 +246,7 @@ const services = [
     short: 'Rifacimento',
     desc: "Rifacimento completo della copertura con materiali certificati CE di prima scelta e garanzia scritta 10 anni.",
     href: '/rifacimento-tetto',
-    img: '/images/service-rifacimento.png',
+    img: '/images/Rifacimento tetto 2.jfif.jpeg',
     tag: 'Garanzia 10 anni',
   },
   {
@@ -255,7 +255,7 @@ const services = [
     short: 'Infiltrazioni',
     desc: "Individuazione accurata e risoluzione definitiva di ogni problema di infiltrazione d'acqua.",
     href: '/infiltrazioni-tetto',
-    img: '/images/service-infiltrazioni.png',
+    img: '/images/Stop Infiltrazioni 1.png',
     tag: 'Diagnosi precisa',
   },
   {
@@ -264,7 +264,7 @@ const services = [
     short: 'Impermeabilizz.',
     desc: 'Applicazione di guaine e membrane di alta qualità per una protezione totale e duratura nel tempo.',
     href: '/impermeabilizzazione-tetto',
-    img: '/images/service-impermeabilizzazione.png',
+    img: '/images/Impermeabilizzazione.jpeg',
     tag: 'Protezione totale',
   },
   {
@@ -273,7 +273,7 @@ const services = [
     short: 'Grondaie',
     desc: 'Rimozione di foglie, detriti e muschi per garantire il corretto deflusso delle acque in ogni stagione.',
     href: '/pulizia-grondaie',
-    img: '/images/service-grondaie.png',
+    img: '/images/Pulizia Grondaie.jfif.jpeg',
     tag: 'Manutenzione',
   },
   {
@@ -282,7 +282,7 @@ const services = [
     short: 'Coibentazione',
     desc: 'Isolamento termico di tetti e sottotetti con pannelli e insufflaggio. Meno dispersione di calore, bollette più leggere.',
     href: '/coibentazione-tetto',
-    img: '/images/service-coibentazione.png',
+    img: '/images/Coibentazione Tetto.jpg.jpeg',
     tag: 'Risparmio energetico',
   },
 ]
