@@ -491,7 +491,7 @@ export function trackFormSubmit(params?: {
  *   Ads  → phone_click conversion
  */
 export function trackPhoneClick(source: 'navbar' | 'contact_section' | 'lp_header' | 'lp_mobile_sticky' | 'lp_footer' | 'lp_hero' | 'lp_success'): void {
-  sendGA4Event('phone_click', {
+  sendGA4Event('click', {
     link_url:  'tel:+393516519363',
     link_text: '+39 351 651 9363',
     // Custom dimension — register in GA4 > Custom definitions
@@ -508,7 +508,8 @@ export function trackPhoneClick(source: 'navbar' | 'contact_section' | 'lp_heade
  *   Ads  → whatsapp_click conversion
  */
 export function trackWhatsAppClick(source: 'floating_button' | 'contact_section'): void {
-  sendGA4Event('whatsapp_click', {
+  sendGA4Event('click', {
+    outbound:    true,
     link_url:    'https://wa.me/393516519363',
     link_text:   'WhatsApp',
     // Custom dimension — register in GA4 > Custom definitions
