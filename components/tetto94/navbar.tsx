@@ -731,6 +731,819 @@
 //   )
 // }
 
+// 'use client'
+
+// import { useState, useEffect, useRef } from 'react'
+// import Image from 'next/image'
+// import { motion, AnimatePresence } from 'framer-motion'
+//   import { Menu, X, Phone, MapPin, Gauge, ChevronDown, ChevronLeft, ArrowRight, Layers, Droplets, Hammer, CloudRain, Wind, Thermometer, HardHat, BadgeCheck, ShieldCheck, Radar, Newspaper, Headset } from 'lucide-react'
+// import type { LucideIcon } from 'lucide-react'
+// import Tetto94Logo from './logo'
+// import { trackPhoneClick, trackCTAClick } from '@/lib/gtag'
+// import { SERVICES, type ServiceConfig } from '@/data/services'
+
+// /* ── Zone geografiche — verificate su fonti ufficiali (Wikipedia, L.R. 16/1993) ─ */
+// const ZONES = [
+//   {
+//     id: 'venezia-laguna',
+//     // Venezia e Mestre sono la stessa città metropolitana; Chioggia è laguna sud ufficiale
+//     label: 'Venezia & Laguna',
+//     subtitle: 'Città Metropolitana di Venezia',
+//     cities: [
+//       { slug: 'venezia',  name: 'Venezia',  province: 'VE', landmark: 'Laguna Veneta' },
+//       { slug: 'mestre',   name: 'Mestre',   province: 'VE', landmark: 'Terraferma Veneziana' },
+//       { slug: 'chioggia', name: 'Chioggia', province: 'VE', landmark: 'Laguna Sud' },
+//     ],
+//   },
+//   {
+//     id: 'entroterra-marca',
+//     // Mirano = Miranese (entroterra veneziano ufficiale); San Donà = Venezia Orientale (L.R. 16/1993);
+//     // Mogliano e Treviso = Marca Trevigiana (nome storico ufficiale); Padova = provincia PD
+//     label: 'Entroterra & Marca Trevigiana',
+//     subtitle: 'Venezia Orientale, Miranese & Trevigiano',
+//     cities: [
+//       { slug: 'mirano',            name: 'Mirano',            province: 'VE', landmark: 'Miranese' },
+//       { slug: 'san-dona-di-piave', name: 'San Donà di Piave', province: 'VE', landmark: 'Venezia Orientale' },
+//       { slug: 'mogliano-veneto',   name: 'Mogliano Veneto',   province: 'TV', landmark: 'Marca Trevigiana' },
+//       { slug: 'treviso',           name: 'Treviso',           province: 'TV', landmark: 'Marca Trevigiana' },
+//       { slug: 'padova',            name: 'Padova',            province: 'PD', landmark: 'Padovano' },
+//     ],
+//   },
+//   {
+//     id: 'province-dolomiti-polesine',
+//     // Verona e Vicenza = province occidentali venete (pianura/colli);
+//     // Belluno = unica provincia interamente montana del Veneto, Dolomiti UNESCO;
+//     // Rovigo = Polesine, pianura padana meridionale
+//     label: 'Province Venete, Dolomiti & Polesine',
+//     subtitle: 'Verona, Vicenza, Belluno & Rovigo',
+//     cities: [
+//       { slug: 'verona',  name: 'Verona',  province: 'VR', landmark: 'Arena Romana' },
+//       { slug: 'vicenza', name: 'Vicenza', province: 'VI', landmark: 'Ville Palladiane UNESCO' },
+//       { slug: 'belluno', name: 'Belluno', province: 'BL', landmark: 'Dolomiti UNESCO' },
+//       { slug: 'rovigo',  name: 'Rovigo',  province: 'RO', landmark: 'Polesine & Delta del Po' },
+//     ],
+//   },
+// ]
+
+// /* flat list for mobile / preview default */
+// const ALL_CITIES = ZONES.flatMap((z) => z.cities)
+
+// /* Menu labels and order are kept identical to the live site. "Città" is
+//    rendered separately as the mega-menu trigger, right after the last link. */
+// const navLinks = [
+//   { label: 'Servizi',       href: '/servizi',       icon: HardHat },
+//   { label: 'Perché Noi',    href: '/perche-noi',    icon: BadgeCheck },
+//   { label: 'Garanzie',      href: '/garanzie',      icon: ShieldCheck },
+//   { label: 'Blog',          href: '/blog',          icon: Newspaper },
+//   { label: 'Contatti',      href: '/contatti',      icon: Headset },
+// ]
+
+// const ROOF_INDEX_HREF = '/calcola-preventivo'
+
+// const PHONE_HREF    = 'tel:+393516519363'
+// const PHONE_DISPLAY = '351 651 9363'
+// const PHONE_HOURS   = 'Lun-Sab 8:00-21:00'
+
+// const HEADER_FONT = { fontFamily: 'var(--font-poppins), system-ui, sans-serif' } as const
+
+// const NAV_LINK_CLASS =
+//   'relative whitespace-nowrap text-sm 2xl:text-[15px] font-medium text-[#161616] hover:text-[#EB1C26] transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EB1C26] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#EB1C26] after:transition-all after:duration-300 hover:after:w-full'
+
+// /* ── Service picker — step 1 of the città dropdown ──────────────
+//    Maps the data-layer icon name (string) to the actual Lucide component,
+//    and supplies a short nav-only subtitle + thumbnail per service. Only
+//    'rifacimento-tetto' has per-city photography (og/rifacimento-tetto-{city}),
+//    so every other service falls back to its generic service thumbnail. */
+// const SERVICE_ICONS: Record<string, LucideIcon> = { Layers, Droplets, Hammer, CloudRain, Wind, Thermometer }
+
+// const SERVICE_THUMBNAILS: Record<string, string> = {
+//   'rifacimento-tetto':            '/images/service-rifacimento.png',
+//   'impermeabilizzazione-tetto':   '/images/service-impermeabilizzazione.png',
+//   'riparazione-tetto':            '/images/service-riparazione.png',
+//   'infiltrazioni-tetto':          '/images/service-infiltrazioni.png',
+//   'pulizia-grondaie':             '/images/service-grondaie.png',
+//   'coibentazione-tetto':          '/images/service-coibentazione.png',
+// }
+
+// const SERVICE_SHORT_DESC: Record<string, string> = {
+//   'rifacimento-tetto':            'Sostituzione completa, garanzia 10 anni',
+//   'impermeabilizzazione-tetto':   'Stop a infiltrazioni e umidità',
+//   'riparazione-tetto':            'Interventi rapidi e localizzati',
+//   'infiltrazioni-tetto':          "Diagnosi e blocco perdite d'acqua",
+//   'pulizia-grondaie':             'Pulizia e sigillatura canali di scarico',
+//   'coibentazione-tetto':          'Isolamento termico, meno dispersione di calore',
+// }
+
+// export default function Navbar() {
+//   const [mobileOpen, setMobileOpen]           = useState(false)
+//   const [dropdownOpen, setDropdownOpen]       = useState(false)
+//   /* Hide-on-scroll-down / reveal-on-scroll-up — the fixed header gets out
+//      of the way while reading, and comes back the instant the visitor
+//      scrolls back up looking for it (nav, phone, CTA). Always pinned
+//      visible near the top of the page so it never disappears mid-hero. */
+//   const [headerVisible, setHeaderVisible]     = useState(true)
+//   const lastScrollY = useRef(0)
+//   /* Two-step città flow: pick the service first, then the city — every
+//      link built from this state points at /{service.slug}/{city.slug}. */
+//   const [citySelectStep, setCitySelectStep]   = useState<'service' | 'city'>('service')
+//   const [activeService, setActiveService]     = useState<ServiceConfig | null>(null)
+//   const [activeZone, setActiveZone]           = useState(ZONES[0].id)
+//   const [hoveredCity, setHoveredCity]         = useState(ALL_CITIES[0])
+//   const [mobileZoneOpen, setMobileZoneOpen]   = useState<string | null>(null)
+//   const dropdownRef = useRef<HTMLDivElement>(null)
+//   const triggerRef  = useRef<HTMLButtonElement>(null)
+//   /* The header now includes a top bar, so its height differs between
+//      breakpoints — measure it so the mega-menu and drawer sit right below. */
+//   const headerRef   = useRef<HTMLElement>(null)
+//   const [headerH, setHeaderH] = useState(72)
+
+//   useEffect(() => {
+//     function measure() {
+//       if (headerRef.current) setHeaderH(headerRef.current.offsetHeight)
+//     }
+//     measure()
+//     window.addEventListener('resize', measure)
+//     return () => window.removeEventListener('resize', measure)
+//   }, [dropdownOpen, mobileOpen])
+
+//   /* Close dropdown on outside click */
+//   useEffect(() => {
+//     function handler(e: MouseEvent) {
+//       if (
+//         dropdownRef.current && !dropdownRef.current.contains(e.target as Node) &&
+//         triggerRef.current  && !triggerRef.current.contains(e.target as Node)
+//       ) setDropdownOpen(false)
+//     }
+//     document.addEventListener('mousedown', handler)
+//     return () => document.removeEventListener('mousedown', handler)
+//   }, [])
+
+//   /* Always re-open on the service-picker step — never assume the last
+//      service the visitor viewed is still the one they want. */
+//   useEffect(() => {
+//     if (dropdownOpen) { setCitySelectStep('service'); setActiveService(null) }
+//   }, [dropdownOpen])
+
+//   useEffect(() => {
+//     if (mobileOpen) { setCitySelectStep('service'); setActiveService(null); setMobileZoneOpen(null) }
+//   }, [mobileOpen])
+
+//   /* Lock body scroll when mobile menu open */
+//   useEffect(() => {
+//     document.body.style.overflow = mobileOpen ? 'hidden' : ''
+//     return () => { document.body.style.overflow = '' }
+//   }, [mobileOpen])
+
+//   /* Hide the header on scroll-down, reveal it on scroll-up. Ignored while
+//      any menu/dropdown is open so the header can't vanish out from under
+//      an open mega-menu or the mobile drawer. */
+//   useEffect(() => {
+//     lastScrollY.current = window.scrollY
+//     function handleScroll() {
+//       const y = window.scrollY
+//       const delta = y - lastScrollY.current
+//       if (mobileOpen || dropdownOpen) {
+//         setHeaderVisible(true)
+//       } else if (y < 96) {
+//         setHeaderVisible(true) // always pinned near the top
+//       } else if (delta > 4) {
+//         setHeaderVisible(false) // scrolling down
+//       } else if (delta < -4) {
+//         setHeaderVisible(true) // scrolling up
+//       }
+//       lastScrollY.current = y
+//     }
+//     window.addEventListener('scroll', handleScroll, { passive: true })
+//     return () => window.removeEventListener('scroll', handleScroll)
+//   }, [mobileOpen, dropdownOpen])
+
+//   const currentZone = ZONES.find((z) => z.id === activeZone) ?? ZONES[0]
+
+//   function selectService(service: ServiceConfig) {
+//     setActiveService(service)
+//     setCitySelectStep('city')
+//   }
+
+//   return (
+//     <>
+//       <motion.header
+//         ref={headerRef}
+//         animate={{ y: headerVisible ? 0 : '-100%' }}
+//         transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+//         style={HEADER_FONT}
+//         className="fixed top-0 left-0 right-0 z-50 bg-[#F5F5F5] shadow-lg"
+//       >
+//         {/* Top bar — area + promises (desktop/tablet only; mobile keeps the header compact) */}
+//         <div className="hidden border-b border-white/10 bg-[#0B0B0B] md:block">
+//           <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-6 px-6 py-2 text-[13px] text-white/75">
+//             <p>Tetti in Veneto, Friuli-Venezia Giulia ed Emilia-Romagna · dal 1994</p>
+//             <p className="hidden items-center gap-2 lg:flex">
+//               <span>Garanzia scritta</span>
+//               <span aria-hidden="true" className="size-1 rounded-full bg-[#EB1C26]" />
+//               <span>Ispezione con drone gratuita</span>
+//             </p>
+//           </div>
+//         </div>
+
+//         <nav
+//           aria-label="Principale"
+//           className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 border-b border-[#E5E5E5] px-6 py-2.5 overflow-visible min-[1440px]:gap-6"
+//         >
+//           {/* Logo */}
+//           <a href="/" className="flex shrink-0 items-center group" aria-label="Tetto94 - Homepage">
+//             <motion.div whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>
+//               <Tetto94Logo className="h-12 md:h-14 w-auto" textFill="#161616" />
+//             </motion.div>
+//           </a>
+
+//           {/* Desktop menu — Servizi, Perché Noi, Garanzie, Mappa Rischio, Blog, Contatti, Città */}
+//           <ul className="hidden xl:flex items-center gap-3.5 min-[1440px]:gap-5 2xl:gap-7">
+//             {navLinks.map((link) => {
+//               const Icon = link.icon
+//               return (
+//                 <li key={link.href}>
+//                   <a href={link.href} className={`${NAV_LINK_CLASS} flex items-center gap-1.5`}>
+//                     <Icon className="size-4 shrink-0 text-[#EB1C26]" strokeWidth={1.75} aria-hidden="true" />
+//                     {link.label}
+//                   </a>
+//                 </li>
+//               )
+//             })}
+
+//             {/* Città — opens the service → city mega-menu */}
+//             <li className="relative">
+//               <button
+//                 ref={triggerRef}
+//                 onClick={() => setDropdownOpen((v) => !v)}
+//                 className={`${NAV_LINK_CLASS} flex items-center gap-1.5`}
+//                 aria-expanded={dropdownOpen}
+//                 aria-haspopup="true"
+//               >
+//                 <MapPin className="size-4 text-[#EB1C26]" aria-hidden="true" />
+//                 Città
+//                 <motion.span animate={{ rotate: dropdownOpen ? 180 : 0 }} transition={{ duration: 0.22 }}>
+//                   <ChevronDown className="size-4 text-[#494949]" />
+//                 </motion.span>
+//                 <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#EB1C26] transition-all duration-300 ${dropdownOpen ? 'w-full' : 'w-0'}`} />
+//               </button>
+//             </li>
+//           </ul>
+
+//           {/* Desktop: phone with hours + T94 Roof Index + red CTA */}
+//           <div className="hidden xl:flex items-center gap-2.5 min-[1440px]:gap-3 2xl:gap-4">
+//             <a
+//               href={PHONE_HREF}
+//               onClick={() => trackPhoneClick('navbar')}
+//               aria-label={`Chiama il ${PHONE_DISPLAY}, ${PHONE_HOURS}`}
+//               className="flex items-center gap-2.5 whitespace-nowrap rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EB1C26]"
+//             >
+//               <span className="hidden size-9 2xl:size-10 shrink-0 items-center justify-center rounded-full bg-[#EB1C26]/15 min-[1440px]:flex">
+//                 <Phone className="size-4 2xl:size-5 text-[#EB1C26]" aria-hidden="true" />
+//               </span>
+//               <span className="flex flex-col leading-tight">
+//                 <span className="text-base 2xl:text-lg font-bold tracking-tight text-[#161616]">{PHONE_DISPLAY}</span>
+//                 <span className="text-[10px] 2xl:text-[11px] text-[#494949]">{PHONE_HOURS}</span>
+//               </span>
+//             </a>
+//             <motion.a
+//               href={ROOF_INDEX_HREF}
+//               onClick={() => trackCTAClick('navbar_desktop', ROOF_INDEX_HREF)}
+//               className="flex items-center gap-2 whitespace-nowrap rounded-md border border-[#EB1C26]/50 bg-[#EB1C26]/10 px-3 2xl:px-3.5 py-2.5 text-sm 2xl:text-[15px] font-semibold text-[#161616] transition-colors hover:border-[#EB1C26] hover:bg-[#EB1C26]/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#161616]"
+//               whileHover={{ scale: 1.03 }}
+//               whileTap={{ scale: 0.97 }}
+//             >
+//               <Gauge className="size-4 text-[#EB1C26]" aria-hidden="true" />
+//               <span className="min-[1440px]:hidden">Roof Index</span>
+//               <span className="hidden min-[1440px]:inline">T94 Roof Index</span>
+//             </motion.a>
+//             <motion.a
+//               href="/contatti"
+//               onClick={() => trackCTAClick('navbar_desktop', '/contatti')}
+//               className="whitespace-nowrap rounded-md bg-[#EB1C26] px-4 2xl:px-5 py-2.5 text-sm 2xl:text-[15px] font-semibold text-white transition-colors hover:bg-[#C8111A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#161616]"
+//               whileHover={{ scale: 1.03 }}
+//               whileTap={{ scale: 0.97 }}
+//             >
+//               Preventivo<span className="hidden min-[1440px]:inline"> gratuito</span>
+//             </motion.a>
+//           </div>
+
+//           {/* Mobile / tablet: tap-to-call always visible + menu button */}
+//           <div className="flex xl:hidden items-center gap-2">
+//             <a
+//               href={PHONE_HREF}
+//               onClick={() => trackPhoneClick('navbar')}
+//               aria-label={`Chiama il ${PHONE_DISPLAY}`}
+//               className="flex h-11 items-center gap-2 rounded-md bg-[#EB1C26] px-3.5 text-sm font-semibold text-white"
+//             >
+//               <Phone className="size-4" aria-hidden="true" />
+//               <span className="hidden sm:inline">{PHONE_DISPLAY}</span>
+//               <span className="sm:hidden">Chiama</span>
+//             </a>
+
+//             <a
+//               href={ROOF_INDEX_HREF}
+//               onClick={() => trackCTAClick('navbar_mobile_header', ROOF_INDEX_HREF)}
+//               aria-label="T94 Roof Index"
+//               className="flex h-11 items-center gap-1.5 rounded-md border border-[#EB1C26]/50 bg-[#EB1C26]/10 px-3 text-sm font-semibold text-[#161616] transition-colors active:bg-[#EB1C26]/25"
+//             >
+//               <Gauge className="size-4 text-[#EB1C26]" aria-hidden="true" />
+//               <span className="hidden sm:inline">T94 Roof Index</span>
+//               <span className="sm:hidden">T94</span>
+//             </a>
+
+//             <button
+//               onClick={() => setMobileOpen(!mobileOpen)}
+//               className="flex size-11 items-center justify-center text-[#161616]"
+//               aria-label={mobileOpen ? 'Chiudi menu' : 'Apri menu'}
+//               aria-expanded={mobileOpen}
+//             >
+//               <AnimatePresence mode="wait">
+//                 {mobileOpen ? (
+//                   <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+//                     <X className="size-6" />
+//                   </motion.div>
+//                 ) : (
+//                   <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+//                     <Menu className="size-6" />
+//                   </motion.div>
+//                 )}
+//               </AnimatePresence>
+//             </button>
+//           </div>
+//         </nav>
+//       </motion.header>
+
+//       {/* ── Mega-dropdown — step 1: servizio → step 2: zone + città ─── */}
+//       <AnimatePresence>
+//         {dropdownOpen && (
+//           <motion.div
+//             ref={dropdownRef}
+//             key="city-dropdown"
+//             initial={{ opacity: 0, y: -8, scaleY: 0.97 }}
+//             animate={{ opacity: 1, y: 0, scaleY: 1 }}
+//             exit={{ opacity: 0, y: -8, scaleY: 0.97 }}
+//             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+//             style={{ transformOrigin: 'top', top: headerH }}
+//             className="fixed left-0 right-0 z-40 bg-[#111] border-b border-white/8 shadow-2xl"
+//           >
+//             <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#EB1C26]" />
+
+//             <div className="mx-auto max-w-7xl px-6 py-6">
+//               <AnimatePresence mode="wait">
+
+//                 {citySelectStep === 'service' ? (
+//                   /* ── STEP 1 — choose the service ─────────────── */
+//                   <motion.div
+//                     key="step-service"
+//                     initial={{ opacity: 0, x: -12 }}
+//                     animate={{ opacity: 1, x: 0 }}
+//                     exit={{ opacity: 0, x: -12 }}
+//                     transition={{ duration: 0.18 }}
+//                   >
+//                     <div className="flex items-baseline justify-between mb-4">
+//                       <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/25">
+//                         Passo 1 — Seleziona il Servizio
+//                       </p>
+//                       <p className="text-[10px] text-white/25">poi scegli la città</p>
+//                     </div>
+
+//                     <div className="grid grid-cols-5 gap-3">
+//                       {SERVICES.map((service, i) => {
+//                         const Icon = SERVICE_ICONS[service.icon] ?? Layers
+//                         return (
+//                           <motion.button
+//                             key={service.slug}
+//                             initial={{ opacity: 0, y: 10 }}
+//                             animate={{ opacity: 1, y: 0 }}
+//                             transition={{ delay: i * 0.05 }}
+//                             onClick={() => selectService(service)}
+//                             className="group relative flex flex-col overflow-hidden border border-white/8 bg-white/2 text-left transition-all duration-200 hover:border-[#EB1C26]/50 hover:bg-white/4"
+//                           >
+//                             <div className="relative h-24 w-full overflow-hidden">
+//                               <Image
+//                                 src={SERVICE_THUMBNAILS[service.slug] || '/images/service-rifacimento.png'}
+//                                 alt=""
+//                                 fill
+//                                 sizes="(max-width: 1024px) 100vw, 280px"
+//                                 className="object-cover transition-transform duration-500 group-hover:scale-105"
+//                               />
+//                               <div className="absolute inset-0 bg-gradient-to-t from-[#111] via-[#111]/25 to-transparent" />
+//                               <div className="absolute bottom-2 left-2 flex size-7 items-center justify-center bg-[#EB1C26]">
+//                                 <Icon className="size-3.5 text-white" />
+//                               </div>
+//                             </div>
+//                             <div className="p-3">
+//                               <p className="text-xs font-bold uppercase tracking-wide text-white leading-snug">
+//                                 {service.name}
+//                               </p>
+//                               <p className="mt-1 text-[10px] text-white/40 leading-snug">
+//                                 {SERVICE_SHORT_DESC[service.slug]}
+//                               </p>
+//                             </div>
+//                             <ArrowRight className="absolute right-2 bottom-2 size-3.5 text-white/0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-[#EB1C26]" />
+//                           </motion.button>
+//                         )
+//                       })}
+//                     </div>
+//                   </motion.div>
+//                 ) : activeService && (
+//                   /* ── STEP 2 — zone + città for the chosen service ─ */
+//                   <motion.div
+//                     key="step-city"
+//                     initial={{ opacity: 0, x: 12 }}
+//                     animate={{ opacity: 1, x: 0 }}
+//                     exit={{ opacity: 0, x: 12 }}
+//                     transition={{ duration: 0.18 }}
+//                   >
+//                     {/* Back bar */}
+//                     <div className="flex items-center justify-between mb-5 pb-4 border-b border-white/8">
+//                       <button
+//                         onClick={() => setCitySelectStep('service')}
+//                         className="group flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white/50 transition-colors hover:text-white"
+//                       >
+//                         <ChevronLeft className="size-3.5 transition-transform group-hover:-translate-x-0.5" />
+//                         Servizi
+//                       </button>
+//                       <div className="flex items-center gap-2">
+//                         <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/25">Stai cercando</span>
+//                         <span className="flex items-center gap-1.5 border border-[#EB1C26]/30 bg-[#EB1C26]/10 px-2.5 py-1 text-xs font-bold text-[#EB1C26]">
+//                           {(() => { const Icon = SERVICE_ICONS[activeService.icon] ?? Layers; return <Icon className="size-3" /> })()}
+//                           {activeService.name}
+//                         </span>
+//                       </div>
+//                     </div>
+
+//                     <div className="grid lg:grid-cols-[auto_1fr_1fr] gap-0">
+
+//                       {/* COL A — Zone tabs (vertical) */}
+//                       <div className="flex flex-col border-r border-white/8 pr-6 mr-6 min-w-[200px]">
+//                         <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/25 mb-4">
+//                           Zona
+//                         </p>
+//                         {ZONES.map((zone, i) => (
+//                           <motion.button
+//                             key={zone.id}
+//                             initial={{ opacity: 0, x: -10 }}
+//                             animate={{ opacity: 1, x: 0 }}
+//                             transition={{ delay: i * 0.06 }}
+//                             onMouseEnter={() => { setActiveZone(zone.id); setHoveredCity(zone.cities[0]) }}
+//                             onClick={() => setActiveZone(zone.id)}
+//                             className={`group text-left px-4 py-3.5 border-l-2 transition-all duration-200 mb-1 ${
+//                               activeZone === zone.id
+//                                 ? 'border-[#EB1C26] bg-white/5'
+//                                 : 'border-transparent hover:border-white/20 hover:bg-white/3'
+//                             }`}
+//                           >
+//                             <p className={`text-sm font-bold tracking-wide transition-colors ${activeZone === zone.id ? 'text-white' : 'text-white/55 group-hover:text-white/80'}`}>
+//                               {zone.label}
+//                             </p>
+//                             <p className={`text-[10px] mt-0.5 transition-colors ${activeZone === zone.id ? 'text-white/50' : 'text-white/25'}`}>
+//                               {zone.subtitle}
+//                             </p>
+//                           </motion.button>
+//                         ))}
+
+//                         {/* count badge */}
+//                         <div className="mt-auto pt-4 border-t border-white/8">
+//                           <span className="text-[10px] font-bold text-[#EB1C26]">12 comuni</span>
+//                           <span className="text-[10px] text-white/25 ml-1">in 3 zone</span>
+//                         </div>
+//                       </div>
+
+//                       {/* COL B — City list for active zone */}
+//                       <div className="pr-6 mr-6 border-r border-white/8">
+//                         <AnimatePresence mode="wait">
+//                           <motion.div
+//                             key={activeZone}
+//                             initial={{ opacity: 0, x: 10 }}
+//                             animate={{ opacity: 1, x: 0 }}
+//                             exit={{ opacity: 0, x: -10 }}
+//                             transition={{ duration: 0.18 }}
+//                           >
+//                             <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/25 mb-4">
+//                               {currentZone.label}
+//                             </p>
+//                             <ul className="flex flex-col gap-1.5">
+//                               {currentZone.cities.map((city, i) => (
+//                                 <motion.li
+//                                   key={city.slug}
+//                                   initial={{ opacity: 0, y: 6 }}
+//                                   animate={{ opacity: 1, y: 0 }}
+//                                   transition={{ delay: i * 0.05 }}
+//                                 >
+//                                   <a
+//                                     href={`/${activeService.slug}/${city.slug}`}
+//                                     onClick={() => { setDropdownOpen(false); trackCTAClick(`navbar_city_${city.slug}`, `/${activeService.slug}/${city.slug}`) }}
+//                                     onMouseEnter={() => setHoveredCity(city)}
+//                                     className={`group flex items-center justify-between px-4 py-3 border transition-all duration-150 ${
+//                                       hoveredCity.slug === city.slug
+//                                         ? 'border-[#EB1C26]/50 bg-[#EB1C26]/8 text-white'
+//                                         : 'border-white/6 bg-white/2 text-white/65 hover:border-white/15 hover:bg-white/4 hover:text-white'
+//                                     }`}
+//                                   >
+//                                     <div className="flex items-center gap-3">
+//                                       <span className={`text-[10px] font-black px-1.5 py-0.5 transition-colors ${hoveredCity.slug === city.slug ? 'bg-[#EB1C26] text-white' : 'bg-white/8 text-white/35'}`}>
+//                                         {city.province}
+//                                       </span>
+//                                       <div>
+//                                         <p className="text-sm font-bold leading-none">{city.name}</p>
+//                                         <p className="text-[10px] text-white/30 mt-0.5">{city.landmark}</p>
+//                                       </div>
+//                                     </div>
+//                                     <ArrowRight className={`size-3.5 transition-all duration-150 shrink-0 ${hoveredCity.slug === city.slug ? 'text-[#EB1C26] translate-x-0.5' : 'text-white/15'}`} />
+//                                   </a>
+//                                 </motion.li>
+//                               ))}
+//                             </ul>
+//                           </motion.div>
+//                         </AnimatePresence>
+//                       </div>
+
+//                       {/* COL C — City preview card */}
+//                       <div className="hidden lg:block">
+//                         <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/25 mb-4">
+//                           Anteprima
+//                         </p>
+//                         <AnimatePresence mode="wait">
+//                           <motion.div
+//                             key={`${activeService.slug}-${hoveredCity.slug}`}
+//                             initial={{ opacity: 0, scale: 0.98 }}
+//                             animate={{ opacity: 1, scale: 1 }}
+//                             exit={{ opacity: 0, scale: 0.98 }}
+//                             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+//                             className="relative overflow-hidden border border-white/8 h-[200px]"
+//                           >
+//                             <Image
+//                               src={
+//                                 activeService.slug === 'rifacimento-tetto'
+//                                   ? `/images/og/rifacimento-tetto-${hoveredCity.slug}.png`
+//                                   : SERVICE_THUMBNAILS[activeService.slug] || '/images/service-rifacimento.png'
+//                               }
+//                               alt={`${activeService.name} a ${hoveredCity.name}`}
+//                               fill
+//                               sizes="(max-width: 1024px) 100vw, 520px"
+//                               className="object-cover object-[center_30%]"
+//                             />
+//                             <div className="absolute inset-0" style={{ background: 'linear-gradient(120deg, #111 0%, #111 20%, rgba(17,17,17,0.65) 50%, rgba(17,17,17,0.1) 100%)' }} />
+//                             <div className="absolute left-0 inset-y-0 w-[3px] bg-[#EB1C26]" />
+//                             <div className="absolute inset-0 flex flex-col justify-between p-5">
+//                               <div>
+//                                 <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#EB1C26]">
+//                                   {hoveredCity.province} — {hoveredCity.landmark}
+//                                 </p>
+//                                 <h3 className="mt-1.5 font-display text-2xl text-white leading-none">
+//                                   {hoveredCity.name.toUpperCase()}
+//                                 </h3>
+//                               </div>
+//                               <a
+//                                 href={`/${activeService.slug}/${hoveredCity.slug}`}
+//                                 onClick={() => { setDropdownOpen(false); trackCTAClick(`navbar_city_cta_${hoveredCity.slug}`, `/${activeService.slug}/${hoveredCity.slug}`) }}
+//                                 className="inline-flex items-center gap-2 bg-[#EB1C26] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-white self-start hover:bg-[#c8111a] transition-colors"
+//                               >
+//                                 {activeService.name}
+//                                 <ArrowRight className="size-3.5" />
+//                               </a>
+//                             </div>
+//                           </motion.div>
+//                         </AnimatePresence>
+//                       </div>
+
+//                     </div>
+//                   </motion.div>
+//                 )}
+
+//               </AnimatePresence>
+//             </div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+
+//       {/* ── Mobile drawer ─────────────────────────────────────── */}
+//       <AnimatePresence>
+//         {mobileOpen && (
+//           <motion.div
+//             key="mobile-menu"
+//             initial={{ opacity: 0, y: -20 }}
+//             animate={{ opacity: 1, y: 0 }}
+//             exit={{ opacity: 0, y: -20 }}
+//             transition={{ duration: 0.25, ease: 'easeOut' }}
+//             style={{ ...HEADER_FONT, top: headerH }}
+//             className="fixed inset-x-0 bottom-0 z-40 bg-[#161616] overflow-y-auto px-6 py-6 xl:hidden"
+//           >
+//             {/* Nav links */}
+//             <ul className="flex flex-col gap-4">
+//               {navLinks.map((link, i) => {
+//                 const Icon = link.icon
+//                 return (
+//                   <motion.li key={link.href} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }}>
+//                     <a
+//                       href={link.href}
+//                       onClick={() => setMobileOpen(false)}
+//                       className="flex items-center gap-3 py-1 text-xl font-semibold text-white/90 hover:text-[#EB1C26] transition-colors"
+//                     >
+//                       <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-[#EB1C26]/30 bg-[#EB1C26]/10">
+//                         <Icon className="size-5 text-[#EB1C26]" strokeWidth={1.75} aria-hidden="true" />
+//                       </span>
+//                       {link.label}
+//                     </a>
+//                   </motion.li>
+//                 )
+//               })}
+//             </ul>
+
+//             {/* Mobile città — step 1: servizio → step 2: zone accordion */}
+//             <div className="mt-8 border-t border-white/8 pt-8">
+//               <AnimatePresence mode="wait">
+//                 {citySelectStep === 'service' ? (
+//                   <motion.div key="mobile-step-service" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+//                     <div className="flex items-center justify-between mb-3">
+//                       <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30">Seleziona il Servizio</p>
+//                       <span className="text-[10px] font-bold bg-[#EB1C26]/15 text-[#EB1C26] px-2 py-0.5">12 comuni</span>
+//                     </div>
+//                     <div className="flex flex-col gap-2">
+//                       {SERVICES.map((service, i) => {
+//                         const Icon = SERVICE_ICONS[service.icon] ?? Layers
+//                         return (
+//                           <motion.button
+//                             key={service.slug}
+//                             initial={{ opacity: 0, x: -16 }}
+//                             animate={{ opacity: 1, x: 0 }}
+//                             transition={{ delay: i * 0.06 }}
+//                             onClick={() => selectService(service)}
+//                             className="group flex items-center justify-between gap-3 border border-white/10 bg-white/3 px-4 py-3.5 text-left active:border-[#EB1C26]/50 active:bg-[#EB1C26]/8"
+//                           >
+//                             <div className="flex items-center gap-3">
+//                               <div className="flex size-9 items-center justify-center border border-[#EB1C26]/30 bg-[#EB1C26]/15">
+//                                 <Icon className="size-4 text-[#EB1C26]" />
+//                               </div>
+//                               <div>
+//                                 <p className="text-sm font-bold text-white">{service.name}</p>
+//                                 <p className="text-[10px] text-white/35 mt-0.5">{SERVICE_SHORT_DESC[service.slug]}</p>
+//                               </div>
+//                             </div>
+//                             <ArrowRight className="size-4 text-white/25 transition-colors group-active:text-[#EB1C26] shrink-0" />
+//                           </motion.button>
+//                         )
+//                       })}
+//                     </div>
+//                   </motion.div>
+//                 ) : activeService && (
+//                   <motion.div key="mobile-step-city" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.18 }}>
+//                     <button
+//                       onClick={() => setCitySelectStep('service')}
+//                       className="group mb-4 flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-white/50 active:text-white"
+//                     >
+//                       <ChevronLeft className="size-3.5" />
+//                       Cambia servizio
+//                       <span className="text-[#EB1C26]">· {activeService.name}</span>
+//                     </button>
+
+//                     <div className="flex items-center justify-between mb-2">
+//                       <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/30">Zone Servite</p>
+//                       <span className="text-[10px] font-bold bg-[#EB1C26]/15 text-[#EB1C26] px-2 py-0.5">12 comuni</span>
+//                     </div>
+
+//                     <div className="flex flex-col gap-3">
+//                       {ZONES.map((zone, zi) => (
+//                         <motion.div
+//                           key={zone.id}
+//                           initial={{ opacity: 0, x: -16 }}
+//                           animate={{ opacity: 1, x: 0 }}
+//                           transition={{ delay: zi * 0.08 }}
+//                         >
+//                           {/* Zone accordion header */}
+//                           <button
+//                             onClick={() => setMobileZoneOpen(mobileZoneOpen === zone.id ? null : zone.id)}
+//                             className={`w-full flex items-center justify-between px-4 py-3.5 border transition-colors ${
+//                               mobileZoneOpen === zone.id
+//                                 ? 'border-[#EB1C26]/40 bg-[#EB1C26]/8'
+//                                 : 'border-white/10 bg-white/3'
+//                             }`}
+//                           >
+//                             <div className="text-left">
+//                               <p className="text-sm font-bold text-white">{zone.label}</p>
+//                               <p className="text-[10px] text-white/35 mt-0.5">{zone.subtitle}</p>
+//                             </div>
+//                             <motion.div animate={{ rotate: mobileZoneOpen === zone.id ? 180 : 0 }} transition={{ duration: 0.2 }}>
+//                               <ChevronDown className="size-4 text-white/40 shrink-0" />
+//                             </motion.div>
+//                           </button>
+
+//                           {/* Zone cities — revealed on open */}
+//                           <AnimatePresence initial={false}>
+//                             {mobileZoneOpen === zone.id && (
+//                               <motion.div
+//                                 initial={{ height: 0, opacity: 0 }}
+//                                 animate={{ height: 'auto', opacity: 1 }}
+//                                 exit={{ height: 0, opacity: 0 }}
+//                                 transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+//                                 className="overflow-hidden"
+//                               >
+//                                 <div className="flex flex-col gap-1.5 pt-1.5 pl-2">
+//                                   {zone.cities.map((city, ci) =>
+//                                     activeService.slug === 'rifacimento-tetto' ? (
+//                                       <motion.a
+//                                         key={city.slug}
+//                                         href={`/${activeService.slug}/${city.slug}`}
+//                                         onClick={() => { setMobileOpen(false); trackCTAClick(`navbar_mobile_city_${city.slug}`, `/${activeService.slug}/${city.slug}`) }}
+//                                         initial={{ opacity: 0, x: -12 }}
+//                                         animate={{ opacity: 1, x: 0 }}
+//                                         transition={{ delay: ci * 0.05 }}
+//                                         className="group relative h-[62px] overflow-hidden border border-white/8 active:border-[#EB1C26]/60"
+//                                       >
+//                                         <Image
+//                                           src={`/images/og/rifacimento-tetto-${city.slug}.png`}
+//                                           alt={city.name}
+//                                           fill
+//                                           sizes="100vw"
+//                                           className="object-cover object-[center_30%] scale-105 transition-transform duration-500 group-active:scale-100"
+//                                         />
+//                                         <div className="absolute inset-0" style={{ background: 'linear-gradient(90deg, #161616 0%, #161616 28%, rgba(22,22,22,0.7) 58%, rgba(22,22,22,0.2) 100%)' }} />
+//                                         <div className="absolute left-0 inset-y-0 w-[3px] bg-[#EB1C26]" />
+//                                         <div className="relative flex items-center justify-between h-full px-4">
+//                                           <div className="flex items-center gap-3">
+//                                             <span className="text-[10px] font-black bg-[#EB1C26] text-white px-2 py-0.5 shrink-0">
+//                                               {city.province}
+//                                             </span>
+//                                             <div>
+//                                               <p className="font-display text-base text-white leading-none">{city.name.toUpperCase()}</p>
+//                                               <p className="text-[10px] text-white/40 mt-0.5">{city.landmark}</p>
+//                                             </div>
+//                                           </div>
+//                                           <ArrowRight className="size-3.5 text-white/25 group-active:text-[#EB1C26] transition-colors shrink-0" />
+//                                         </div>
+//                                       </motion.a>
+//                                     ) : (
+//                                       <motion.a
+//                                         key={city.slug}
+//                                         href={`/${activeService.slug}/${city.slug}`}
+//                                         onClick={() => { setMobileOpen(false); trackCTAClick(`navbar_mobile_city_${city.slug}`, `/${activeService.slug}/${city.slug}`) }}
+//                                         initial={{ opacity: 0, x: -12 }}
+//                                         animate={{ opacity: 1, x: 0 }}
+//                                         transition={{ delay: ci * 0.05 }}
+//                                         className="group relative flex h-[62px] items-center justify-between border border-white/8 bg-white/3 px-4 active:border-[#EB1C26]/60 active:bg-[#EB1C26]/8"
+//                                       >
+//                                         <div className="flex items-center gap-3">
+//                                           <span className="text-[10px] font-black bg-[#EB1C26] text-white px-2 py-0.5 shrink-0">
+//                                             {city.province}
+//                                           </span>
+//                                           <div>
+//                                             <p className="font-display text-base text-white leading-none">{city.name.toUpperCase()}</p>
+//                                             <p className="text-[10px] text-white/40 mt-0.5">{city.landmark}</p>
+//                                           </div>
+//                                         </div>
+//                                         <ArrowRight className="size-3.5 text-white/25 group-active:text-[#EB1C26] transition-colors shrink-0" />
+//                                       </motion.a>
+//                                     )
+//                                   )}
+//                                 </div>
+//                               </motion.div>
+//                             )}
+//                           </AnimatePresence>
+//                         </motion.div>
+//                       ))}
+//                     </div>
+//                   </motion.div>
+//                 )}
+//               </AnimatePresence>
+//             </div>
+
+//             <div className="mt-8 flex flex-col gap-3">
+//               <a
+//                 href={PHONE_HREF}
+//                 onClick={() => { setMobileOpen(false); trackPhoneClick('navbar') }}
+//                 className="flex items-center justify-center gap-3 rounded-md border border-white/15 bg-white/5 py-3 text-white"
+//               >
+//                 <Phone className="size-5 text-[#EB1C26]" aria-hidden="true" />
+//                 <span className="flex flex-col text-left leading-tight">
+//                   <span className="text-lg font-bold">{PHONE_DISPLAY}</span>
+//                   <span className="text-xs text-white/65">{PHONE_HOURS}</span>
+//                 </span>
+//               </a>
+//               <a
+//                 href={ROOF_INDEX_HREF}
+//                 onClick={() => { setMobileOpen(false); trackCTAClick('navbar_mobile', ROOF_INDEX_HREF) }}
+//                 className="flex items-center justify-center gap-2 rounded-md border border-[#EB1C26]/50 bg-[#EB1C26]/10 py-3.5 text-base font-semibold text-white"
+//               >
+//                 <Gauge className="size-5 text-[#EB1C26]" aria-hidden="true" />
+//                 T94 Roof Index
+//               </a>
+//               <a
+//                 href="/contatti"
+//                 onClick={() => { setMobileOpen(false); trackCTAClick('navbar_mobile', '/contatti') }}
+//                 className="block rounded-md bg-[#EB1C26] py-3.5 text-center text-base font-semibold text-white"
+//               >
+//                 Preventivo gratuito
+//               </a>
+//             </div>
+//           </motion.div>
+//         )}
+//       </AnimatePresence>
+//     </>
+//   )
+// }
+
+
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
@@ -947,7 +1760,7 @@ export default function Navbar() {
 
         <nav
           aria-label="Principale"
-          className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 border-b border-[#E5E5E5] px-6 py-2.5 overflow-visible min-[1440px]:gap-6"
+          className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 border-b border-[#E5E5E5] px-4 min-[360px]:px-6 py-2.5 overflow-visible min-[1440px]:gap-6"
         >
           {/* Logo */}
           <a href="/" className="flex shrink-0 items-center group" aria-label="Tetto94 - Homepage">
@@ -1027,33 +1840,22 @@ export default function Navbar() {
             </motion.a>
           </div>
 
-          {/* Mobile / tablet: tap-to-call always visible + menu button */}
-          <div className="flex xl:hidden items-center gap-2">
-            <a
-              href={PHONE_HREF}
-              onClick={() => trackPhoneClick('navbar')}
-              aria-label={`Chiama il ${PHONE_DISPLAY}`}
-              className="flex h-11 items-center gap-2 rounded-md bg-[#EB1C26] px-3.5 text-sm font-semibold text-white"
-            >
-              <Phone className="size-4" aria-hidden="true" />
-              <span className="hidden sm:inline">{PHONE_DISPLAY}</span>
-              <span className="sm:hidden">Chiama</span>
-            </a>
-
+          {/* Mobile / tablet: T94 Roof Index + menu button */}
+          <div className="flex xl:hidden shrink-0 items-center gap-1.5">
             <a
               href={ROOF_INDEX_HREF}
               onClick={() => trackCTAClick('navbar_mobile_header', ROOF_INDEX_HREF)}
               aria-label="T94 Roof Index"
-              className="flex h-11 items-center gap-1.5 rounded-md border border-[#EB1C26]/50 bg-[#EB1C26]/10 px-3 text-sm font-semibold text-[#161616] transition-colors active:bg-[#EB1C26]/25"
+              className="flex h-11 items-center gap-1.5 whitespace-nowrap rounded-md border border-[#EB1C26]/50 bg-[#EB1C26]/10 px-3 text-sm font-semibold text-[#161616] transition-colors active:bg-[#EB1C26]/25"
             >
               <Gauge className="size-4 text-[#EB1C26]" aria-hidden="true" />
-              <span className="hidden sm:inline">T94 Roof Index</span>
-              <span className="sm:hidden">T94</span>
+              <span className="min-[360px]:hidden">Roof Index</span>
+              <span className="hidden min-[360px]:inline">T94 Roof Index</span>
             </a>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="flex size-11 items-center justify-center text-[#161616]"
+              className="flex size-11 shrink-0 items-center justify-center text-[#161616]"
               aria-label={mobileOpen ? 'Chiudi menu' : 'Apri menu'}
               aria-expanded={mobileOpen}
             >
