@@ -31,11 +31,39 @@
   --input: #E5E5E5;
   --ring: #EB1C26;
   --radius: 0.25rem;
+
+  /* Redesign 2026 tokens (style guide 00). Additive: legacy tokens above are untouched
+     until every template is migrated, then --primary/--border/etc. can alias these. */
+  --t94-red: #E01A22;
+  --t94-red-hover: #C4151C;
+  --t94-dark: #1B1B1B;
+  --t94-text: #1F1F1F;
+  --t94-text-secondary: #5A5A5A;
+  --t94-grey: #F6F4F0;
+  --t94-green: #1FA855;
+  --t94-green-hover: #188A45;
+  --t94-border: #E3DED5;
+  --t94-radius: 10px;
+  --t94-button-height: 58px;
+  --t94-button-height-sm: 48px;
+  --t94-field-height: 54px;
 }
 
 @theme inline {
   --font-sans: var(--font-inter), 'Inter', sans-serif;
   --font-display: var(--font-bebas), 'Bebas Neue', 'Anton', sans-serif;
+  --font-t94: var(--font-poppins), 'Poppins', system-ui, sans-serif;
+
+  --color-t94-red: var(--t94-red);
+  --color-t94-red-hover: var(--t94-red-hover);
+  --color-t94-dark: var(--t94-dark);
+  --color-t94-text: var(--t94-text);
+  --color-t94-text-secondary: var(--t94-text-secondary);
+  --color-t94-grey: var(--t94-grey);
+  --color-t94-green: var(--t94-green);
+  --color-t94-green-hover: var(--t94-green-hover);
+  --color-t94-border: var(--t94-border);
+  --radius-t94: var(--t94-radius);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -82,6 +110,31 @@
     overflow-x: hidden;
     width: 100%;
     max-width: 100vw;
+  }
+}
+
+/* ── Redesign 2026 typographic scale (desktop / mobile from style guide 00) ── */
+@layer components {
+  .t94-type {
+    font-family: var(--font-t94);
+    color: var(--t94-text);
+    font-size: 17px;
+    line-height: 1.65;
+    font-weight: 400;
+  }
+  .t94-h1 { font-family: var(--font-t94); font-size: 32px; line-height: 1.15; font-weight: 700; color: var(--t94-dark); }
+  .t94-h2 { font-family: var(--font-t94); font-size: 26px; line-height: 1.2;  font-weight: 700; color: var(--t94-dark); }
+  .t94-h3 { font-family: var(--font-t94); font-size: 20px; line-height: 1.3;  font-weight: 600; color: var(--t94-dark); }
+  .t94-lead  { font-family: var(--font-t94); font-size: 18px; line-height: 1.6;  font-weight: 400; color: var(--t94-text-secondary); }
+  .t94-body  { font-family: var(--font-t94); font-size: 17px; line-height: 1.65; font-weight: 400; }
+  .t94-small { font-family: var(--font-t94); font-size: 15px; line-height: 1.55; font-weight: 400; color: var(--t94-text-secondary); }
+
+  @media (min-width: 768px) {
+    .t94-type, .t94-body { font-size: 18px; }
+    .t94-h1 { font-size: 46px; }
+    .t94-h2 { font-size: 34px; }
+    .t94-h3 { font-size: 22px; }
+    .t94-lead { font-size: 20px; }
   }
 }
 

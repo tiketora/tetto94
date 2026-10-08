@@ -258,11 +258,11 @@
 //           </motion.div>
 
 //           {/* ── Cards column ── */}
-//           <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-[#E5E5E5]">
+//           <div className="grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-px bg-[#E5E5E5]">
 //             {features.map((f, i) => {
 //               const Icon = f.icon
 //               const cardClass =
-//                 'group bg-white p-6 flex flex-col gap-4 border border-[#EB1C26] hover:bg-[#161616] transition-colors duration-500'
+//                 'group bg-white p-6 flex flex-col gap-4 h-full border border-[#EB1C26] hover:bg-[#161616] transition-colors duration-500'
 //               const cardContent = (
 //                 <>
 //                   {/* Icon */}
@@ -349,7 +349,6 @@
 //   )
 // }
 
-
 'use client'
 
 import { useRef, useState, useCallback } from 'react'
@@ -361,26 +360,26 @@ import Link from 'next/link'
 const features = [
   {
     icon: BadgeCheck,
-    title: 'Garanzia Totale',
+    title: 'Garanzia totale',
     desc: 'Ogni intervento è garantito per iscritto. In caso di necessità, torniamo tempestivamente senza alcun costo aggiuntivo.',
     num: '01',
     href: '/garanzie',
   },
   {
     icon: Microscope,
-    title: 'Ispezione con Drone',
+    title: 'Ispezione con drone',
     desc: 'Tecnologia al servizio della trasparenza: analizziamo ogni angolo del tuo tetto per una diagnosi precisa prima di decidere.',
     num: '02',
   },
   {
     icon: Clock,
-    title: 'Intervento Rapido',
+    title: 'Intervento rapido',
     desc: "In caso di emergenza garantiamo l'uscita entro 24 ore. Perché un tetto danneggiato non può aspettare.",
     num: '03',
   },
   {
     icon: Award,
-    title: 'Certificazioni ISO e Qualità',
+    title: 'Certificazioni ISO e qualità',
     desc: 'Operiamo secondo i più alti standard di sicurezza e qualità, utilizzando esclusivamente materiali certificati e garantiti.',
     num: '04',
   },
@@ -443,7 +442,7 @@ export default function WhyUsSection() {
   }, [])
 
   return (
-    <section id="perche-noi" className="bg-white pt-10 pb-10 lg:pt-12 lg:pb-12" ref={ref}>
+    <section id="perche-noi" className="t94-type bg-t94-grey pt-12 pb-12 lg:pt-16 lg:pb-16" ref={ref}>
       <div className="mx-auto max-w-7xl px-6">
 
         {/* ── Heading ── */}
@@ -453,29 +452,29 @@ export default function WhyUsSection() {
           animate={inView ? 'visible' : 'hidden'}
           className="mb-8"
         >
-          <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#EB1C26]">
-            Perché Scegliere Noi
+          <span className="font-t94 text-[15px] font-semibold text-t94-red">
+            Perché scegliere noi
           </span>
-          <h2 className="mt-2 font-display text-[clamp(2.2rem,5vw,4rem)] leading-none text-[#161616]">
-            NON SOLO ARTIGIANI.{' '}
-            <span className="text-[#EB1C26]">ESPERTI.</span>
+          <h2 className="mt-2 font-t94 text-[clamp(2rem,4.2vw,3.25rem)] font-bold leading-[1.1] text-t94-dark text-balance">
+            Non solo artigiani.{' '}
+            <span className="text-t94-red">Esperti.</span>
           </h2>
         </motion.div>
 
         {/* ── Stats row ── */}
-        <div className="grid grid-cols-2 md:grid-cols-5 mb-10 divide-x divide-[#E5E5E5]">
+        <div className="mb-10 grid grid-cols-2 md:grid-cols-5 rounded-t94 border border-t94-border bg-white">
           {counters.map((c, i) => (
             <motion.div
               key={c.label}
               variants={fadeUp(i * 0.08)}
               initial="hidden"
               animate={inView ? 'visible' : 'hidden'}
-              className="flex flex-row items-center gap-3 px-6 py-5"
+              className="flex flex-row items-center gap-3 px-5 py-5 border-t94-border [&:not(:first-child)]:md:border-l [&:nth-child(even)]:border-l [&:nth-child(n+3)]:border-t md:[&:nth-child(n+3)]:border-t-0"
             >
-              <span className="font-display text-[clamp(2rem,4vw,3rem)] leading-none text-[#EB1C26] font-black shrink-0">
+              <span className="font-t94 text-[clamp(1.75rem,3.4vw,2.5rem)] font-bold leading-none text-t94-red shrink-0">
                 {c.value}
               </span>
-              <p className="text-xs text-[#888] leading-snug whitespace-pre-line">
+              <p className="font-t94 text-[15px] text-t94-text-secondary leading-snug whitespace-pre-line">
                 {c.label}
               </p>
             </motion.div>
@@ -493,7 +492,7 @@ export default function WhyUsSection() {
             className="relative"
           >
             {/* Aspect ratio wrapper */}
-            <div className="relative overflow-hidden bg-[#161616]" style={{ aspectRatio: '9/16' }}>
+            <div className="relative overflow-hidden rounded-t94 bg-t94-dark" style={{ aspectRatio: '9/16' }}>
 
               {/* Poster — visible before play */}
               {!playing && (
@@ -528,8 +527,8 @@ export default function WhyUsSection() {
 
               {/* Label — top left */}
               <div className="absolute top-4 left-4 z-10">
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-white/60 border border-white/15 px-2.5 py-1 bg-black/40 backdrop-blur-sm">
-                  Tetto94 — Dal 1994
+                <span className="font-t94 text-[15px] font-medium text-white border border-white/25 rounded-t94 px-3 py-1 bg-black/45 backdrop-blur-sm">
+                  Tetto94 — dal 1994
                 </span>
               </div>
 
@@ -563,8 +562,8 @@ export default function WhyUsSection() {
                         <Play className="size-6 text-white fill-white translate-x-0.5" />
                       </div>
                     </div>
-                    <p className="mt-4 text-xs font-bold uppercase tracking-widest text-white/70">
-                      Guarda il Video
+                    <p className="mt-4 font-t94 text-[17px] font-semibold text-white">
+                      Guarda il video
                     </p>
                   </motion.button>
                 )}
@@ -603,35 +602,32 @@ export default function WhyUsSection() {
             </div>
 
             {/* Caption below video */}
-            <p className="mt-3 text-xs text-[#888] leading-relaxed">
+            <p className="mt-3 font-t94 text-[15px] text-t94-text-secondary leading-[1.55]">
               Risanamento professionale senza ponteggi —{' '}
-              <span className="text-[#161616] font-semibold">garanzia certificata fino a 10 anni.</span>
+              <span className="text-t94-dark font-semibold">garanzia certificata fino a 10 anni.</span>
             </p>
           </motion.div>
 
           {/* ── Cards column ── */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-px bg-[#E5E5E5]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 auto-rows-fr gap-4">
             {features.map((f, i) => {
               const Icon = f.icon
               const cardClass =
-                'group bg-white p-6 flex flex-col gap-4 h-full border border-[#EB1C26] hover:bg-[#161616] transition-colors duration-500'
+                'group bg-white p-6 flex flex-col gap-4 h-full rounded-t94 border border-t94-border hover:bg-t94-dark hover:border-t94-dark transition-colors duration-500'
               const cardContent = (
                 <>
                   {/* Icon */}
-                  <div className="size-10 border border-[#E5E5E5] group-hover:border-[#EB1C26]/30 flex items-center justify-center transition-colors duration-500">
-                    <Icon className="size-5 text-[#161616] group-hover:text-[#EB1C26] transition-colors duration-500" />
+                  <div className="size-12 rounded-t94 bg-t94-grey group-hover:bg-white/10 flex items-center justify-center transition-colors duration-500">
+                    <Icon className="size-6 text-t94-red" />
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-display text-base leading-snug text-[#EB1C26] group-hover:text-white transition-colors duration-500">
+                  <h3 className="font-t94 text-[20px] font-semibold leading-snug text-t94-dark group-hover:text-white transition-colors duration-500">
                     {f.title}
                   </h3>
 
-                  {/* Divider */}
-                  <div className="h-px bg-[#E5E5E5] group-hover:bg-[#EB1C26]/20 transition-colors duration-500" />
-
                   {/* Description */}
-                  <p className="text-xs text-[#888] group-hover:text-white/60 leading-relaxed transition-colors duration-500">
+                  <p className="font-t94 text-[15px] lg:text-[16px] text-t94-text-secondary group-hover:text-white/75 leading-[1.6] transition-colors duration-500">
                     {f.desc}
                   </p>
                 </>

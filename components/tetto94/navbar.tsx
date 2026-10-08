@@ -56,10 +56,9 @@
 // const ALL_CITIES = ZONES.flatMap((z) => z.cities)
 
 // const navLinks = [
-//   { label: 'Servizi',       href: '/#servizi' },
-//   { label: 'Perché Noi',    href: '/#perche-noi' },
+//   { label: 'Servizi',       href: '/servizi' },
+//   { label: 'Perché Noi',    href: '/perche-noi' },
 //   { label: 'Garanzie',      href: '/garanzie' },
-//   { label: 'Galleria',      href: '/#galleria' },
 //   { label: 'Blog',          href: '/blog' },
 //   { label: 'Contatti',      href: '/contatti' },
 // ]
@@ -732,13 +731,12 @@
 //   )
 // }
 
-
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-  import { Menu, X, Phone, MapPin, ChevronDown, ChevronLeft, ArrowRight, Layers, Droplets, Hammer, CloudRain, Wind, Gauge, Thermometer } from 'lucide-react'
+  import { Menu, X, Phone, MapPin, Gauge, ChevronDown, ChevronLeft, ArrowRight, Layers, Droplets, Hammer, CloudRain, Wind, Thermometer, HardHat, BadgeCheck, ShieldCheck, Radar, Newspaper, Headset } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import Tetto94Logo from './logo'
 import { trackPhoneClick, trackCTAClick } from '@/lib/gtag'
@@ -790,13 +788,26 @@ const ZONES = [
 /* flat list for mobile / preview default */
 const ALL_CITIES = ZONES.flatMap((z) => z.cities)
 
+/* Menu labels and order are kept identical to the live site. "Città" is
+   rendered separately as the mega-menu trigger, right after the last link. */
 const navLinks = [
-  { label: 'Servizi',       href: '/servizi' },
-  { label: 'Perché Noi',    href: '/perche-noi' },
-  { label: 'Garanzie',      href: '/garanzie' },
-  { label: 'Blog',          href: '/blog' },
-  { label: 'Contatti',      href: '/contatti' },
+  { label: 'Servizi',       href: '/servizi',       icon: HardHat },
+  { label: 'Perché Noi',    href: '/perche-noi',    icon: BadgeCheck },
+  { label: 'Garanzie',      href: '/garanzie',      icon: ShieldCheck },
+  { label: 'Blog',          href: '/blog',          icon: Newspaper },
+  { label: 'Contatti',      href: '/contatti',      icon: Headset },
 ]
+
+const ROOF_INDEX_HREF = '/calcola-preventivo'
+
+const PHONE_HREF    = 'tel:+393516519363'
+const PHONE_DISPLAY = '351 651 9363'
+const PHONE_HOURS   = 'Lun-Sab 8:00-21:00'
+
+const HEADER_FONT = { fontFamily: 'var(--font-poppins), system-ui, sans-serif' } as const
+
+const NAV_LINK_CLASS =
+  'relative whitespace-nowrap text-sm 2xl:text-[15px] font-medium text-[#161616] hover:text-[#EB1C26] transition-colors duration-200 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EB1C26] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-[#EB1C26] after:transition-all after:duration-300 hover:after:w-full'
 
 /* ── Service picker — step 1 of the città dropdown ──────────────
    Maps the data-layer icon name (string) to the actual Lucide component,
@@ -841,6 +852,19 @@ export default function Navbar() {
   const [mobileZoneOpen, setMobileZoneOpen]   = useState<string | null>(null)
   const dropdownRef = useRef<HTMLDivElement>(null)
   const triggerRef  = useRef<HTMLButtonElement>(null)
+  /* The header now includes a top bar, so its height differs between
+     breakpoints — measure it so the mega-menu and drawer sit right below. */
+  const headerRef   = useRef<HTMLElement>(null)
+  const [headerH, setHeaderH] = useState(72)
+
+  useEffect(() => {
+    function measure() {
+      if (headerRef.current) setHeaderH(headerRef.current.offsetHeight)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [dropdownOpen, mobileOpen])
 
   /* Close dropdown on outside click */
   useEffect(() => {
@@ -903,112 +927,147 @@ export default function Navbar() {
   return (
     <>
       <motion.header
+        ref={headerRef}
         animate={{ y: headerVisible ? 0 : '-100%' }}
         transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 bg-[#161616] shadow-2xl border-b border-white/5"
+        style={HEADER_FONT}
+        className="fixed top-0 left-0 right-0 z-50 bg-[#F5F5F5] shadow-lg"
       >
-        <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 md:py-4 overflow-visible">
+        {/* Top bar — area + promises (desktop/tablet only; mobile keeps the header compact) */}
+        <div className="hidden border-b border-white/10 bg-[#0B0B0B] md:block">
+          <div className="mx-auto flex max-w-[1500px] items-center justify-between gap-6 px-6 py-2 text-[13px] text-white/75">
+            <p>Tetti in Veneto, Friuli-Venezia Giulia ed Emilia-Romagna · dal 1994</p>
+            <p className="hidden items-center gap-2 lg:flex">
+              <span>Garanzia scritta</span>
+              <span aria-hidden="true" className="size-1 rounded-full bg-[#EB1C26]" />
+              <span>Ispezione con drone gratuita</span>
+            </p>
+          </div>
+        </div>
 
+        <nav
+          aria-label="Principale"
+          className="mx-auto flex max-w-[1500px] items-center justify-between gap-4 border-b border-[#E5E5E5] px-6 py-2.5 overflow-visible min-[1440px]:gap-6"
+        >
           {/* Logo */}
-          <a href="/" className="flex items-center gap-2 group" aria-label="Tetto94 - Homepage">
+          <a href="/" className="flex shrink-0 items-center group" aria-label="Tetto94 - Homepage">
             <motion.div whileHover={{ scale: 1.03 }} transition={{ type: 'spring', stiffness: 400, damping: 20 }}>
-              <Tetto94Logo className="h-16 md:h-20 w-auto" />
+              <Tetto94Logo className="h-12 md:h-14 w-auto" textFill="#161616" />
             </motion.div>
           </a>
 
-          {/* Desktop links */}
-          <ul className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="relative text-sm font-medium text-white/80 hover:text-white transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-[#EB1C26] after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+          {/* Desktop menu — Servizi, Perché Noi, Garanzie, Mappa Rischio, Blog, Contatti, Città */}
+          <ul className="hidden xl:flex items-center gap-3.5 min-[1440px]:gap-5 2xl:gap-7">
+            {navLinks.map((link) => {
+              const Icon = link.icon
+              return (
+                <li key={link.href}>
+                  <a href={link.href} className={`${NAV_LINK_CLASS} flex items-center gap-1.5`}>
+                    <Icon className="size-4 shrink-0 text-[#EB1C26]" strokeWidth={1.75} aria-hidden="true" />
+                    {link.label}
+                  </a>
+                </li>
+              )
+            })}
 
-            {/* Cities dropdown trigger */}
+            {/* Città — opens the service → city mega-menu */}
             <li className="relative">
               <button
                 ref={triggerRef}
                 onClick={() => setDropdownOpen((v) => !v)}
-                className="relative flex items-center gap-1.5 text-sm font-medium text-white/80 hover:text-white transition-colors duration-200"
+                className={`${NAV_LINK_CLASS} flex items-center gap-1.5`}
                 aria-expanded={dropdownOpen}
                 aria-haspopup="true"
               >
-                <MapPin className="size-3.5 text-[#EB1C26]" />
+                <MapPin className="size-4 text-[#EB1C26]" aria-hidden="true" />
                 Città
                 <motion.span animate={{ rotate: dropdownOpen ? 180 : 0 }} transition={{ duration: 0.22 }}>
-                  <ChevronDown className="size-3.5 text-white/40" />
+                  <ChevronDown className="size-4 text-[#494949]" />
                 </motion.span>
-                <span className={`absolute -bottom-0.5 left-0 h-[2px] bg-[#EB1C26] transition-all duration-300 ${dropdownOpen ? 'w-full' : 'w-0'}`} />
+                <span className={`absolute -bottom-1 left-0 h-[2px] bg-[#EB1C26] transition-all duration-300 ${dropdownOpen ? 'w-full' : 'w-0'}`} />
               </button>
             </li>
           </ul>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* Desktop: phone with hours + T94 Roof Index + red CTA */}
+          <div className="hidden xl:flex items-center gap-2.5 min-[1440px]:gap-3 2xl:gap-4">
             <a
-              href="tel:+393516519363"
+              href={PHONE_HREF}
               onClick={() => trackPhoneClick('navbar')}
-              className="flex items-center gap-1.5 text-sm text-white/70 hover:text-white transition-colors"
+              aria-label={`Chiama il ${PHONE_DISPLAY}, ${PHONE_HOURS}`}
+              className="flex items-center gap-2.5 whitespace-nowrap rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#EB1C26]"
             >
-              <Phone className="size-3.5" />
-              <span>+39 351 651 9363</span>
+              <span className="hidden size-9 2xl:size-10 shrink-0 items-center justify-center rounded-full bg-[#EB1C26]/15 min-[1440px]:flex">
+                <Phone className="size-4 2xl:size-5 text-[#EB1C26]" aria-hidden="true" />
+              </span>
+              <span className="flex flex-col leading-tight">
+                <span className="text-base 2xl:text-lg font-bold tracking-tight text-[#161616]">{PHONE_DISPLAY}</span>
+                <span className="text-[10px] 2xl:text-[11px] text-[#494949]">{PHONE_HOURS}</span>
+              </span>
             </a>
             <motion.a
-              href="/calcola-preventivo"
-              onClick={() => trackCTAClick('navbar_desktop', '/calcola-preventivo')}
-              className="relative flex items-center gap-2 rounded-sm border border-[#EB1C26]/50 bg-[#EB1C26]/10 px-4 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#EB1C26]/20 hover:border-[#EB1C26]"
+              href={ROOF_INDEX_HREF}
+              onClick={() => trackCTAClick('navbar_desktop', ROOF_INDEX_HREF)}
+              className="flex items-center gap-2 whitespace-nowrap rounded-md border border-[#EB1C26]/50 bg-[#EB1C26]/10 px-3 2xl:px-3.5 py-2.5 text-sm 2xl:text-[15px] font-semibold text-[#161616] transition-colors hover:border-[#EB1C26] hover:bg-[#EB1C26]/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#161616]"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              <Gauge className="size-4 text-[#EB1C26]" />
-              T94 Roof Index
+              <Gauge className="size-4 text-[#EB1C26]" aria-hidden="true" />
+              <span className="min-[1440px]:hidden">Roof Index</span>
+              <span className="hidden min-[1440px]:inline">T94 Roof Index</span>
             </motion.a>
             <motion.a
               href="/contatti"
               onClick={() => trackCTAClick('navbar_desktop', '/contatti')}
-              className="relative rounded-sm bg-[#EB1C26] px-5 py-2.5 text-sm font-semibold text-white animate-pulse-ring"
-              whileHover={{ scale: 1.04 }}
+              className="whitespace-nowrap rounded-md bg-[#EB1C26] px-4 2xl:px-5 py-2.5 text-sm 2xl:text-[15px] font-semibold text-white transition-colors hover:bg-[#C8111A] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#161616]"
+              whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              Preventivo Gratuito
+              Preventivo<span className="hidden min-[1440px]:inline"> gratuito</span>
             </motion.a>
           </div>
 
-          {/* Mobile: Roof Index shortcut + hamburger — surfaced outside the
-              drawer since it's the primary conversion tool and shouldn't be
-              hidden an extra tap away behind the burger menu. */}
-          <div className="flex md:hidden items-center gap-2">
-            <motion.a
-              href="/calcola-preventivo"
-              onClick={() => trackCTAClick('navbar_mobile_header', '/calcola-preventivo')}
-              className="flex items-center gap-1.5 rounded-sm border border-[#EB1C26]/50 bg-[#EB1C26]/10 px-2.5 py-1.5 text-xs font-semibold text-white"
-              whileTap={{ scale: 0.96 }}
+          {/* Mobile / tablet: tap-to-call always visible + menu button */}
+          <div className="flex xl:hidden items-center gap-2">
+            <a
+              href={PHONE_HREF}
+              onClick={() => trackPhoneClick('navbar')}
+              aria-label={`Chiama il ${PHONE_DISPLAY}`}
+              className="flex h-11 items-center gap-2 rounded-md bg-[#EB1C26] px-3.5 text-sm font-semibold text-white"
             >
-              <Gauge className="size-3.5 text-[#EB1C26]" />
-              Roof Index
-            </motion.a>
+              <Phone className="size-4" aria-hidden="true" />
+              <span className="hidden sm:inline">{PHONE_DISPLAY}</span>
+              <span className="sm:hidden">Chiama</span>
+            </a>
+
+            <a
+              href={ROOF_INDEX_HREF}
+              onClick={() => trackCTAClick('navbar_mobile_header', ROOF_INDEX_HREF)}
+              aria-label="T94 Roof Index"
+              className="flex h-11 items-center gap-1.5 rounded-md border border-[#EB1C26]/50 bg-[#EB1C26]/10 px-3 text-sm font-semibold text-[#161616] transition-colors active:bg-[#EB1C26]/25"
+            >
+              <Gauge className="size-4 text-[#EB1C26]" aria-hidden="true" />
+              <span className="hidden sm:inline">T94 Roof Index</span>
+              <span className="sm:hidden">T94</span>
+            </a>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="text-white p-1"
+              className="flex size-11 items-center justify-center text-[#161616]"
               aria-label={mobileOpen ? 'Chiudi menu' : 'Apri menu'}
+              aria-expanded={mobileOpen}
             >
-            <AnimatePresence mode="wait">
-              {mobileOpen ? (
-                <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <X className="size-6" />
-                </motion.div>
-              ) : (
-                <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
-                  <Menu className="size-6" />
-                </motion.div>
-              )}
-            </AnimatePresence>
+              <AnimatePresence mode="wait">
+                {mobileOpen ? (
+                  <motion.div key="x" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                    <X className="size-6" />
+                  </motion.div>
+                ) : (
+                  <motion.div key="menu" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.15 }}>
+                    <Menu className="size-6" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </button>
           </div>
         </nav>
@@ -1024,8 +1083,8 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scaleY: 1 }}
             exit={{ opacity: 0, y: -8, scaleY: 0.97 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            style={{ transformOrigin: 'top' }}
-            className="fixed left-0 right-0 top-[72px] md:top-[88px] z-40 bg-[#111] border-b border-white/8 shadow-2xl"
+            style={{ transformOrigin: 'top', top: headerH }}
+            className="fixed left-0 right-0 z-40 bg-[#111] border-b border-white/8 shadow-2xl"
           >
             <div className="absolute top-0 left-0 right-0 h-[2px] bg-[#EB1C26]" />
 
@@ -1268,21 +1327,28 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed inset-x-0 top-[68px] bottom-0 z-40 bg-[#161616] overflow-y-auto px-6 py-6 md:hidden"
+            style={{ ...HEADER_FONT, top: headerH }}
+            className="fixed inset-x-0 bottom-0 z-40 bg-[#161616] overflow-y-auto px-6 py-6 xl:hidden"
           >
             {/* Nav links */}
-            <ul className="flex flex-col gap-5">
-              {navLinks.map((link, i) => (
-                <motion.li key={link.href} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }}>
-                  <a
-                    href={link.href}
-                    onClick={() => setMobileOpen(false)}
-                    className="text-xl font-display text-white/80 hover:text-[#EB1C26] transition-colors tracking-wider uppercase"
-                  >
-                    {link.label}
-                  </a>
-                </motion.li>
-              ))}
+            <ul className="flex flex-col gap-4">
+              {navLinks.map((link, i) => {
+                const Icon = link.icon
+                return (
+                  <motion.li key={link.href} initial={{ opacity: 0, x: -16 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.07 }}>
+                    <a
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-3 py-1 text-xl font-semibold text-white/90 hover:text-[#EB1C26] transition-colors"
+                    >
+                      <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-[#EB1C26]/30 bg-[#EB1C26]/10">
+                        <Icon className="size-5 text-[#EB1C26]" strokeWidth={1.75} aria-hidden="true" />
+                      </span>
+                      {link.label}
+                    </a>
+                  </motion.li>
+                )
+              })}
             </ul>
 
             {/* Mobile città — step 1: servizio → step 2: zone accordion */}
@@ -1444,19 +1510,30 @@ export default function Navbar() {
 
             <div className="mt-8 flex flex-col gap-3">
               <a
-                href="/calcola-preventivo"
-                onClick={() => { setMobileOpen(false); trackCTAClick('navbar_mobile', '/calcola-preventivo') }}
-                className="flex items-center justify-center gap-2 rounded-sm border border-[#EB1C26]/50 bg-[#EB1C26]/10 py-3 text-center text-sm font-semibold text-white"
+                href={PHONE_HREF}
+                onClick={() => { setMobileOpen(false); trackPhoneClick('navbar') }}
+                className="flex items-center justify-center gap-3 rounded-md border border-white/15 bg-white/5 py-3 text-white"
               >
-                <Gauge className="size-4 text-[#EB1C26]" />
+                <Phone className="size-5 text-[#EB1C26]" aria-hidden="true" />
+                <span className="flex flex-col text-left leading-tight">
+                  <span className="text-lg font-bold">{PHONE_DISPLAY}</span>
+                  <span className="text-xs text-white/65">{PHONE_HOURS}</span>
+                </span>
+              </a>
+              <a
+                href={ROOF_INDEX_HREF}
+                onClick={() => { setMobileOpen(false); trackCTAClick('navbar_mobile', ROOF_INDEX_HREF) }}
+                className="flex items-center justify-center gap-2 rounded-md border border-[#EB1C26]/50 bg-[#EB1C26]/10 py-3.5 text-base font-semibold text-white"
+              >
+                <Gauge className="size-5 text-[#EB1C26]" aria-hidden="true" />
                 T94 Roof Index
               </a>
               <a
                 href="/contatti"
                 onClick={() => { setMobileOpen(false); trackCTAClick('navbar_mobile', '/contatti') }}
-                className="block rounded-sm bg-[#EB1C26] py-3 text-center text-sm font-semibold text-white"
+                className="block rounded-md bg-[#EB1C26] py-3.5 text-center text-base font-semibold text-white"
               >
-                Richiedi Preventivo Gratuito
+                Preventivo gratuito
               </a>
             </div>
           </motion.div>
