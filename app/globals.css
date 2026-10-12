@@ -194,7 +194,98 @@
   }
 }
 
-/* ── Tetto94 Custom Animations ────────────────────────────── */
+/* ── Hero "Living Roof" — looping story driven by [data-phase] flags (opacity/transform only) ── */
+.rv-stage {
+  --is1: 0; --is2: 0; --is3: 0; --is4: 0;
+  --ge1: 0; --ge2: 0; --ge3: 0; --ge4: 0;
+}
+.rv-stage[data-phase="1"] { --is1: 1; --ge1: 1; }
+.rv-stage[data-phase="2"] { --is2: 1; --ge1: 1; --ge2: 1; }
+.rv-stage[data-phase="3"] { --is3: 1; --ge1: 1; --ge2: 1; --ge3: 1; }
+.rv-stage[data-phase="4"] { --is4: 1; --ge1: 1; --ge2: 1; --ge3: 1; --ge4: 1; }
+
+/* generic: visible while --f is 1; the stagger delay (--d) only applies when entering */
+.rv-f {
+  --on: var(--f);
+  opacity: var(--f);
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--d, 0s) * var(--on)),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) calc(var(--d, 0s) * var(--on));
+}
+.rv-pop { transform: scale(calc(0.5 + 0.5 * var(--f))); }
+.rv-rise { transform: translateY(calc((1 - var(--f)) * 8px)); }
+
+.rv-draw {
+  --on: var(--is1);
+  stroke-dasharray: 1;
+  stroke-dashoffset: calc(1 - var(--ge1));
+  transition: stroke-dashoffset 1.4s cubic-bezier(0.65, 0, 0.35, 1) calc(0.3s * var(--on));
+}
+.rv-dim {
+  --on: var(--is1);
+  opacity: calc(var(--ge1) - var(--is4) * 0.55);
+  transition: opacity 0.8s ease calc(1.2s * var(--on));
+}
+.rv-tint {
+  --on: var(--is1);
+  opacity: calc(var(--ge1) - var(--ge3));
+  transition: opacity 0.6s ease calc(1.5s * var(--on));
+}
+.rv-reveal {
+  --on: var(--is1);
+  transform-box: fill-box;
+  transform-origin: left center;
+  transform: scaleX(var(--ge1));
+  transition: transform 2.6s linear calc(1.5s * var(--on));
+}
+.rv-sweep {
+  --on: var(--is1);
+  transform: translateX(calc(var(--ge1) * 858px));
+  transition: transform 2.6s linear calc(1.5s * var(--on));
+}
+.rv-sweep-fade { opacity: 0; }
+.rv-stage[data-phase="1"] .rv-sweep-fade { animation: rv-sweep-fade 2.6s linear 1.5s both; }
+.rv-layer {
+  --on: var(--is3);
+  opacity: calc(var(--ge3) - var(--is4) * 0.45);
+  transition: opacity 0.7s ease calc(var(--d, 0s) * var(--on));
+}
+.rv-slide {
+  --on: var(--is3);
+  opacity: var(--is3);
+  transform: translateY(calc(var(--ge3) * 190px));
+  transition:
+    transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) calc(0.3s * var(--on)),
+    opacity 0.5s ease calc(0.3s * var(--on));
+}
+.rv-bar {
+  transform: scaleX(var(--f));
+  transform-origin: left center;
+  transition: transform var(--pd, 1s) linear;
+}
+
+/* reset phase: fade everything out quickly, snap positions back while hidden */
+.rv-stage[data-phase="0"] :is(.rv-f, .rv-dim, .rv-tint, .rv-layer) { transition-duration: 0.45s; transition-delay: 0s; }
+.rv-stage[data-phase="0"] .rv-draw { transition-duration: 0.45s; transition-delay: 0s; }
+.rv-stage[data-phase="0"] :is(.rv-reveal, .rv-sweep) { transition: none; }
+.rv-stage[data-phase="0"] .rv-slide { transition: opacity 0.45s ease; }
+.rv-stage[data-phase="0"] .rv-bar { transition-duration: 0.3s; }
+
+@keyframes rv-sweep-fade {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rv-stage.rv-stage {
+    --is1: 0; --is2: 0; --is3: 0; --is4: 1;
+    --ge1: 1; --ge2: 1; --ge3: 1; --ge4: 1;
+  }
+  .rv-stage *, .rv-stage[data-phase] * { transition: none !important; animation: none !important; }
+}
+
+/* ── Tetto94 Custom Animations ───────────���────────────────── */
 @keyframes pulse-ring {
   0%   { box-shadow: 0 0 0 0 rgba(235, 28, 38, 0.6); }
   70%  { box-shadow: 0 0 0 18px rgba(235, 28, 38, 0); }

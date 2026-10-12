@@ -154,12 +154,86 @@
 // }
 
 
+// 'use client'
+
+// import { Check, Phone } from 'lucide-react'
+// import { trackCTAClick, trackPhoneClick } from '@/lib/gtag'
+// import { T94Button } from '@/components/tetto94/ds/t94-button'
+// import HeroForm from './hero-form'
+
+// const TICKS = [
+//   'Ispezione con drone gratuita',
+//   'Preventivo chiaro, voce per voce',
+//   'Garanzia scritta fino a 10 anni',
+// ]
+
+// /**
+//  * Homepage hero — light background, one H1, one sentence, three ticks and a
+//  * single primary action (free inspection) with the phone as the alternative.
+//  * Every element is mounted once; on mobile the form flows directly under the text.
+//  */
+// export default function HeroSection() {
+//   return (
+//     <section
+//       aria-labelledby="hero-title"
+//       className="t94-type bg-white pt-[88px] md:pt-[132px]"
+//     >
+//       <div className="mx-auto grid w-full max-w-[1200px] gap-10 px-5 pb-14 pt-8 md:px-8 md:pb-20 md:pt-14 lg:grid-cols-[1.1fr_1fr] lg:items-start lg:gap-14">
+//         <div className="flex flex-col gap-6">
+//           <h1 id="hero-title" className="t94-h1 text-balance">
+//             Il tuo tetto sistemato <span className="text-t94-red">senza ponteggi</span>, con garanzia scritta.
+//           </h1>
+
+//           <p className="t94-lead max-w-xl">
+//             Dal 1994 rifacciamo e ripariamo tetti nel Nord-Est. Prima ispezioniamo il tetto con il
+//             drone, gratis. Poi ti diamo un preventivo chiaro, voce per voce.
+//           </p>
+
+//           <ul className="flex flex-col gap-3">
+//             {TICKS.map((tick) => (
+//               <li key={tick} className="flex items-center gap-3 font-t94 text-[18px] font-medium text-t94-dark">
+//                 <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-t94-green/12 text-t94-green">
+//                   <Check className="size-4" strokeWidth={3} aria-hidden="true" />
+//                 </span>
+//                 {tick}
+//               </li>
+//             ))}
+//           </ul>
+
+//           <div className="flex flex-col gap-3 sm:flex-row lg:flex-col lg:items-start">
+//             <T94Button
+//               href="#hero-form"
+//               onClick={() => trackCTAClick('hero_desktop', '#hero-form')}
+//               className="whitespace-nowrap max-lg:hidden"
+//             >
+//               Richiedi il sopralluogo gratuito
+//             </T94Button>
+//             <T94Button
+//               href="tel:+393516519363"
+//               variant="outline"
+//               className="whitespace-nowrap"
+//               onClick={() => trackPhoneClick('lp_hero')}
+//             >
+//               <Phone className="size-5" aria-hidden="true" />
+//               Chiama 351 651 9363
+//             </T94Button>
+//           </div>
+//         </div>
+
+//         <HeroForm />
+//       </div>
+//     </section>
+//   )
+// }
+
+
 'use client'
 
 import { Check, Phone } from 'lucide-react'
 import { trackCTAClick, trackPhoneClick } from '@/lib/gtag'
 import { T94Button } from '@/components/tetto94/ds/t94-button'
 import HeroForm from './hero-form'
+import HeroRoofVisual from './hero-roof-visual'
 
 const TICKS = [
   'Ispezione con drone gratuita',
@@ -188,6 +262,8 @@ export default function HeroSection() {
             Dal 1994 rifacciamo e ripariamo tetti nel Nord-Est. Prima ispezioniamo il tetto con il
             drone, gratis. Poi ti diamo un preventivo chiaro, voce per voce.
           </p>
+
+          <HeroRoofVisual />
 
           <ul className="flex flex-col gap-3">
             {TICKS.map((tick) => (
