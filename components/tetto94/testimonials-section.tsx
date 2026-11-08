@@ -285,6 +285,72 @@
 // }
 
 
+// import { getGoogleReviews } from '@/lib/google-reviews'
+// import TestimonialsCarousel, { type CarouselReview } from './testimonials-carousel'
+
+// // Shown only until GOOGLE_PLACES_API_KEY and GOOGLE_PLACE_ID are configured
+// // (or if the Google request fails). Remove once real reviews are live.
+// const fallbackReviews: CarouselReview[] = [
+//   {
+//     id: 'marco-ferretti',
+//     name: 'Marco Ferretti',
+//     subtitle: 'Venezia',
+//     rating: 5,
+//     text: "Squadra puntuale e professionale. Hanno risolto un'infiltrazione cronica che nessun altro riusciva a trovare. Ispezione con drone incredibile — abbiamo visto tutto prima di toccare un solo mattone. Consigliato al 100%.",
+//   },
+//   {
+//     id: 'giulia-marchetti',
+//     name: 'Giulia Marchetti',
+//     subtitle: 'Mestre',
+//     rating: 5,
+//     text: "Rifacimento completo del tetto di una villa storica. Lavoro impeccabile, materiali di qualità e rispetto per i tempi. Il drone ci ha tranquillizzati subito mostrando esattamente cosa c'era da fare. Ottimo rapporto qualità/prezzo.",
+//   },
+//   {
+//     id: 'roberto-conti',
+//     name: 'Roberto Conti',
+//     subtitle: 'Treviso',
+//     rating: 5,
+//     text: "Dopo il temporale avevo urgenza. Hanno risposto in poche ore, intervento d'emergenza gestito perfettamente. Garanzia scritta su tutto il lavoro. Professionisti seri.",
+//   },
+//   {
+//     id: 'anna-vitali',
+//     name: 'Anna Vitali',
+//     subtitle: 'Padova',
+//     rating: 5,
+//     text: "Abbiamo richiesto l'ispezione gratuita senza aspettarci molto. Il report con le foto del drone è stato una rivelazione — problemi che non sapevamo di avere. Preventivo onesto, lavoro perfetto. Li richiamerò senza dubbio.",
+//   },
+// ]
+
+// export default async function TestimonialsSection() {
+//   const google = await getGoogleReviews()
+
+//   if (!google) {
+//     return <TestimonialsCarousel reviews={fallbackReviews} />
+//   }
+
+//   const reviews: CarouselReview[] = google.reviews.map((r) => ({
+//     id: r.id,
+//     name: r.name,
+//     subtitle: r.when,
+//     photoUrl: r.photoUrl,
+//     authorUrl: r.authorUrl,
+//     rating: r.rating,
+//     text: r.text,
+//   }))
+
+//   return (
+//     <TestimonialsCarousel
+//       reviews={reviews}
+//       google={{
+//         rating: google.rating,
+//         total: google.total,
+//         mapsUrl: google.mapsUrl,
+//         writeReviewUrl: google.writeReviewUrl,
+//       }}
+//     />
+//   )
+// }
+
 import { getGoogleReviews } from '@/lib/google-reviews'
 import TestimonialsCarousel, { type CarouselReview } from './testimonials-carousel'
 
@@ -292,32 +358,25 @@ import TestimonialsCarousel, { type CarouselReview } from './testimonials-carous
 // (or if the Google request fails). Remove once real reviews are live.
 const fallbackReviews: CarouselReview[] = [
   {
-    id: 'marco-ferretti',
-    name: 'Marco Ferretti',
-    subtitle: 'Venezia',
+    id: 'antonio-t',
+    name: 'Antonio T.',
+    subtitle: 'Recensione Google',
     rating: 5,
-    text: "Squadra puntuale e professionale. Hanno risolto un'infiltrazione cronica che nessun altro riusciva a trovare. Ispezione con drone incredibile — abbiamo visto tutto prima di toccare un solo mattone. Consigliato al 100%.",
+    text: 'Esperienza molto positiva. Il titolare è una persona seria e competente. Consiglia con professionalità ciò che è meglio per la situazione che si presenta. I suoi ragazzi lavorano bene. Lo consigliamo vivamente.',
   },
   {
-    id: 'giulia-marchetti',
-    name: 'Giulia Marchetti',
-    subtitle: 'Mestre',
+    id: 'enis-r',
+    name: 'Enis R.',
+    subtitle: 'Recensione Google',
     rating: 5,
-    text: "Rifacimento completo del tetto di una villa storica. Lavoro impeccabile, materiali di qualità e rispetto per i tempi. Il drone ci ha tranquillizzati subito mostrando esattamente cosa c'era da fare. Ottimo rapporto qualità/prezzo.",
+    text: 'Comunicazione eccellente durante tutto il processo e un risultato finale perfetto.',
   },
   {
-    id: 'roberto-conti',
-    name: 'Roberto Conti',
-    subtitle: 'Treviso',
+    id: 'viron-h',
+    name: 'Viron H.',
+    subtitle: 'Recensione Google',
     rating: 5,
-    text: "Dopo il temporale avevo urgenza. Hanno risposto in poche ore, intervento d'emergenza gestito perfettamente. Garanzia scritta su tutto il lavoro. Professionisti seri.",
-  },
-  {
-    id: 'anna-vitali',
-    name: 'Anna Vitali',
-    subtitle: 'Padova',
-    rating: 5,
-    text: "Abbiamo richiesto l'ispezione gratuita senza aspettarci molto. Il report con le foto del drone è stato una rivelazione — problemi che non sapevamo di avere. Preventivo onesto, lavoro perfetto. Li richiamerò senza dubbio.",
+    text: 'Personale serio e onesto.',
   },
 ]
 

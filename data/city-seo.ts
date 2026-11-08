@@ -3,7 +3,7 @@
 //  * Extended data for rifacimento-tetto pages targeting the 6 priority cities.
 //  * Structured to be extensible: add more cities by following the same interface.
 //  *
-//  * Data used by: CitySeoSections component + page.tsx metadata/schema
+//  * Data used by: ServiceCityBody component + page.tsx metadata/schema
 //  */
 
 // export interface CityPriceRow {
@@ -1053,7 +1053,7 @@ export interface CitySenzaPonteggi {
   titolo: string        // "Lavoriamo senza ponteggi a Venezia"
   intro: string         // 1–2 sentences on why no scaffolding matters HERE
   vantaggi: string[]    // 3 bullet benefits
-  risparmio: string     // "fino all'80%"
+  risparmio: string     // risparmio indicativo sul ponteggio
 }
 
 export interface CitySeoData {
@@ -1105,7 +1105,7 @@ const venezia: CitySeoData = {
     intro: "A Venezia, montare ponteggi nelle calli e nei campi è spesso impossibile o richiede permessi comunali con iter lunghissimi. Tetto94 opera esclusivamente con sistemi di accesso su fune (rope access) certificati, eliminando ogni necessità di impalcatura.",
     vantaggi: [
       'Nessuna occupazione di suolo pubblico nelle calli — zero pratiche al Comune',
-      'Risparmio fino all\'80% rispetto al costo del ponteggio tradizionale',
+      'Nessun costo di ponteggio da pagare',
       'Intervento completato in metà del tempo: meno disagio per condomini e vicini',
     ],
     risparmio: 'fino all\'80%',
@@ -1200,7 +1200,7 @@ const mestre: CitySeoData = {
     intro: "Nei condomini di Mestre, un ponteggio tradizionale blocca i parcheggi condominiali per settimane e richiede occupazione di suolo pubblico con iter burocratici complessi. Tetto94 interviene con rope access certificato: nessun ponteggio, nessun parcheggio occupato, lavori completati in metà del tempo.",
     vantaggi: [
       'Nessuna occupazione del parcheggio condominiale durante i lavori',
-      'Risparmio fino all\'80% rispetto al costo del ponteggio tradizionale',
+      'Nessun costo di ponteggio da pagare',
       'Meno disturbo per i condomini: intervento silenzioso e rapido',
     ],
     risparmio: 'fino all\'80%',
@@ -1295,7 +1295,7 @@ const padova: CitySeoData = {
     intro: "Nel centro storico di Padova, con i suoi portici tutelati dall'UNESCO, i ponteggi tradizionali creano problemi di ingombro e richiedono autorizzazioni comunali specifiche. Tetto94 usa sistemi su fune certificati che permettono di operare senza toccare i portici e senza alcuna pratica di occupazione suolo.",
     vantaggi: [
       'Nessun intralcio ai portici storici e ai passaggi pedonali tutelati UNESCO',
-      'Risparmio fino all\'80% sul costo del ponteggio — meno spesa per il cliente',
+      'Nessun costo di ponteggio da pagare',
       'Autorizzazione comunale non necessaria: lavori avviabili subito',
     ],
     risparmio: 'fino all\'80%',
@@ -1390,7 +1390,7 @@ const treviso: CitySeoData = {
     intro: "Nelle ville e nei rustici della Marca Trevigiana, un ponteggio tradizionale richiede settimane di allestimento e spesso non è compatibile con i giardini privati e le recinzioni. Tetto94 interviene con rope access certificato direttamente dalla copertura, preservando il giardino e riducendo i tempi di intervento.",
     vantaggi: [
       'Nessun danno al giardino o alle recinzioni delle ville della Marca',
-      'Risparmio fino all\'80% rispetto ai ponteggi tradizionali',
+      'Nessun costo di ponteggio da pagare',
       'Intervento completato in 2–4 giorni contro le 2–3 settimane con ponteggio',
     ],
     risparmio: 'fino all\'80%',
@@ -1482,10 +1482,10 @@ const verona: CitySeoData = {
     "Il costo del rifacimento tetto a Verona parte da 6.500€ per un'abitazione standard. I nostri prezzi sono trasparenti e fissi: nessun costo nascosto, preventivo gratuito con sopralluogo drone entro 24 ore.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Verona',
-    intro: "Nel centro storico di Verona e nelle ville della Valpolicella, i ponteggi richiedono permessi comunali e ZTL speciali che allungano i tempi di 4–8 settimane. Tetto94 opera senza ponteggi con rope access certificato, avviando i lavori entro 48 ore dall'accettazione del preventivo.",
+    intro: "Nel centro storico di Verona e nelle ville della Valpolicella, i ponteggi richiedono permessi comunali e ZTL speciali che allungano i tempi di 4–8 settimane. Tetto94 opera senza ponteggi con rope access certificato.",
     vantaggi: [
       'Nessuna pratica di occupazione suolo in ZTL e centro storico — lavori subito',
-      'Risparmio fino all\'80% sul ponteggio: budget destinato alla qualità della copertura',
+      'Nessun costo di ponteggio da pagare',
       'Zero intralcio al traffico nelle strette vie del centro scaligero',
     ],
     risparmio: 'fino all\'80%',
@@ -1545,8 +1545,8 @@ const verona: CitySeoData = {
   ],
   faqExtra: [
     {
-      q: 'Quanto costa rifare il tetto a Verona nel 2025?',
-      a: "A Verona nel 2025 il rifacimento tetto completo costa tra 6.500€ e 16.000€ per un'abitazione unifamiliare standard (80–150 m²). I fattori che influenzano il prezzo sono: tipo di materiale, pendenza, accessibilità e distanza dal centro. Preventivo gratuito con drone entro 24 ore.",
+      q: 'Quanto costa rifare il tetto a Verona nel 2026?',
+      a: "A Verona nel 2026 il rifacimento tetto completo costa tra 6.500€ e 16.000€ per un'abitazione unifamiliare standard (80–150 m²). I fattori che influenzano il prezzo sono: tipo di materiale, pendenza, accessibilità e distanza dal centro. Preventivo gratuito con drone entro 24 ore.",
     },
     {
       q: 'Operate anche sul lago di Garda vicino a Verona?',
@@ -1559,7 +1559,7 @@ const verona: CitySeoData = {
   ],
 }
 
-/* ─────────────────────────────────────────────────────────────
+/* ─���───────────────────────────────────────────────────────────
    VICENZA
 ───────────────────────────────────────────────────────────── */
 const vicenza: CitySeoData = {
@@ -1580,7 +1580,7 @@ const vicenza: CitySeoData = {
     intro: "Sulle ville palladiane UNESCO di Vicenza, un ponteggio tradizionale potrebbe danneggiare le facciate storiche e richiede autorizzazione preventiva della Soprintendenza. Tetto94 lavora esclusivamente con rope access: nessun contatto con le facciate, nessuna autorizzazione speciale, massimo rispetto del patrimonio storico.",
     vantaggi: [
       'Nessun rischio di danni alle facciate palladiane — intervento non invasivo',
-      'Risparmio fino all\'80% rispetto al ponteggio, mantenendo qualità massima',
+      'Nessun costo di ponteggio da pagare',
       'Nessuna autorizzazione Soprintendenza per il ponteggio — iter semplificato',
     ],
     risparmio: 'fino all\'80%',
@@ -1649,7 +1649,7 @@ const vicenza: CitySeoData = {
     },
     {
       q: 'Quanto costa il sopralluogo a Vicenza?',
-      a: "Il sopralluogo con drone a Vicenza è completamente gratuito, incluso per ogni cliente che richiede un preventivo. Utilizziamo drone con camera ad alta risoluzione per rilievo completo — il report fotografico vi viene consegnato via email entro 2 ore dal sopralluogo.",
+      a: "Il sopralluogo con drone a Vicenza è completamente gratuito, incluso per ogni cliente che richiede un preventivo. Utilizziamo drone con camera ad alta risoluzione per rilievo completo — il report fotografico vi viene consegnato via email dopo il sopralluogo.",
     },
   ],
 }
@@ -1671,7 +1671,7 @@ const rovigo: CitySeoData = {
     intro: "Nelle abitazioni e nei rustici del Polesine, il montaggio di un ponteggio su terreni agricoli e nei centri storici rodigini richiede permessi complessi. Tetto94 opera con rope access certificato: nessun ponteggio, intervento rapido, risparmio garantito.",
     vantaggi: [
       'Nessun permesso di occupazione suolo nei centri storici polesani',
-      'Risparmio fino all\'80% rispetto al costo del ponteggio tradizionale',
+      'Nessun costo di ponteggio da pagare',
       'Intervento completato in 2–3 giorni senza intralciare il terreno circostante',
     ],
     risparmio: 'fino all\'80%',
@@ -1727,7 +1727,7 @@ const belluno: CitySeoData = {
     intro: "In montagna e nei borghi dolomitici, il montaggio di un ponteggio tradizionale su terreno in pendenza è complesso, costoso e spesso impossibile. Tetto94 utilizza rope access certificato per interventi alpini: accediamo direttamente dalla cresta, senza ponteggio, anche sulle coperture più ripide.",
     vantaggi: [
       'Accesso garantito anche su coperture alpine ripide e borghi montani inaccessibili',
-      'Risparmio fino all\'80% — i ponteggi in montagna costano il doppio rispetto alla pianura',
+      'Nessun costo di ponteggio da pagare',
       'Nessun danno al terreno in pendenza o ai giardini montani circostanti',
     ],
     risparmio: 'fino all\'80%',
@@ -1783,7 +1783,7 @@ const chioggia: CitySeoData = {
     intro: "A Chioggia, come a Venezia, le calli strette e i canali rendono il montaggio di ponteggi tradizionali praticamente impossibile. Tetto94 opera con rope access certificato adattato al contesto lagunare: accediamo dai tetti senza occupare suolo pubblico nelle calli.",
     vantaggi: [
       'Unica soluzione possibile nelle calli strette della Piccola Venezia — senza ponteggi',
-      'Risparmio fino all\'80% sul costo del ponteggio: più budget per materiali anti-salino di qualità',
+      'Nessun costo di ponteggio da pagare',
       'Nessuna occupazione dei canali o degli spazi comuni nelle calli chioggiotte',
     ],
     risparmio: 'fino all\'80%',
@@ -1809,7 +1809,7 @@ const chioggia: CitySeoData = {
     'Rosolina', 'Porto Tolle', 'Loreo', 'Adria', 'Taglio di Po',
   ],
   materiali: [
-    { nome: 'Coppi in cotto smaltato anti-salino', descrizione: 'Tegole tradizionali con doppio strato di smalto protettivo anti-cloruro', adatto: 'Resistono alla corrosione salina aggressiva della laguna di Chioggia — durata garantita 25+ anni in ambiente marino' },
+    { nome: 'Coppi in cotto smaltato anti-salino', descrizione: 'Tegole tradizionali con doppio strato di smalto protettivo anti-cloruro', adatto: 'Resistono alla corrosione salina aggressiva della laguna di Chioggia.' },
     { nome: 'Guaina polimerica marina FPO', descrizione: 'Membrana sintetica a base di poliolefine, massima resistenza chimica agli agenti marini', adatto: 'Soluzione top per tetti piani di Chioggia esposti a salsedine, UV marini e cicli umido-secco lagunari' },
     { nome: 'Ventilazione sottotetto rinforzata', descrizione: 'Sistema di ventilazione passiva con membrane traspiranti anti-umido', adatto: 'Fondamentale per gli edifici lagunari dove l\'umidità relativa supera l\'85% — previene condensa e muffa sottotetto' },
   ],
@@ -1839,7 +1839,7 @@ const mirano: CitySeoData = {
     intro: "Nelle ville venete e nelle case coloniche del Miranese, un ponteggio tradizionale rovina il giardino, danneggia le recinzioni storiche e richiede settimane di allestimento. Tetto94 opera con rope access certificato: accesso diretto dalla copertura, zero danni al giardino, lavori ultimati in 2–4 giorni.",
     vantaggi: [
       'Zero danni ai giardini e alle recinzioni storiche delle ville del Miranese',
-      'Risparmio fino all\'80% rispetto al ponteggio — budget per materiali di qualità superiore',
+      'Nessun costo di ponteggio da pagare',
       'Nessuna autorizzazione paesaggistica per il ponteggio sulle ville vincolate',
     ],
     risparmio: 'fino all\'80%',
@@ -1892,10 +1892,10 @@ const sanDonadiPiave: CitySeoData = {
   priceIntro: "Il costo del rifacimento tetto a San Donà di Piave parte da 6.500€ per abitazioni standard della Venezia Orientale. Preventivo gratuito entro 24 ore, smaltimento e garanzia inclusi.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a San Donà di Piave',
-    intro: "Nei quartieri residenziali di San Donà di Piave e dei comuni circostanti, un ponteggio tradizionale occupa il passo carraio o il giardino per settimane. Tetto94 opera con rope access certificato: nessuna occupazione del suolo, lavori completati in 2–3 giorni.",
+    intro: "Nei quartieri residenziali di San Donà di Piave e dei comuni circostanti, un ponteggio tradizionale occupa il passo carraio o il giardino per settimane. Tetto94 opera con rope access certificato: nessuna occupazione del suolo.",
     vantaggi: [
       'Nessuna occupazione del passo carraio o del giardino durante i lavori',
-      'Risparmio fino all\'80% rispetto al costo del ponteggio tradizionale',
+      'Nessun costo di ponteggio da pagare',
       'Intervento rapido: 2–3 giorni contro le 2 settimane con ponteggio',
     ],
     risparmio: 'fino all\'80%',
@@ -1951,7 +1951,7 @@ const moglianoVeneto: CitySeoData = {
     intro: "Nelle ville e nelle residenze di pregio lungo il Terraglio, un ponteggio tradizionale deturpa l\'estetica dell\'edificio per settimane e occupa il giardino. Tetto94 opera con rope access certificato: invisibile dalla strada, zero impatto sul giardino, massimo rispetto per le residenze esclusive del Terraglio.",
     vantaggi: [
       'Zero impatto visivo sull\'estetica delle ville esclusive lungo il Terraglio',
-      'Risparmio fino all\'80% sul ponteggio — investimento per materiali premium',
+      'Nessun costo di ponteggio da pagare',
       'Nessun danno ai giardini e alle pavimentazioni delle ville di pregio',
     ],
     risparmio: 'fino all\'80%',
