@@ -48,7 +48,11 @@
 
 // export interface CitySeoData {
 //   citySlug: string                    // must match LocationConfig.slug
-//   ogImage: string                     // /images/og/rifacimento-tetto-{slug}.png
+//   /** Dedicated SERP description for indexed city pages. */
+//   metaDescription?: string
+//   ogImage: string
+
+//                        // /images/og/rifacimento-tetto-{slug}.png
 //   beforeImage: string                 // /images/cities/{slug}-before.png
 //   afterImage: string                  // /images/cities/{slug}-after.png
 //   mapsEmbedSrc: string                // Google Maps embed URL (no API key needed)
@@ -75,6 +79,7 @@
 // ───────────────────────────────────────────────────────────── */
 // const venezia: CitySeoData = {
 //   citySlug: 'venezia',
+//   metaDescription: 'Rifacimento tetto a Venezia da 6.500€. Interventi senza ponteggi, materiali certificati CE, ispezione drone gratuita e garanzia scritta 10 anni. Preventivo entro 24 ore.',
 //   ogImage: '/images/og/rifacimento-tetto-venezia.png',
 //   beforeImage: '/images/cities/venezia-before.png',
 //   afterImage: '/images/cities/venezia-after.png',
@@ -169,6 +174,7 @@
 // ───────────────────────────────────────────────────────────── */
 // const mestre: CitySeoData = {
 //   citySlug: 'mestre',
+//   metaDescription: 'Rifacimento tetto a Mestre da 6.500€. Soluzioni per case e condomini, interventi senza ponteggi, ispezione drone gratuita e garanzia scritta 10 anni. Preventivo entro 24 ore.',
 //   ogImage: '/images/og/rifacimento-tetto-mestre.png',
 //   beforeImage: '/images/cities/mestre-before.png',
 //   afterImage: '/images/cities/mestre-after.png',
@@ -263,6 +269,7 @@
 // ───────────────────────────────────────────────────────────── */
 // const padova: CitySeoData = {
 //   citySlug: 'padova',
+//   metaDescription: 'Rifacimento tetto a Padova da 6.500€. Materiali certificati CE, ispezione drone gratuita, gestione dei vincoli storici e garanzia scritta 10 anni. Preventivo entro 24 ore.',
 //   ogImage: '/images/og/rifacimento-tetto-padova.png',
 //   beforeImage: '/images/cities/padova-before.png',
 //   afterImage: '/images/cities/padova-after.png',
@@ -357,6 +364,7 @@
 // ───────────────────────────────────────────────────────────── */
 // const treviso: CitySeoData = {
 //   citySlug: 'treviso',
+//   metaDescription: 'Rifacimento tetto a Treviso da 6.500€. Preventivo trasparente, materiali certificati CE, interventi senza ponteggi, ispezione drone gratuita e garanzia scritta 10 anni.',
 //   ogImage: '/images/og/rifacimento-tetto-treviso.png',
 //   beforeImage: '/images/cities/treviso-before.png',
 //   afterImage: '/images/cities/treviso-after.png',
@@ -451,6 +459,7 @@
 // ───────────────────────────────────────────────────────────── */
 // const verona: CitySeoData = {
 //   citySlug: 'verona',
+//   metaDescription: 'Rifacimento tetto a Verona da 6.500€. Prezzi trasparenti, sopralluogo drone gratuito, materiali certificati CE e garanzia scritta 10 anni. Preventivo entro 24 ore.',
 //   ogImage: '/images/og/rifacimento-tetto-verona.png',
 //   beforeImage: '/images/cities/verona-before.png',
 //   afterImage: '/images/cities/verona-after.png',
@@ -545,6 +554,7 @@
 // ───────────────────────────────────────────────────────────── */
 // const vicenza: CitySeoData = {
 //   citySlug: 'vicenza',
+//   metaDescription: 'Rifacimento tetto a Vicenza da 6.500€. Interventi per ville storiche e abitazioni, sopralluogo drone gratuito, materiali certificati CE e garanzia scritta 10 anni.',
 //   ogImage: '/images/og/rifacimento-tetto-vicenza.png',
 //   beforeImage: '/images/cities/vicenza-before.png',
 //   afterImage: '/images/cities/vicenza-after.png',
@@ -998,13 +1008,12 @@
 // }
 
 
-
 /**
  * Tetto94 — City SEO Data Layer
  * Extended data for rifacimento-tetto pages targeting the 6 priority cities.
  * Structured to be extensible: add more cities by following the same interface.
  *
- * Data used by: CitySeoSections component + page.tsx metadata/schema
+ * Data used by: ServiceCityBody component + page.tsx metadata/schema
  */
 
 export interface CityPriceRow {
