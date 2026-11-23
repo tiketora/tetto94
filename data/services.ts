@@ -21,9 +21,10 @@
 //   description: string             // Short meta description base (used for metadata)
 //   metaTitle: string               // Full SEO title tag
 //   metaDescription: string         // Full SEO meta description
+//   shortAnswer?: string            // 2-3 sentence answer with price, shown in the hero under the subtitle
 //   longDescription: string         // Paragraph for page body
 //   icon: string                    // Lucide icon name
-//   image: string
+//   image: string                   // Card/hero image path, e.g. "/images/service-rifacimento.png"
 //   heroKeyword: string             // Main keyword for H1
 //   faqItems: { q: string; a: string }[]
 //   benefits: string[]
@@ -78,9 +79,11 @@
 //     subheadline: 'Copertura nuova, materiali certificati, garanzia scritta 10 anni.',
 //     description:
 //       'Rifacimento completo del tetto con materiali certificati CE di prima scelta. Garanzia scritta 10 anni. Preventivo gratuito entro 24 ore.',
-//     metaTitle: 'Rifacimento Tetto Veneto | Prezzi, Garanzia 10 Anni — Tetto94 dal 1994',
+//     metaTitle: 'Rifacimento Tetto: Prezzi 2026 e Garanzia 10 Anni | Tetto94',
 //     metaDescription:
-//       'Rifacimento tetto completo in Veneto a partire da 6.500€. Tegole certificate CE, smaltimento incluso, garanzia scritta 10 anni. Preventivo gratuito entro 24 ore con sopralluogo drone. Tetto94 dal 1994.',
+//       'Quanto costa rifare il tetto nel 2026: prezzi al mq, cosa comprende il lavoro e quando basta un ripasso. Senza ponteggi, garanzia scritta 10 anni. Veneto.',
+//     shortAnswer:
+//       'Con Tetto94 il rifacimento completo di un tetto in tegole o coppi costa da 6.500 a 14.000 € IVA inclusa, smaltimento incluso; con la coibentazione da 9.500 a 22.000 €. Sono i prezzi indicativi del nostro listino per il Veneto: il preventivo definitivo è gratuito e arriva entro 24 ore dal sopralluogo con drone.',
 //     doveOperiamoIntro:
 //       'Rifacimento tetto in tutto il Veneto, Emilia-Romagna e Friuli-Venezia Giulia. Clicca sulla tua città per vedere prezzi, materiali e bonus fiscali disponibili nella tua zona.',
 //     prezziTable: [
@@ -93,7 +96,7 @@
 //     longDescription:
 //       "Il rifacimento completo del tetto è l'intervento più importante per la longevità della tua abitazione. Tetto94 utilizza esclusivamente materiali certificati CE — tegole in cotto, guaine bituminose e polimeriche, membrane traspiranti — posati da artigiani con oltre 32 anni di esperienza. Ogni rifacimento include ispezione drone pre-intervento, smaltimento del materiale rimosso, posa in opera certificata e garanzia scritta 10 anni.",
 //     icon: 'Layers',
-//     image: '/images/Rifacimento tetto 2.jfif.jpeg',
+//     image: '/images/service-rifacimento.png',
 //     heroKeyword: 'RIFACIMENTO',
 //     faqItems: [
 //       {
@@ -110,15 +113,15 @@
 //       },
 //       {
 //         q: 'Serve il permesso edilizio per rifare il tetto?',
-//         a: "In molti casi è sufficiente la CILA (Comunicazione Inizio Lavori Asseverata). Vi assistiamo nella gestione burocratica completa.",
+//         a: "Dipende dal lavoro. La manutenzione ordinaria, come sostituire tegole rotte o pulire le grondaie, non richiede autorizzazioni particolari. Il rifacimento del tetto è di norma manutenzione straordinaria: senza modifiche basta una CILA, mentre se si cambia il tipo di copertura o si interviene sulle parti strutturali serve la SCIA. Se aumenta il volume serve il permesso di costruire; in zona vincolata può servire l'autorizzazione paesaggistica. Lo verifichiamo al sopralluogo.",
 //       },
 //       {
 //         q: 'È possibile rifare il tetto senza ponteggi?',
-//         a: "Sì. Tetto94 opera esclusivamente con sistemi di accesso su fune (rope access) certificati, eliminando la necessità del ponteggio tradizionale. Il risparmio può arrivare fino all'80% del costo del ponteggio, con tempi di intervento dimezzati.",
+//         a: "Sì. Tetto94 opera esclusivamente con sistemi di accesso su fune (rope access) certificati, eliminando la necessità del ponteggio tradizionale. Non paghi noleggio, montaggio e smontaggio dell'impalcatura, e il lavoro parte prima.",
 //       },
 //       {
-//         q: 'Quali bonus fiscali si applicano al rifacimento tetto nel 2025?',
-//         a: "Nel 2025 è possibile accedere al Bonus Ristrutturazione 50% (fino a 96.000€ in 10 anni) e all'Ecobonus 65% se l'intervento include coibentazione. Tetto94 vi assiste nella documentazione per il bonus.",
+//         q: 'Quali bonus fiscali si applicano al rifacimento del tetto nel 2026?',
+//         a: "Nel 2026 il bonus ristrutturazione vale il 50% sull'abitazione principale e il 36% sugli altri immobili, su una spesa massima di 96.000 € per unità, in 10 rate annuali. Se il rifacimento migliora l'isolamento può valere anche l'ecobonus, con le stesse percentuali. Superbonus e bonus facciate non sono più disponibili per i nuovi lavori.",
 //       },
 //       {
 //         q: 'Come si sceglie il materiale giusto per il rifacimento?',
@@ -131,7 +134,7 @@
 //       'Smaltimento incluso della copertura rimossa',
 //       'Ispezione drone gratuita pre-intervento',
 //       'Assistenza burocratica per permessi',
-//       'Intervento senza ponteggi (risparmio fino all\'80%)',
+//       'Intervento senza ponteggi: niente costi di impalcatura',
 //     ],
 //     steps: [
 //       { title: 'Ispezione Drone Gratuita', desc: 'Sopralluogo con drone per rilievo completo dello stato della copertura. Report fotografico incluso.' },
@@ -140,7 +143,7 @@
 //       { title: 'Posa e Collaudo', desc: 'Installazione con materiali certificati e collaudo finale garantito.' },
 //     ],
 //     priceFrom: '6.500€',
-//     oldPrice: '9.500€',
+
 //     checklistItems: [
 //       'Risanamento professionale',
 //       'Linea vita provvisoria compresa nel pacchetto',
@@ -162,9 +165,11 @@
 //     subheadline: 'Protezione totale contro infiltrazioni. Guaine certificate, garanzia scritta 10 anni.',
 //     description:
 //       "Impermeabilizzazione tetto con guaine e membrane certificate. Stop definitivo alle infiltrazioni d'acqua. Garanzia scritta 10 anni.",
-//     metaTitle: "Impermeabilizzazione Tetto Veneto | Stop Infiltrazioni, Garanzia 10 Anni — Tetto94",
+//     metaTitle: 'Impermeabilizzazione Tetto: Costi al Mq 2026 | Tetto94',
 //     metaDescription:
-//       "Impermeabilizzazione tetto professionale in Veneto con guaine bituminose, EPDM e membrane polimeriche certificate CE. Stop definitivo alle infiltrazioni. Garanzia scritta 10 anni. Preventivo gratuito entro 24 ore.",
+//       'Impermeabilizzazione del tetto con guaine e membrane certificate CE: costi al mq 2026, quale scegliere e quanto dura. Garanzia scritta 10 anni in Veneto.',
+//     shortAnswer:
+//       "Con Tetto94 l'impermeabilizzazione costa da 35 a 65 € al mq con guaina bituminosa (posa e primer inclusi), da 55 a 95 € al mq con membrana EPDM e da 45 a 85 € al mq con sistema poliuretanico liquido, IVA inclusa. Una terrazza costa da 2.500 a 8.000 €, collaudo idraulico incluso. Garanzia scritta 10 anni.",
 //     doveOperiamoIntro:
 //       "Impermeabilizzazione tetto in tutto il Veneto, Emilia-Romagna e Friuli-Venezia Giulia. Clicca sulla tua città per un preventivo personalizzato con i prezzi al mq della tua zona.",
 //     prezziTable: [
@@ -177,9 +182,13 @@
 //     longDescription:
 //       "L'impermeabilizzazione del tetto è la soluzione definitiva contro infiltrazioni, umidità e danni strutturali causati dall'acqua. Tetto94 applica guaine bituminose, polimeriche e membrane traspiranti di ultima generazione, certificate CE, con garanzia scritta 10 anni. Il trattamento include pulizia completa, applicazione di primer specifico, posa in opera con risvolti su tutti i punti critici (camini, abbaini, gronde) e collaudo idraulico finale.",
 //     icon: 'Droplets',
-//   image: '/images/Impermeabilizzazione.jpeg',
+//     image: '/images/service-impermeabilizzazione.png',
 //     heroKeyword: 'IMPERMEABILIZZAZIONE',
 //     faqItems: [
+//       {
+//         q: 'Quanto costa impermeabilizzare un terrazzo?',
+//         a: "Con Tetto94 l'impermeabilizzazione di una terrazza costa da 2.500 a 8.000 €, IVA inclusa, collaudo idraulico incluso. Il prezzo può variare in base alla superficie, alla tipologia dell'edificio e alla complessità dell'intervento: lo trovi nel preventivo, gratuito, dopo il sopralluogo con drone.",
+//       },
 //       {
 //         q: "Quanto dura l'impermeabilizzazione di un tetto?",
 //         a: "Un'impermeabilizzazione professionale con guaine di qualità dura 15–25 anni. Con la nostra garanzia scritta 10 anni siete coperti per un decennio.",
@@ -206,7 +215,7 @@
 //       },
 //       {
 //         q: "Come si riconosce un tetto non impermeabilizzato correttamente?",
-//         a: "I segnali principali sono: macchie di umidità sul soffitto interno, muffa sul perimetro delle pareti, rigonfiamenti sulla guaina, danni alle tegole vicino ai comignoli o agli abbaini. Tetto94 diagnostica il problema esatto con drone e termocamera prima di qualsiasi intervento.",
+//         a: "I segnali principali sono: macchie di umidità sul soffitto interno, muffa sul perimetro delle pareti, rigonfiamenti sulla guaina, danni alle tegole vicino ai comignoli o agli abbaini. Tetto94 diagnostica il problema esatto con il drone prima di qualsiasi intervento.",
 //       },
 //     ],
 //     benefits: [
@@ -214,9 +223,9 @@
 //       'Guaine e membrane certificate CE',
 //       'Applicazione su tutti i punti critici',
 //       'Collaudo idraulico finale incluso',
-//       'Garanzia scritta 10 anni',
+//       'Garanzia scritta 10 anni su materiali e manodopera',
 //       'Ispezione drone gratuita pre-intervento',
-//       'Intervento senza ponteggi — risparmio fino all\'80%',
+//       'Intervento senza ponteggi: niente costi di impalcatura',
 //     ],
 //     steps: [
 //       { title: 'Diagnosi con Drone', desc: 'Individuazione di ogni punto critico con ispezione aerea gratuita.' },
@@ -234,23 +243,24 @@
 //     subheadline: 'Intervento rapido entro 24 ore. Tegole, infiltrazioni, grondaie. Garanzia scritta.',
 //     description:
 //       "Riparazione tetto urgente entro 24 ore. Tegole rotte, infiltrazioni, stop perdite d'acqua. Garanzia scritta su ogni intervento.",
-//     metaTitle: 'Riparazione Tetto Urgente Veneto | Intervento 24h, Garanzia Scritta — Tetto94',
+//     metaTitle: 'Riparazione Tetto Senza Ponteggi: Costi 2026 | Tetto94',
 //     metaDescription:
-//       "Riparazione tetto urgente entro 24 ore in Veneto. Tegole rotte, infiltrazioni, stop perdite d'acqua. Diagnosi drone gratuita, garanzia scritta su ogni intervento. Tetto94 dal 1994.",
+//       'Riparazione del tetto senza ponteggi in Veneto: tegole rotte, perdite, scossaline. Costi 2026, diagnosi con drone gratuita e preventivo scritto in 24 ore.',
+//     shortAnswer:
+//       'Con Tetto94 la sostituzione di tegole singole costa da 300 a 1.200 €, la riparazione di un\'infiltrazione localizzata da 450 a 2.500 € e una riparazione urgente dopo un temporale da 500 a 3.000 €, IVA inclusa. Prima individuiamo il problema con il drone, gratis, poi ti diamo il prezzo scritto. Lavoriamo su fune: il ponteggio non lo paghi.',
 //     doveOperiamoIntro:
 //       "Riparazione tetto urgente in tutto il Veneto, Emilia-Romagna e Friuli-Venezia Giulia. Interveniamo entro 24 ore — seleziona la tua città per contattarci direttamente.",
 //     prezziTable: [
 //       { tipo: 'Sostituzione tegole singole', prezzoMin: '€ 300', prezzoMax: '€ 1.200', note: 'Per zona limitata, drone incluso' },
 //       { tipo: 'Riparazione infiltrazione localizzata', prezzoMin: '€ 450', prezzoMax: '€ 2.500', note: 'Diagnosi + riparazione definitiva' },
-//       // { tipo: 'Riparazione post-temporale urgente', prezzoMin: '€ 500', prezzoMax: '€ 3.000', note: 'Intervento entro 24 ore' },
-//         { tipo: 'Riparazione post-temporale urgente', prezzoMin: '�� 500', prezzoMax: '€ 3.000', note: 'Intervento entro 24 ore' },
+//       { tipo: 'Riparazione post-temporale urgente', prezzoMin: '€ 500', prezzoMax: '€ 3.000', note: 'Intervento entro 24 ore' },
 //       { tipo: 'Riparazione grondaie e pluviali', prezzoMin: '€ 180', prezzoMax: '€ 900', note: 'Sostituzione o riparazione giunti' },
 //       { tipo: 'Sigillatura comignoli e abbaini', prezzoMin: '€ 200', prezzoMax: '€ 800', note: 'Punti critici di infiltrazione' },
 //     ],
 //     longDescription:
 //       "La riparazione del tetto richiede velocità e precisione. Tetto94 interviene entro 24 ore per emergenze — tegole rotte, perdite d'acqua, infiltrazioni post-temporale — con materiali certificati e garanzia scritta su ogni intervento. Operiamo senza ponteggi, riducendo costi e tempi. L'ispezione drone ci permette di diagnosticare il problema esatto prima di intervenire, evitando costi inutili.",
 //     icon: 'Hammer',
-//     image: '/images/Riprazione Tetto.jfif.jpeg',
+//     image: '/images/service-riparazione.png',
 //     heroKeyword: 'RIPARAZIONE',
 //     faqItems: [
 //       {
@@ -259,7 +269,7 @@
 //       },
 //       {
 //         q: 'Come si individua la causa di un\'infiltrazione dal tetto?',
-//         a: "Utilizziamo il drone per ispezione aerea e, se necessario, termocamera per individuare l'esatta origine del problema prima di qualsiasi intervento.",
+//         a: "Utilizziamo il drone per l'ispezione aerea e individuare l'esatta origine del problema prima di qualsiasi intervento.",
 //       },
 //       {
 //         q: 'Sostituite tegole singole senza rifare tutto il tetto?',
@@ -279,19 +289,19 @@
 //       },
 //       {
 //         q: "La riparazione del tetto è detraibile fiscalmente?",
-//         a: "Sì. La riparazione del tetto rientra nel Bonus Ristrutturazione 50% (IRPEF, 10 rate annuali) se eseguita su abitazione principale o di proprietà. Tetto94 fornisce tutta la documentazione necessaria per accedere al bonus.",
+//         a: "Dipende dall'edificio. Sulla singola abitazione la manutenzione ordinaria, come sostituire qualche tegola, non è detraibile. Nei condomini, invece, anche la manutenzione ordinaria delle parti comuni, come il tetto, rientra nel bonus ristrutturazione. Se la riparazione fa parte di una manutenzione straordinaria, è detraibile anche sulla singola abitazione.",
 //       },
 //     ],
 //     benefits: [
-//       'Intervento urgente entro 24 ore',
+//       'Risposta entro 24 ore, emergenze in giornata quando possibile',
 //       'Diagnosi precisa con drone prima dell\'intervento',
-//       'Lavoro senza ponteggi (risparmio fino all\'80%)',
+//       'Intervento senza ponteggi: niente costi di impalcatura',
 //       'Sostituzione tegole compatibili per colore e tipo',
 //       'Stop definitivo a infiltrazioni e perdite',
-//       'Garanzia scritta su ogni intervento',
+//       'Garanzia scritta, con la durata indicata nel certificato',
 //     ],
 //     steps: [
-//       { title: 'Contatto Rapido', desc: 'Rispondiamo entro 2 ore e pianifichiamo il sopralluogo.' },
+//       { title: 'Contatto Rapido', desc: 'Ti richiamiamo entro 24 ore e fissiamo il sopralluogo.' },
 //       { title: 'Diagnosi Drone', desc: 'Ispezione aerea gratuita per individuare il problema esatto.' },
 //       { title: 'Intervento Mirato', desc: 'Riparazione precisa senza smontare parti non danneggiate.' },
 //       { title: 'Garanzia Scritta', desc: 'Consegna garanzia scritta su materiali e manodopera.' },
@@ -306,15 +316,17 @@
 //     subheadline: 'Diagnosi gratuita con drone. Riparazione definitiva entro 24 ore. Garanzia scritta.',
 //     description:
 //       "Stop infiltrazioni dal tetto entro 24 ore. Diagnosi drone gratuita, riparazione definitiva, garanzia scritta su ogni intervento.",
-//     metaTitle: 'Stop Infiltrazioni dal Tetto | Riparazione Urgente 24h — Tetto94',
+//     metaTitle: 'Infiltrazioni dal Tetto: Diagnosi e Riparazione | Tetto94',
 //     metaDescription:
-//       "Infiltrazioni dal tetto? Tetto94 interviene entro 24 ore in tutto il Veneto. Diagnosi drone gratuita, riparazione definitiva del punto di infiltrazione, garanzia scritta. Dal 1994.",
+//       'Infiltrazioni dal tetto: troviamo il punto esatto con il drone e lo ripariamo senza ponteggi. Costi 2026 da 250 €, sopralluogo gratuito in tutto il Veneto.',
+//     shortAnswer:
+//       "Un'infiltrazione dal tetto nasce spesso da un punto preciso: la base del comignolo, un abbaino, un giunto di gronda o una guaina usurata, non sempre da una tegola rotta. Con Tetto94 la diagnosi con drone è gratuita; la riparazione costa da 250 a 900 € al comignolo, da 300 a 1.200 € all'abbaino e da 800 a 4.000 € se l'infiltrazione è diffusa, IVA inclusa.",
 //     doveOperiamoIntro:
 //       "Interveniamo contro le infiltrazioni tetto in tutto il Veneto, Emilia-Romagna e Friuli-Venezia Giulia. Seleziona la tua città per un intervento urgente entro 24 ore.",
 //     longDescription:
 //       "Le infiltrazioni dal tetto sono un'emergenza che peggiora rapidamente: ogni pioggia aumenta il danno strutturale. Tetto94 interviene entro 24 ore con diagnosi drone gratuita per individuare il punto esatto dell'infiltrazione — comignoli, abbaini, gronde, giunti di gronda — e risolve definitivamente il problema con materiali certificati CE. Nessun intervento invasivo inutile: repariamo solo la zona danneggiata, con garanzia scritta.",
 //     icon: 'CloudRain',
-//      image: '/images/Stop Infiltrazioni 1.png',
+//     image: '/images/service-infiltrazioni.png',
 //     heroKeyword: 'INFILTRAZIONI',
 //     prezziTable: [
 //       { tipo: 'Diagnosi drone + relazione tecnica', prezzoMin: 'Gratuita', prezzoMax: 'Gratuita', note: 'Inclusa in ogni intervento' },
@@ -326,7 +338,7 @@
 //     faqItems: [
 //       {
 //         q: "Da dove arriva l'infiltrazione se non vedo tegole rotte?",
-//         a: "Le infiltrazioni più comuni non vengono da tegole rotte ma da punti di giunzione: base del comignolo, scossaline degli abbaini, giunti di gronda o aree dove la guaina si è deteriorata. Il drone con termocamera individua il punto esatto senza smontare nulla.",
+//         a: "Le infiltrazioni più comuni non vengono da tegole rotte ma da punti di giunzione: base del comignolo, scossaline degli abbaini, giunti di gronda o aree dove la guaina si è deteriorata. Il drone individua il punto da controllare senza smontare nulla.",
 //       },
 //       {
 //         q: "Quanto tempo ci vuole per riparare un'infiltrazione?",
@@ -338,20 +350,20 @@
 //       },
 //       {
 //         q: "Come si distingue un'infiltrazione da condensa?",
-//         a: "L'infiltrazione produce macchie circolari o lineari che appaiono durante o dopo la pioggia. La condensa produce umidità diffusa, soprattutto negli angoli, senza relazione diretta con le precipitazioni. Il drone e la termocamera ci permettono di distinguerle con certezza prima di intervenire.",
+//         a: "L'infiltrazione produce macchie circolari o lineari che appaiono durante o dopo la pioggia. La condensa produce umidità diffusa, soprattutto negli angoli, senza relazione diretta con le precipitazioni. Il sopralluogo con drone ci permette di distinguerle con certezza prima di intervenire.",
 //       },
 //     ],
 //     benefits: [
 //       'Diagnosi gratuita con drone — individuazione punto esatto',
-//       'Intervento entro 24 ore dall\'emergenza',
+//       'Risposta entro 24 ore, emergenze in giornata quando possibile',
 //       'Riparazione definitiva senza smontare tutto il tetto',
 //       'Materiali certificati CE specifici per ogni tipo di infiltrazione',
-//       'Garanzia scritta su ogni riparazione',
+//       'Garanzia scritta, con la durata indicata nel certificato',
 //       'Nessun intervento inutile — repariamo solo la zona danneggiata',
 //     ],
 //     steps: [
-//       { title: 'Chiamata Urgente', desc: 'Rispondiamo entro 2 ore — pianifichiamo il sopralluogo per il giorno stesso o il giorno seguente.' },
-//       { title: 'Diagnosi Drone + Termocamera', desc: 'Ispezione aerea gratuita per individuare il punto esatto di infiltrazione senza interventi invasivi.' },
+//       { title: 'Chiamata Urgente', desc: 'Ti richiamiamo entro 24 ore e fissiamo il sopralluogo. Per le infiltrazioni attive cerchiamo di intervenire in giornata.' },
+//       { title: 'Diagnosi con drone', desc: 'Ispezione aerea gratuita per individuare il punto esatto di infiltrazione senza interventi invasivi.' },
 //       { title: 'Riparazione Localizzata', desc: 'Intervento chirurgico sul punto di infiltrazione con materiali certificati CE.' },
 //       { title: 'Garanzia Scritta', desc: 'Consegna garanzia scritta con foto prima/dopo e relazione tecnica.' },
 //     ],
@@ -375,22 +387,24 @@
 //     subheadline: 'Senza salire sul tetto. Grondaie pulite, pluviali liberi, scorrimento garantito.',
 //     description:
 //       'Pulizia grondaie e pluviali professionale senza ponteggi. Prevenzione infiltrazioni, rimozione foglie e detriti. Preventivo gratuito.',
-//     metaTitle: 'Pulizia Grondaie e Pluviali | Senza Salire sul Tetto — Tetto94',
+//     metaTitle: 'Pulizia Grondaie: Prezzi al Metro 2026 | Tetto94',
 //     metaDescription:
-//       'Pulizia grondaie e pluviali professionale in Veneto senza ponteggi. Rimozione foglie, detriti e muschio. Prevenzione infiltrazioni e danni strutturali. Da 2,50€/ml. Tetto94 dal 1994.',
+//       'Pulizia di grondaie e pluviali senza ponteggi in Veneto: prezzi al metro lineare 2026, ogni quanto farla e cosa comprende. Preventivo gratuito in 24 ore.',
+//     shortAnswer:
+//       'Con Tetto94 la pulizia delle grondaie costa da 2,50 a 4,00 € al metro lineare: per una villetta con circa 40 metri di grondaie, da 100 a 180 €, IVA inclusa. Consigliamo di farla almeno una volta l\'anno, in autunno. Lavoriamo su fune, senza ponteggi.',
 //     doveOperiamoIntro:
 //       'Pulizia grondaie in tutto il Veneto, Emilia-Romagna e Friuli-Venezia Giulia. Servizio rapido, senza ponteggi, preventivo gratuito entro 24 ore.',
 //     longDescription:
 //       "La pulizia regolare delle grondaie è la manutenzione preventiva più efficace per evitare infiltrazioni, danni alle facciate e problemi strutturali. Tetto94 esegue la pulizia completa di grondaie e pluviali senza ponteggi — con sistemi su fune certificati — rimuovendo foglie, detriti, muschio e incrostazioni. L'intervento include verifica dello scorrimento idraulico e segnalazione di eventuali danni o ostruzioni.",
 //     icon: 'Wind',
-//      image: '/images/Pulizia Grondaie.jfif.jpeg',
+//     image: '/images/service-grondaie.png',
 //     heroKeyword: 'GRONDAIE',
 //     prezziTable: [
-//       { tipo: 'Pulizia grondaie (per metro lineare)', prezzoMin: '€ 2,50/ml', prezzoMax: '€ 4,00/ml', note: 'Minimo 50 ml per intervento' },
+//       { tipo: 'Pulizia grondaie (per metro lineare)', prezzoMin: '€ 2,50/ml', prezzoMax: '€ 4,00/ml', note: 'Prezzo al metro lineare' },
 //       { tipo: 'Villetta unifamiliare (~40 ml)', prezzoMin: '€ 100', prezzoMax: '€ 180', note: 'Grondaie + discendenti' },
 //       { tipo: 'Casa bifamiliare (~70 ml)', prezzoMin: '€ 175', prezzoMax: '€ 280', note: 'Grondaie + pluviali + controllo' },
 //       { tipo: 'Condominio (per scala)', prezzoMin: '€ 250', prezzoMax: '€ 600', note: 'In base a piani e perimetro' },
-//       { tipo: 'Pulizia + trattamento anti-muschio', prezzoMin: '€ 150', prezzoMax: '€ 350', note: 'Prevenzione 2 anni garantita' },
+//       { tipo: 'Pulizia + trattamento anti-muschio', prezzoMin: '€ 150', prezzoMax: '€ 350', note: 'Trattamento preventivo' },
 //     ],
 //     faqItems: [
 //       {
@@ -442,12 +456,14 @@
 //     nameFull: 'Coibentazione e Isolamento Termico del Tetto',
 //     headline: 'COIBENTAZIONE E ISOLAMENTO TETTO',
 //     subheadline:
-//       'Isoliamo tetti e sottotetti con pannelli, insufflaggio e tetti ventilati. Meno dispersione di calore, bollette più leggere, garanzia scritta 10 anni.',
+//       'Isoliamo tetti e sottotetti con pannelli, insufflaggio e tetti ventilati. Meno dispersione di calore, bollette più leggere, garanzia scritta.',
 //     description:
 //       'Isolamento termico di tetto e sottotetto con materiali certificati CE. Sopralluogo drone gratuito, garanzia scritta 10 anni.',
-//     metaTitle: 'Coibentazione Tetto e Sottotetto | Isolamento Termico | Tetto94',
+//     metaTitle: 'Coibentazione Tetto: Metodi e Costi 2026 | Tetto94',
 //     metaDescription:
-//       "Coibentazione tetto e sottotetto nel Nord-Est: pannelli isolanti, insufflaggio, isolamento dall'interno e dall'esterno. Senza ponteggi, drone gratuito, garanzia 10 anni.",
+//       'Coibentazione del tetto: insufflaggio, isolamento dall\'interno o dall\'esterno. Costi al mq 2026, materiali, spessori e detrazioni. Sopralluogo gratuito.',
+//     shortAnswer:
+//       'Con Tetto94 isolare il tetto costa da 15 a 30 € al mq con l\'insufflaggio del sottotetto, da 30 a 60 € al mq dall\'interno e da 50 a 100 € al mq dall\'esterno, IVA e ponteggi esclusi. Per 100 mq si va da circa 1.500 a 15.000 €, in base al metodo. Il sopralluogo con drone è gratuito.',
 //     doveOperiamoIntro:
 //       'Coibentiamo tetti e sottotetti in tutto il Nord-Est Italia. Ecco le principali zone in cui interveniamo:',
 //     ogImage: '/images/hero-roof-mobile.png',
@@ -466,7 +482,7 @@
 //     longDescription:
 //       "Un tetto non isolato è la prima causa di dispersione del calore di una casa: d'inverno il riscaldamento lavora il doppio, d'estate le stanze sotto la copertura diventano invivibili. Tetto94 realizza interventi di coibentazione su tetti e sottotetti in tutto il Nord-Est Italia: pannelli isolanti, insufflaggio e tetti ventilati, sempre con materiali certificati CE e garanzia scritta 10 anni. Il sopralluogo con drone è gratuito e lavoriamo senza ponteggi, con tecniche di accesso su fune certificate: meno costi e nessuna attesa per le autorizzazioni comunali.",
 //     icon: 'Thermometer',
-//      image: '/images/Coibentazione Tetto.jpg.jpeg',
+//     image: '/images/service-coibentazione.png',
 //     heroKeyword: 'COIBENTAZIONE',
 //     ctaHeading: { white: 'PRONTO A ISOLARE', red: 'IL TUO TETTO?' },
 //     extraSections: [
@@ -496,10 +512,14 @@
 //       {
 //         kicker: 'Bonus Fiscali',
 //         heading: { white: 'DETRAZIONI', red: 'FISCALI' },
-//         body: "La coibentazione del tetto è un intervento di efficientamento energetico e può accedere alle detrazioni fiscali (Ecobonus o bonus ristrutturazioni, in base al caso). Percentuali e massimali dipendono dal tipo di immobile e di intervento: ti aiutiamo a individuare l'agevolazione corretta e prepariamo la documentazione, senza costi aggiuntivi.",
+//         body: "La coibentazione del tetto è un intervento di efficienza energetica. Nel 2026 l'ecobonus e il bonus ristrutturazione valgono il 50% sull'abitazione principale e il 36% sugli altri immobili; per l'ecobonus i limiti di spesa dipendono dal tipo di intervento. Ti aiutiamo a individuare l'agevolazione corretta e prepariamo la documentazione, senza costi aggiuntivi.",
 //       },
 //     ],
 //     faqItems: [
+//       {
+//         q: 'Quanto costa l\'insufflaggio del sottotetto?',
+//         a: "Con Tetto94 l'insufflaggio costa da 15 a 30 € al mq, IVA e ponteggi esclusi: per un sottotetto di 100 mq, da circa 1.500 a 3.000 €. È il metodo più economico e rapido quando il sottotetto non è abitabile: l'isolante sfuso viene soffiato sopra il solaio, senza opere murarie.",
+//       },
 //       {
 //         q: 'Quanto costa isolare un tetto di 100 mq?',
 //         a: "Dipende dal metodo: da circa 1.500-3.000 euro con l'insufflaggio del sottotetto, 3.000-6.000 euro con l'isolamento dall'interno, fino a 5.000-15.000 euro per la coibentazione dall'esterno con intervento sul manto. Il sopralluogo drone gratuito definisce la cifra esatta entro 24 ore.",
@@ -527,17 +547,17 @@
 //     ],
 //     benefits: [
 //       'Sopralluogo drone gratuito con verifica dello stato della copertura',
-//       "Intervento senza ponteggi (risparmio fino all'80%)",
+//       'Intervento senza ponteggi: niente costi di impalcatura',
 //       'Materiali isolanti certificati CE',
 //       'Un solo interlocutore per coibentazione e rifacimento',
 //       'Assistenza sulle pratiche per le detrazioni',
-//       'Garanzia scritta 10 anni',
+//       'Garanzia scritta',
 //     ],
 //     steps: [
 //       { title: 'Sopralluogo Drone', desc: 'Analizziamo copertura e sottotetto e individuiamo le dispersioni.' },
 //       { title: 'Progetto e Preventivo', desc: 'Materiale, metodo e spessore giusti per il tuo tetto, preventivo entro 24 ore.' },
 //       { title: 'Posa Senza Ponteggi', desc: 'Intervento rapido con accesso su fune certificato.' },
-//       { title: 'Collaudo e Garanzia', desc: 'Verifica finale e garanzia scritta 10 anni.' },
+//       { title: 'Collaudo e Garanzia', desc: 'Verifica finale e certificato di garanzia scritto.' },
 //     ],
 //     priceFrom: '',
 //   },
@@ -550,6 +570,16 @@
 //    but stays noindex,nofollow. Single source of truth shared by
 //    app/[servizio]/[citta]/page.tsx and app/sitemap.ts.
 // ───────────────────────────────────────────────────────────── */
+// /* Pages Google may index and list in the sitemap. The 12 coibentazione city
+//    pages are 90-93% identical text, so they stay prerendered (above) but are
+//    noindex,follow and out of the sitemap; /coibentazione-tetto ranks instead. */
+// export const INDEXABLE_CITY_PAGES: Record<string, Set<string>> = {
+//   'rifacimento-tetto': new Set([
+//     'venezia', 'mestre', 'padova', 'treviso', 'verona', 'vicenza',
+//     'rovigo', 'belluno', 'chioggia', 'mirano', 'san-dona-di-piave', 'mogliano-veneto',
+//   ]),
+// }
+
 // export const INDEXED_CITY_PAGES: Record<string, Set<string>> = {
 //   'rifacimento-tetto': new Set([
 //     'venezia', 'mestre', 'padova', 'treviso', 'verona', 'vicenza',
@@ -621,7 +651,7 @@
 //     lat: 45.4386,
 //     lng: 10.9916,
 //     population: '260.000',
-//     description: 'Verona, seconda città del Veneto per popolazione, presenta un mercato delle ristrutturazioni molto attivo con numerose ville e condomini da rinnovare.',
+//     description: 'Verona ha un mercato delle ristrutturazioni molto attivo, con numerose ville e condomini da rinnovare.',
 //     nearbyCity: 'Villafranca di Verona, Legnago',
 //   },
 //   {
@@ -782,7 +812,7 @@
 //   },
 // ]
 
-// /* ─────────────────────────────────────────────────────────────
+// /* ─���───────────────────────────────────────────────────────────
 //    HELPER — Get service + location by slug
 // ───────────────────────────────────────────────────────────── */
 // export function getService(slug: string): ServiceConfig | undefined {
@@ -806,6 +836,7 @@
 //     LOCATIONS.map((l) => ({ servizio: s.slug, citta: l.slug }))
 //   )
 // }
+
 
 /**
  * Tetto94 — Services + Locations Data Layer
@@ -838,8 +869,9 @@ export interface ServiceConfig {
   faqItems: { q: string; a: string }[]
   benefits: string[]
   steps: { title: string; desc: string }[]
-  priceFrom: string               // current price "6.500€" — empty string = no price shown
+  priceFrom: string               // current price "4.500–6.500€" — empty string = no price shown
   oldPrice?: string               // strikethrough price "9.500€" — optional
+  priceNote?: string              // small line under the price, e.g. "50m² – 100m²" — optional
   checklistItems?: string[]       // package checklist — shown only when present
   prezziTable?: ServicePriceRow[] // "Quanto costa?" table shown on service page
   doveOperiamoIntro?: string      // Intro sentence for "Dove Operiamo" section
@@ -918,7 +950,7 @@ export const SERVICES: ServiceConfig[] = [
       },
       {
         q: 'Quanto costa il rifacimento del tetto?',
-        a: "Il costo dipende da superficie, tipo di materiale e accessibilità. Offriamo pacchetti a partire da 6.500€. Preventivo gratuito entro 24 ore.",
+        a: "Il costo dipende da superficie, tipo di materiale e accessibilità. Offriamo pacchetti da 4.500 a 6.500€ (50–100 m²). Preventivo gratuito entro 24 ore.",
       },
       {
         q: 'Serve il permesso edilizio per rifare il tetto?',
@@ -951,7 +983,9 @@ export const SERVICES: ServiceConfig[] = [
       { title: 'Rimozione e Smaltimento', desc: 'Rimozione della copertura esistente e smaltimento certificato.' },
       { title: 'Posa e Collaudo', desc: 'Installazione con materiali certificati e collaudo finale garantito.' },
     ],
-    priceFrom: '6.500€',
+    priceFrom: '4.500–6.500€',
+    oldPrice: '9.500€',
+    priceNote: '50m² – 100m²',
 
     checklistItems: [
       'Risanamento professionale',

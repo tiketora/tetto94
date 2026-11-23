@@ -254,6 +254,140 @@
 // }
 
 
+// 'use client'
+
+// import { useRef } from 'react'
+// import { motion, useInView } from 'framer-motion'
+// import { CheckCircle2 } from 'lucide-react'
+// import Link from 'next/link'
+
+// const leftItems = [
+//   { text: 'Ripasso del tetto senza ponteggi', bold: null },
+//   { text: 'Linea vita provvisoria compresa nel pacchetto', bold: 'compresa nel pacchetto' },
+//   { text: 'Sostituzione di tegole e coppi rotti', bold: 'Sostituzione' },
+//   { text: 'Fissaggio 1 ad 1 di tutte le tegole/coppi', bold: 'Fissaggio 1 ad 1' },
+//   { text: 'Impermeabilizzazione lucernari', bold: 'lucernari' },
+// ]
+
+// const rightItems = [
+//   { text: 'Impermeabilizzazione canne fumarie', bold: 'canne fumarie' },
+//   { text: 'Pulizia e sigillatura grondaie e canali', bold: 'Pulizia e sigillatura' },
+//   { text: 'Certificato di garanzia', bold: null, href: '/garanzie' },
+//   { text: 'POS (piano operativo di sicurezza)', bold: 'POS' },
+//   { text: 'Pulizia del cantiere a fine lavoro e smaltimento materiali di risulta', bold: 'Pulizia del cantiere a fine lavoro' },
+// ]
+
+// const textClass = 'font-t94 text-[17px] lg:text-[18px] text-t94-text leading-[1.5]'
+
+// function CheckItem({
+//   text,
+//   bold,
+//   delay,
+//   href,
+// }: {
+//   text: string
+//   bold: string | null
+//   delay: number
+//   href?: string
+// }) {
+//   const renderText = () => {
+//     if (href) {
+//       return (
+//         <Link
+//           href={href}
+//           className={`${textClass} underline underline-offset-4 hover:text-t94-red transition-colors`}
+//         >
+//           {text}
+//         </Link>
+//       )
+//     }
+//     if (!bold) return <span className={textClass}>{text}</span>
+//     const parts = text.split(bold)
+//     return (
+//       <span className={textClass}>
+//         {parts[0]}
+//         <strong className="font-semibold text-t94-dark">{bold}</strong>
+//         {parts[1]}
+//       </span>
+//     )
+//   }
+
+//   return (
+//     <motion.li
+//       initial={{ opacity: 0, x: -12 }}
+//       whileInView={{ opacity: 1, x: 0 }}
+//       viewport={{ once: true }}
+//       transition={{ duration: 0.4, delay }}
+//       className="flex items-start gap-3"
+//     >
+//       <CheckCircle2 className="mt-0.5 size-6 shrink-0 text-t94-green" aria-hidden="true" />
+//       {renderText()}
+//     </motion.li>
+//   )
+// }
+
+// export default function ChecklistPricingSection() {
+//   const ref = useRef(null)
+//   const inView = useInView(ref, { once: true, margin: '-8%' })
+
+//   return (
+//     <section className="t94-type bg-white py-16 lg:py-20" ref={ref}>
+//       <div className="mx-auto max-w-6xl px-6 lg:px-10">
+//         {/* Checklist grid */}
+//         <div className="mb-12 grid grid-cols-1 gap-x-12 gap-y-4 md:grid-cols-2">
+//           <ul className="flex flex-col gap-4">
+//             {leftItems.map((item, i) => (
+//               <CheckItem key={item.text} text={item.text} bold={item.bold} delay={i * 0.07} />
+//             ))}
+//           </ul>
+//           <ul className="flex flex-col gap-4">
+//             {rightItems.map((item, i) => (
+//               <CheckItem
+//                 key={item.text}
+//                 text={item.text}
+//                 bold={item.bold}
+//                 delay={0.35 + i * 0.07}
+//                 href={'href' in item ? item.href : undefined}
+//               />
+//             ))}
+//           </ul>
+//         </div>
+
+//         {/* Pricing */}
+//         <motion.div
+//           initial={{ opacity: 0, y: 24 }}
+//           animate={inView ? { opacity: 1, y: 0 } : {}}
+//           transition={{ duration: 0.6, delay: 0.5 }}
+//           className="rounded-t94 border border-t94-border bg-t94-grey p-6 sm:p-8 lg:p-10"
+//         >
+//           <p className="font-t94 text-[15px] font-semibold text-t94-red">
+//             Ma quanto costerebbe tutto questo?
+//           </p>
+
+//           <div className="mt-3 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between lg:gap-10">
+//             <h2 className="font-t94 text-[clamp(1.5rem,3vw,2.25rem)] font-bold leading-[1.2] text-t94-dark text-balance">
+//               Con Tetto94 hai tutto questo a partire da:
+//             </h2>
+
+//             <div className="flex shrink-0 flex-col items-start lg:items-end">
+//               <span className="font-t94 text-[clamp(2.5rem,5vw,3.5rem)] font-bold leading-none text-t94-red">
+//                 6.500&nbsp;&euro;
+//               </span>
+//               <Link
+//                 href="/ripasso-tetto-senza-ponteggi"
+//                 className="mt-4 font-t94 text-[16px] font-semibold text-t94-dark underline underline-offset-4 transition-colors hover:text-t94-red"
+//               >
+//                 Scopri cosa comprende il ripasso del tetto
+//               </Link>
+//             </div>
+//           </div>
+//         </motion.div>
+//       </div>
+//     </section>
+//   )
+// }
+
+
 'use client'
 
 import { useRef } from 'react'
@@ -370,8 +504,17 @@ export default function ChecklistPricingSection() {
             </h2>
 
             <div className="flex shrink-0 flex-col items-start lg:items-end">
-              <span className="font-t94 text-[clamp(2.5rem,5vw,3.5rem)] font-bold leading-none text-t94-red">
-                6.500&nbsp;&euro;
+              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 lg:justify-end">
+                <span className="font-t94 text-[clamp(2.25rem,5vw,3.5rem)] font-bold leading-none text-t94-red">
+                  4.500&ndash;6.500&nbsp;&euro;
+                </span>
+                <s className="font-t94 text-[clamp(1.25rem,2.4vw,1.75rem)] font-semibold leading-none text-t94-dark/45">
+                  <span className="sr-only">Prezzo di listino </span>
+                  9.500&nbsp;&euro;
+                </s>
+              </div>
+              <span className="mt-2 font-t94 text-[15px] font-medium text-t94-dark/60">
+                50m&sup2; &ndash; 100m&sup2;
               </span>
               <Link
                 href="/ripasso-tetto-senza-ponteggi"

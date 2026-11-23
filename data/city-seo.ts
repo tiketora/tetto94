@@ -43,7 +43,7 @@
 //   titolo: string        // "Lavoriamo senza ponteggi a Venezia"
 //   intro: string         // 1–2 sentences on why no scaffolding matters HERE
 //   vantaggi: string[]    // 3 bullet benefits
-//   risparmio: string     // "fino all'80%"
+//   risparmio: string     // risparmio indicativo sul ponteggio
 // }
 
 // export interface CitySeoData {
@@ -95,7 +95,7 @@
 //     intro: "A Venezia, montare ponteggi nelle calli e nei campi è spesso impossibile o richiede permessi comunali con iter lunghissimi. Tetto94 opera esclusivamente con sistemi di accesso su fune (rope access) certificati, eliminando ogni necessità di impalcatura.",
 //     vantaggi: [
 //       'Nessuna occupazione di suolo pubblico nelle calli — zero pratiche al Comune',
-//       'Risparmio fino all\'80% rispetto al costo del ponteggio tradizionale',
+//       'Nessun costo di ponteggio da pagare',
 //       'Intervento completato in metà del tempo: meno disagio per condomini e vicini',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -190,7 +190,7 @@
 //     intro: "Nei condomini di Mestre, un ponteggio tradizionale blocca i parcheggi condominiali per settimane e richiede occupazione di suolo pubblico con iter burocratici complessi. Tetto94 interviene con rope access certificato: nessun ponteggio, nessun parcheggio occupato, lavori completati in metà del tempo.",
 //     vantaggi: [
 //       'Nessuna occupazione del parcheggio condominiale durante i lavori',
-//       'Risparmio fino all\'80% rispetto al costo del ponteggio tradizionale',
+//       'Nessun costo di ponteggio da pagare',
 //       'Meno disturbo per i condomini: intervento silenzioso e rapido',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -285,7 +285,7 @@
 //     intro: "Nel centro storico di Padova, con i suoi portici tutelati dall'UNESCO, i ponteggi tradizionali creano problemi di ingombro e richiedono autorizzazioni comunali specifiche. Tetto94 usa sistemi su fune certificati che permettono di operare senza toccare i portici e senza alcuna pratica di occupazione suolo.",
 //     vantaggi: [
 //       'Nessun intralcio ai portici storici e ai passaggi pedonali tutelati UNESCO',
-//       'Risparmio fino all\'80% sul costo del ponteggio — meno spesa per il cliente',
+//       'Nessun costo di ponteggio da pagare',
 //       'Autorizzazione comunale non necessaria: lavori avviabili subito',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -380,7 +380,7 @@
 //     intro: "Nelle ville e nei rustici della Marca Trevigiana, un ponteggio tradizionale richiede settimane di allestimento e spesso non è compatibile con i giardini privati e le recinzioni. Tetto94 interviene con rope access certificato direttamente dalla copertura, preservando il giardino e riducendo i tempi di intervento.",
 //     vantaggi: [
 //       'Nessun danno al giardino o alle recinzioni delle ville della Marca',
-//       'Risparmio fino all\'80% rispetto ai ponteggi tradizionali',
+//       'Nessun costo di ponteggio da pagare',
 //       'Intervento completato in 2–4 giorni contro le 2–3 settimane con ponteggio',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -472,10 +472,10 @@
 //     "Il costo del rifacimento tetto a Verona parte da 6.500€ per un'abitazione standard. I nostri prezzi sono trasparenti e fissi: nessun costo nascosto, preventivo gratuito con sopralluogo drone entro 24 ore.",
 //   senzaPonteggi: {
 //     titolo: 'Lavoriamo senza ponteggi a Verona',
-//     intro: "Nel centro storico di Verona e nelle ville della Valpolicella, i ponteggi richiedono permessi comunali e ZTL speciali che allungano i tempi di 4–8 settimane. Tetto94 opera senza ponteggi con rope access certificato, avviando i lavori entro 48 ore dall'accettazione del preventivo.",
+//     intro: "Nel centro storico di Verona e nelle ville della Valpolicella, i ponteggi richiedono permessi comunali e ZTL speciali che allungano i tempi di 4–8 settimane. Tetto94 opera senza ponteggi con rope access certificato.",
 //     vantaggi: [
 //       'Nessuna pratica di occupazione suolo in ZTL e centro storico — lavori subito',
-//       'Risparmio fino all\'80% sul ponteggio: budget destinato alla qualità della copertura',
+//       'Nessun costo di ponteggio da pagare',
 //       'Zero intralcio al traffico nelle strette vie del centro scaligero',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -535,8 +535,8 @@
 //   ],
 //   faqExtra: [
 //     {
-//       q: 'Quanto costa rifare il tetto a Verona nel 2025?',
-//       a: "A Verona nel 2025 il rifacimento tetto completo costa tra 6.500€ e 16.000€ per un'abitazione unifamiliare standard (80–150 m²). I fattori che influenzano il prezzo sono: tipo di materiale, pendenza, accessibilità e distanza dal centro. Preventivo gratuito con drone entro 24 ore.",
+//       q: 'Quanto costa rifare il tetto a Verona nel 2026?',
+//       a: "A Verona nel 2026 il rifacimento tetto completo costa tra 6.500€ e 16.000€ per un'abitazione unifamiliare standard (80–150 m²). I fattori che influenzano il prezzo sono: tipo di materiale, pendenza, accessibilità e distanza dal centro. Preventivo gratuito con drone entro 24 ore.",
 //     },
 //     {
 //       q: 'Operate anche sul lago di Garda vicino a Verona?',
@@ -549,7 +549,7 @@
 //   ],
 // }
 
-// /* ─────────────────────────────────────────────────────────────
+// /* ─���───────────────────────────────────────────────────────────
 //    VICENZA
 // ───────────────────────────────────────────────────────────── */
 // const vicenza: CitySeoData = {
@@ -570,7 +570,7 @@
 //     intro: "Sulle ville palladiane UNESCO di Vicenza, un ponteggio tradizionale potrebbe danneggiare le facciate storiche e richiede autorizzazione preventiva della Soprintendenza. Tetto94 lavora esclusivamente con rope access: nessun contatto con le facciate, nessuna autorizzazione speciale, massimo rispetto del patrimonio storico.",
 //     vantaggi: [
 //       'Nessun rischio di danni alle facciate palladiane — intervento non invasivo',
-//       'Risparmio fino all\'80% rispetto al ponteggio, mantenendo qualità massima',
+//       'Nessun costo di ponteggio da pagare',
 //       'Nessuna autorizzazione Soprintendenza per il ponteggio — iter semplificato',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -639,7 +639,7 @@
 //     },
 //     {
 //       q: 'Quanto costa il sopralluogo a Vicenza?',
-//       a: "Il sopralluogo con drone a Vicenza è completamente gratuito, incluso per ogni cliente che richiede un preventivo. Utilizziamo drone con camera ad alta risoluzione per rilievo completo — il report fotografico vi viene consegnato via email entro 2 ore dal sopralluogo.",
+//       a: "Il sopralluogo con drone a Vicenza è completamente gratuito, incluso per ogni cliente che richiede un preventivo. Utilizziamo drone con camera ad alta risoluzione per rilievo completo — il report fotografico vi viene consegnato via email dopo il sopralluogo.",
 //     },
 //   ],
 // }
@@ -661,7 +661,7 @@
 //     intro: "Nelle abitazioni e nei rustici del Polesine, il montaggio di un ponteggio su terreni agricoli e nei centri storici rodigini richiede permessi complessi. Tetto94 opera con rope access certificato: nessun ponteggio, intervento rapido, risparmio garantito.",
 //     vantaggi: [
 //       'Nessun permesso di occupazione suolo nei centri storici polesani',
-//       'Risparmio fino all\'80% rispetto al costo del ponteggio tradizionale',
+//       'Nessun costo di ponteggio da pagare',
 //       'Intervento completato in 2–3 giorni senza intralciare il terreno circostante',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -717,7 +717,7 @@
 //     intro: "In montagna e nei borghi dolomitici, il montaggio di un ponteggio tradizionale su terreno in pendenza è complesso, costoso e spesso impossibile. Tetto94 utilizza rope access certificato per interventi alpini: accediamo direttamente dalla cresta, senza ponteggio, anche sulle coperture più ripide.",
 //     vantaggi: [
 //       'Accesso garantito anche su coperture alpine ripide e borghi montani inaccessibili',
-//       'Risparmio fino all\'80% — i ponteggi in montagna costano il doppio rispetto alla pianura',
+//       'Nessun costo di ponteggio da pagare',
 //       'Nessun danno al terreno in pendenza o ai giardini montani circostanti',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -773,7 +773,7 @@
 //     intro: "A Chioggia, come a Venezia, le calli strette e i canali rendono il montaggio di ponteggi tradizionali praticamente impossibile. Tetto94 opera con rope access certificato adattato al contesto lagunare: accediamo dai tetti senza occupare suolo pubblico nelle calli.",
 //     vantaggi: [
 //       'Unica soluzione possibile nelle calli strette della Piccola Venezia — senza ponteggi',
-//       'Risparmio fino all\'80% sul costo del ponteggio: più budget per materiali anti-salino di qualità',
+//       'Nessun costo di ponteggio da pagare',
 //       'Nessuna occupazione dei canali o degli spazi comuni nelle calli chioggiotte',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -799,7 +799,7 @@
 //     'Rosolina', 'Porto Tolle', 'Loreo', 'Adria', 'Taglio di Po',
 //   ],
 //   materiali: [
-//     { nome: 'Coppi in cotto smaltato anti-salino', descrizione: 'Tegole tradizionali con doppio strato di smalto protettivo anti-cloruro', adatto: 'Resistono alla corrosione salina aggressiva della laguna di Chioggia — durata garantita 25+ anni in ambiente marino' },
+//     { nome: 'Coppi in cotto smaltato anti-salino', descrizione: 'Tegole tradizionali con doppio strato di smalto protettivo anti-cloruro', adatto: 'Resistono alla corrosione salina aggressiva della laguna di Chioggia.' },
 //     { nome: 'Guaina polimerica marina FPO', descrizione: 'Membrana sintetica a base di poliolefine, massima resistenza chimica agli agenti marini', adatto: 'Soluzione top per tetti piani di Chioggia esposti a salsedine, UV marini e cicli umido-secco lagunari' },
 //     { nome: 'Ventilazione sottotetto rinforzata', descrizione: 'Sistema di ventilazione passiva con membrane traspiranti anti-umido', adatto: 'Fondamentale per gli edifici lagunari dove l\'umidità relativa supera l\'85% — previene condensa e muffa sottotetto' },
 //   ],
@@ -829,7 +829,7 @@
 //     intro: "Nelle ville venete e nelle case coloniche del Miranese, un ponteggio tradizionale rovina il giardino, danneggia le recinzioni storiche e richiede settimane di allestimento. Tetto94 opera con rope access certificato: accesso diretto dalla copertura, zero danni al giardino, lavori ultimati in 2–4 giorni.",
 //     vantaggi: [
 //       'Zero danni ai giardini e alle recinzioni storiche delle ville del Miranese',
-//       'Risparmio fino all\'80% rispetto al ponteggio — budget per materiali di qualità superiore',
+//       'Nessun costo di ponteggio da pagare',
 //       'Nessuna autorizzazione paesaggistica per il ponteggio sulle ville vincolate',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -882,10 +882,10 @@
 //   priceIntro: "Il costo del rifacimento tetto a San Donà di Piave parte da 6.500€ per abitazioni standard della Venezia Orientale. Preventivo gratuito entro 24 ore, smaltimento e garanzia inclusi.",
 //   senzaPonteggi: {
 //     titolo: 'Lavoriamo senza ponteggi a San Donà di Piave',
-//     intro: "Nei quartieri residenziali di San Donà di Piave e dei comuni circostanti, un ponteggio tradizionale occupa il passo carraio o il giardino per settimane. Tetto94 opera con rope access certificato: nessuna occupazione del suolo, lavori completati in 2–3 giorni.",
+//     intro: "Nei quartieri residenziali di San Donà di Piave e dei comuni circostanti, un ponteggio tradizionale occupa il passo carraio o il giardino per settimane. Tetto94 opera con rope access certificato: nessuna occupazione del suolo.",
 //     vantaggi: [
 //       'Nessuna occupazione del passo carraio o del giardino durante i lavori',
-//       'Risparmio fino all\'80% rispetto al costo del ponteggio tradizionale',
+//       'Nessun costo di ponteggio da pagare',
 //       'Intervento rapido: 2–3 giorni contro le 2 settimane con ponteggio',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -941,7 +941,7 @@
 //     intro: "Nelle ville e nelle residenze di pregio lungo il Terraglio, un ponteggio tradizionale deturpa l\'estetica dell\'edificio per settimane e occupa il giardino. Tetto94 opera con rope access certificato: invisibile dalla strada, zero impatto sul giardino, massimo rispetto per le residenze esclusive del Terraglio.",
 //     vantaggi: [
 //       'Zero impatto visivo sull\'estetica delle ville esclusive lungo il Terraglio',
-//       'Risparmio fino all\'80% sul ponteggio — investimento per materiali premium',
+//       'Nessun costo di ponteggio da pagare',
 //       'Nessun danno ai giardini e alle pavimentazioni delle ville di pregio',
 //     ],
 //     risparmio: 'fino all\'80%',
@@ -1089,7 +1089,7 @@ export interface CitySeoData {
 ───────────────────────────────────────────────────────────── */
 const venezia: CitySeoData = {
   citySlug: 'venezia',
-  metaDescription: 'Rifacimento tetto a Venezia da 6.500€. Interventi senza ponteggi, materiali certificati CE, ispezione drone gratuita e garanzia scritta 10 anni. Preventivo entro 24 ore.',
+  metaDescription: 'Rifacimento tetto a Venezia da 4.500 a 6.500€. Interventi senza ponteggi, materiali certificati CE, ispezione drone gratuita e garanzia scritta 10 anni. Preventivo entro 24 ore.',
   ogImage: '/images/og/rifacimento-tetto-venezia.png',
   beforeImage: '/images/cities/venezia-before.png',
   afterImage: '/images/cities/venezia-after.png',
@@ -1099,7 +1099,7 @@ const venezia: CitySeoData = {
     "A Venezia, il clima lagunare con umidità superiore all'80% e la salsedine dell'aria marina degradano le coperture fino al 40% più rapidamente rispetto alle zone interne. Tetto94 opera a Venezia dal 1994 con tecniche specializzate per l'ambiente marino: materiali resistenti alla corrosione salina, sigillature rinforzate e ispezione drone per ogni intervento.",
   mapsCaption: 'Interveniamo in tutta la provincia di Venezia',
   priceIntro:
-    "Il costo del rifacimento tetto a Venezia parte da 6.500€ per un'abitazione standard. I prezzi includono smaltimento, posa certificata e garanzia scritta 10 anni.",
+    "Il costo del rifacimento tetto a Venezia va da 4.500 a 6.500€ (50–100 m²) per un'abitazione standard. I prezzi includono smaltimento, posa certificata e garanzia scritta 10 anni.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Venezia',
     intro: "A Venezia, montare ponteggi nelle calli e nei campi è spesso impossibile o richiede permessi comunali con iter lunghissimi. Tetto94 opera esclusivamente con sistemi di accesso su fune (rope access) certificati, eliminando ogni necessità di impalcatura.",
@@ -1184,7 +1184,7 @@ const venezia: CitySeoData = {
 ───────────────────────────────────────────────────────────── */
 const mestre: CitySeoData = {
   citySlug: 'mestre',
-  metaDescription: 'Rifacimento tetto a Mestre da 6.500€. Soluzioni per case e condomini, interventi senza ponteggi, ispezione drone gratuita e garanzia scritta 10 anni. Preventivo entro 24 ore.',
+  metaDescription: 'Rifacimento tetto a Mestre da 4.500 a 6.500€. Soluzioni per case e condomini, interventi senza ponteggi, ispezione drone gratuita e garanzia scritta 10 anni. Preventivo entro 24 ore.',
   ogImage: '/images/og/rifacimento-tetto-mestre.png',
   beforeImage: '/images/cities/mestre-before.png',
   afterImage: '/images/cities/mestre-after.png',
@@ -1194,7 +1194,7 @@ const mestre: CitySeoData = {
     "A Mestre, il patrimonio edilizio degli anni '60–'80 presenta tetti piani con guaine bituminose spesso giunte a fine vita tecnica, causa principale di infiltrazioni nei condomini veneziani. Tetto94 è specializzata nel risanamento di questi edifici con tecnologie di impermeabilizzazione di ultima generazione e interventi rapidi senza evacuazione degli inquilini.",
   mapsCaption: 'Interveniamo a Mestre, Marghera e in tutta la terraferma veneziana',
   priceIntro:
-    "Il costo del rifacimento tetto a Mestre parte da 6.500€ per abitazioni unifamiliari. Per i condomini, offriamo preventivi dedicati con gestione delle pratiche condominiali inclusa.",
+    "Il costo del rifacimento tetto a Mestre va da 4.500 a 6.500€ (50–100 m²) per abitazioni unifamiliari. Per i condomini, offriamo preventivi dedicati con gestione delle pratiche condominiali inclusa.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Mestre',
     intro: "Nei condomini di Mestre, un ponteggio tradizionale blocca i parcheggi condominiali per settimane e richiede occupazione di suolo pubblico con iter burocratici complessi. Tetto94 interviene con rope access certificato: nessun ponteggio, nessun parcheggio occupato, lavori completati in metà del tempo.",
@@ -1279,17 +1279,17 @@ const mestre: CitySeoData = {
 ───────────────────────────────────────────────────────────── */
 const padova: CitySeoData = {
   citySlug: 'padova',
-  metaDescription: 'Rifacimento tetto a Padova da 6.500€. Materiali certificati CE, ispezione drone gratuita, gestione dei vincoli storici e garanzia scritta 10 anni. Preventivo entro 24 ore.',
+  metaDescription: 'Rifacimento tetto a Padova da 4.500 a 6.500€. Materiali certificati CE, ispezione drone gratuita, gestione dei vincoli storici e garanzia scritta 10 anni. Preventivo entro 24 ore.',
   ogImage: '/images/og/rifacimento-tetto-padova.png',
   beforeImage: '/images/cities/padova-before.png',
   afterImage: '/images/cities/padova-after.png',
   mapsEmbedSrc:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45204.0!2d11.8768!3d45.4064!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda6561313e2b%3A0x1%2CPadova!5e0!3m2!1sit!2sit!4v1700000000002',
   heroLongText:
-    "A Padova il rifacimento tetto parte da 6.500€ e include ispezione drone gratuita, materiali certificati CE e garanzia scritta 10 anni. Il centro storico patavino e la Riviera del Brenta presentano edifici storici con coperture in tegole e coppi che richiedono interventi specializzati nel rispetto dei vincoli della Soprintendenza.",
+    "A Padova il rifacimento tetto va da 4.500 a 6.500€ (50–100 m²) e include ispezione drone gratuita, materiali certificati CE e garanzia scritta 10 anni. Il centro storico patavino e la Riviera del Brenta presentano edifici storici con coperture in tegole e coppi che richiedono interventi specializzati nel rispetto dei vincoli della Soprintendenza.",
   mapsCaption: 'Interveniamo a Padova, nella Riviera del Brenta e in tutta la provincia',
   priceIntro:
-    "Il costo del rifacimento tetto a Padova parte da 6.500€ per superfici standard. Il preventivo include smaltimento dell'esistente, ispezione drone e garanzia decennale senza costi nascosti.",
+    "Il costo del rifacimento tetto a Padova va da 4.500 a 6.500€ (50–100 m²) per superfici standard. Il preventivo include smaltimento dell'esistente, ispezione drone e garanzia decennale senza costi nascosti.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Padova',
     intro: "Nel centro storico di Padova, con i suoi portici tutelati dall'UNESCO, i ponteggi tradizionali creano problemi di ingombro e richiedono autorizzazioni comunali specifiche. Tetto94 usa sistemi su fune certificati che permettono di operare senza toccare i portici e senza alcuna pratica di occupazione suolo.",
@@ -1374,17 +1374,17 @@ const padova: CitySeoData = {
 ───────────────────────────────────────────────────────────── */
 const treviso: CitySeoData = {
   citySlug: 'treviso',
-  metaDescription: 'Rifacimento tetto a Treviso da 6.500€. Preventivo trasparente, materiali certificati CE, interventi senza ponteggi, ispezione drone gratuita e garanzia scritta 10 anni.',
+  metaDescription: 'Rifacimento tetto a Treviso da 4.500 a 6.500€. Preventivo trasparente, materiali certificati CE, interventi senza ponteggi, ispezione drone gratuita e garanzia scritta 10 anni.',
   ogImage: '/images/og/rifacimento-tetto-treviso.png',
   beforeImage: '/images/cities/treviso-before.png',
   afterImage: '/images/cities/treviso-after.png',
   mapsEmbedSrc:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45122.0!2d12.2430!3d45.6669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477955b60c5f6555%3A0x1!2sTreviso%20TV!5e0!3m2!1sit!2sit!4v1700000000003',
   heroLongText:
-    "A Treviso il rifacimento tetto parte da 6.500€ con garanzia decennale e ispezione drone gratuita. La Marca Trevigiana, con le sue ville storiche, i rustici e le abitazioni della campagna tra il Piave e il Montello, richiede operatori specializzati nel rispetto dei materiali tradizionali e delle normative paesaggistiche locali.",
+    "A Treviso il rifacimento tetto va da 4.500 a 6.500€ (50–100 m²) con garanzia decennale e ispezione drone gratuita. La Marca Trevigiana, con le sue ville storiche, i rustici e le abitazioni della campagna tra il Piave e il Montello, richiede operatori specializzati nel rispetto dei materiali tradizionali e delle normative paesaggistiche locali.",
   mapsCaption: 'Interveniamo a Treviso, nella Marca Trevigiana e in tutta la provincia',
   priceIntro:
-    "Il rifacimento tetto a Treviso parte da 6.500€ tutto incluso. I prezzi sono fissi e trasparenti: nessuna sorpresa a fine lavori, preventivo gratuito entro 24 ore.",
+    "Il rifacimento tetto a Treviso va da 4.500 a 6.500€ (50–100 m²) tutto incluso. I prezzi sono fissi e trasparenti: nessuna sorpresa a fine lavori, preventivo gratuito entro 24 ore.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Treviso',
     intro: "Nelle ville e nei rustici della Marca Trevigiana, un ponteggio tradizionale richiede settimane di allestimento e spesso non è compatibile con i giardini privati e le recinzioni. Tetto94 interviene con rope access certificato direttamente dalla copertura, preservando il giardino e riducendo i tempi di intervento.",
@@ -1469,17 +1469,17 @@ const treviso: CitySeoData = {
 ───────────────────────────────────────────────────────────── */
 const verona: CitySeoData = {
   citySlug: 'verona',
-  metaDescription: 'Rifacimento tetto a Verona da 6.500€. Prezzi trasparenti, sopralluogo drone gratuito, materiali certificati CE e garanzia scritta 10 anni. Preventivo entro 24 ore.',
+  metaDescription: 'Rifacimento tetto a Verona da 4.500 a 6.500€. Prezzi trasparenti, sopralluogo drone gratuito, materiali certificati CE e garanzia scritta 10 anni. Preventivo entro 24 ore.',
   ogImage: '/images/og/rifacimento-tetto-verona.png',
   beforeImage: '/images/cities/verona-before.png',
   afterImage: '/images/cities/verona-after.png',
   mapsEmbedSrc:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44855.0!2d10.9916!3d45.4386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47781586b1f81d7d%3A0x1!2sVerona%20VR!5e0!3m2!1sit!2sit!4v1700000000004',
   heroLongText:
-    "A Verona il rifacimento tetto parte da 6.500€ con garanzia decennale, ispezione drone gratuita e preventivo entro 24 ore. Seconda città del Veneto per popolazione, Verona presenta un mercato delle ristrutturazioni molto attivo con numerose ville in Valpolicella, Bardolino e nelle zone collinari che richiedono coperture di alta qualità.",
+    "A Verona il rifacimento tetto va da 4.500 a 6.500€ (50–100 m²) con garanzia decennale, ispezione drone gratuita e preventivo entro 24 ore. Seconda città del Veneto per popolazione, Verona presenta un mercato delle ristrutturazioni molto attivo con numerose ville in Valpolicella, Bardolino e nelle zone collinari che richiedono coperture di alta qualità.",
   mapsCaption: 'Interveniamo a Verona, in Valpolicella, Bardolino e in tutta la provincia',
   priceIntro:
-    "Il costo del rifacimento tetto a Verona parte da 6.500€ per un'abitazione standard. I nostri prezzi sono trasparenti e fissi: nessun costo nascosto, preventivo gratuito con sopralluogo drone entro 24 ore.",
+    "Il costo del rifacimento tetto a Verona va da 4.500 a 6.500€ (50–100 m²) per un'abitazione standard. I nostri prezzi sono trasparenti e fissi: nessun costo nascosto, preventivo gratuito con sopralluogo drone entro 24 ore.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Verona',
     intro: "Nel centro storico di Verona e nelle ville della Valpolicella, i ponteggi richiedono permessi comunali e ZTL speciali che allungano i tempi di 4–8 settimane. Tetto94 opera senza ponteggi con rope access certificato.",
@@ -1564,17 +1564,17 @@ const verona: CitySeoData = {
 ───────────────────────────────────────────────────────────── */
 const vicenza: CitySeoData = {
   citySlug: 'vicenza',
-  metaDescription: 'Rifacimento tetto a Vicenza da 6.500€. Interventi per ville storiche e abitazioni, sopralluogo drone gratuito, materiali certificati CE e garanzia scritta 10 anni.',
+  metaDescription: 'Rifacimento tetto a Vicenza da 4.500 a 6.500€. Interventi per ville storiche e abitazioni, sopralluogo drone gratuito, materiali certificati CE e garanzia scritta 10 anni.',
   ogImage: '/images/og/rifacimento-tetto-vicenza.png',
   beforeImage: '/images/cities/vicenza-before.png',
   afterImage: '/images/cities/vicenza-after.png',
   mapsEmbedSrc:
     'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d45210.0!2d11.5354!3d45.5455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47793e5069f0e2c5%3A0x1!2sVicenza%20VI!5e0!3m2!1sit!2sit!4v1700000000005',
   heroLongText:
-    "A Vicenza il rifacimento tetto parte da 6.500€ con garanzia scritta 10 anni e ispezione drone gratuita. Città del Palladio e Patrimonio UNESCO, Vicenza richiede operatori con competenze specifiche nel rispetto dei vincoli architettonici delle ville palladiane e degli edifici storici del centro.",
+    "A Vicenza il rifacimento tetto va da 4.500 a 6.500€ (50–100 m²) con garanzia scritta 10 anni e ispezione drone gratuita. Città del Palladio e Patrimonio UNESCO, Vicenza richiede operatori con competenze specifiche nel rispetto dei vincoli architettonici delle ville palladiane e degli edifici storici del centro.",
   mapsCaption: 'Interveniamo a Vicenza, nelle ville palladiane e in tutta la provincia',
   priceIntro:
-    "Il costo del rifacimento tetto a Vicenza parte da 6.500€. Per gli edifici storici e le ville palladiane il preventivo viene definito dopo il sopralluogo drone gratuito, con rispetto dei vincoli UNESCO e della Soprintendenza.",
+    "Il costo del rifacimento tetto a Vicenza va da 4.500 a 6.500€ (50–100 m²). Per gli edifici storici e le ville palladiane il preventivo viene definito dopo il sopralluogo drone gratuito, con rispetto dei vincoli UNESCO e della Soprintendenza.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Vicenza',
     intro: "Sulle ville palladiane UNESCO di Vicenza, un ponteggio tradizionale potrebbe danneggiare le facciate storiche e richiede autorizzazione preventiva della Soprintendenza. Tetto94 lavora esclusivamente con rope access: nessun contatto con le facciate, nessuna autorizzazione speciale, massimo rispetto del patrimonio storico.",
@@ -1665,7 +1665,7 @@ const rovigo: CitySeoData = {
   mapsEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46175!2d11.7903!3d45.0710!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb8000000001%3A0x1!2sRovigo%20RO!5e0!3m2!1sit!2sit!4v1700000000000',
   mapsCaption: 'Interveniamo a Rovigo e in tutto il Polesine',
   heroLongText: "A Rovigo, nel cuore del Polesine, il clima umido della pianura padana con frequenti nebbie e l'escursione termica tra estate e inverno degradano rapidamente le coperture in laterizio. Tetto94 opera a Rovigo con materiali certificati per climi umidi continentali e interventi completi senza ponteggi, garanzia scritta 10 anni inclusa.",
-  priceIntro: "Il costo del rifacimento tetto a Rovigo parte da 6.500€ per un'abitazione standard del Polesine. Preventivo gratuito entro 24 ore con ispezione drone inclusa.",
+  priceIntro: "Il costo del rifacimento tetto a Rovigo va da 4.500 a 6.500€ (50–100 m²) per un'abitazione standard del Polesine. Preventivo gratuito entro 24 ore con ispezione drone inclusa.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Rovigo',
     intro: "Nelle abitazioni e nei rustici del Polesine, il montaggio di un ponteggio su terreni agricoli e nei centri storici rodigini richiede permessi complessi. Tetto94 opera con rope access certificato: nessun ponteggio, intervento rapido, risparmio garantito.",
@@ -1721,7 +1721,7 @@ const belluno: CitySeoData = {
   mapsEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d44568!2d12.2170!3d46.1400!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477830000000001%3A0x1!2sBelluno%20BL!5e0!3m2!1sit!2sit!4v1700000000000',
   mapsCaption: 'Interveniamo a Belluno e in tutte le Dolomiti',
   heroLongText: "A Belluno, il clima alpino dolomitico con nevicate abbondanti (fino a 200 cm annui) e gelate prolungate rappresenta la sfida principale per le coperture. Tetto94 opera a Belluno con materiali certificati per carichi neve fino a 3 kN/m², tegole anti-gelo classe F e sistemi di impermeabilizzazione rinforzati per le temperature sotto zero.",
-  priceIntro: "Il costo del rifacimento tetto a Belluno parte da 6.500€ con materiali certificati per il clima alpino dolomitico. Preventivo gratuito con drone entro 24 ore — operiamo anche nelle frazioni montane più isolate.",
+  priceIntro: "Il costo del rifacimento tetto a Belluno va da 4.500 a 6.500€ (50–100 m²) con materiali certificati per il clima alpino dolomitico. Preventivo gratuito con drone entro 24 ore — operiamo anche nelle frazioni montane più isolate.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Belluno',
     intro: "In montagna e nei borghi dolomitici, il montaggio di un ponteggio tradizionale su terreno in pendenza è complesso, costoso e spesso impossibile. Tetto94 utilizza rope access certificato per interventi alpini: accediamo direttamente dalla cresta, senza ponteggio, anche sulle coperture più ripide.",
@@ -1763,7 +1763,7 @@ const belluno: CitySeoData = {
     { nome: 'Bonus Sismabonus — Zona 2', percentuale: '80%', massimale: '€ 96.000', scadenza: '31/12/2025', note: 'Belluno è zona sismica 2 (maggior rischio) — detrazione più alta rispetto alla pianura.' },
   ],
   faqExtra: [
-    { q: 'Quanto costa rifare il tetto a Belluno con neve e clima alpino?', a: 'A Belluno il rifacimento tetto parte da 6.500€ per abitazioni standard, con un leggero incremento (10–15%) per l\'utilizzo di materiali anti-gelo certificati classe F obbligatori in zona dolomitica. Il prezzo include smaltimento, drone e garanzia 10 anni.' },
+    { q: 'Quanto costa rifare il tetto a Belluno con neve e clima alpino?', a: 'A Belluno il rifacimento tetto va da 4.500 a 6.500€ (50–100 m²) per abitazioni standard, con un leggero incremento (10–15%) per l\'utilizzo di materiali anti-gelo certificati classe F obbligatori in zona dolomitica. Il prezzo include smaltimento, drone e garanzia 10 anni.' },
     { q: 'Operate anche nelle frazioni di montagna sopra i 1000 metri?', a: 'Sì, operiamo in tutto il territorio bellunese incluse le frazioni alpine fino a 2000 metri. Utilizziamo rope access certificato per montagna che ci permette di raggiungere anche le abitazioni più isolate senza necessità di strade di accesso per i ponteggi.' },
     { q: 'Qual è il periodo migliore per rifare il tetto a Belluno?', a: 'A Belluno operiamo da aprile a ottobre. I mesi invernali sono sconsigliati per le gelate notturne che impediscono la corretta posa degli impermeabilizzanti. In caso di urgenza post-nevicata, interveniamo in emergenza tutto l\'anno.' },
   ],
@@ -1777,7 +1777,7 @@ const chioggia: CitySeoData = {
   mapsEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23125!2d12.2785!3d45.2194!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb0000000002%3A0x2!2sChioggia%20VE!5e0!3m2!1sit!2sit!4v1700000000000',
   mapsCaption: 'Interveniamo a Chioggia, Sottomarina e in tutta la laguna sud',
   heroLongText: "A Chioggia, la Piccola Venezia, il microclima lagunare con salsedine intensa e umidità superiore al 85% corrode le coperture in laterizio fino al 50% più rapidamente rispetto alle zone interne. Tetto94 opera a Chioggia con materiali anti-salino certificati e tecniche di accesso su fune per calli e canaletti dove i ponteggi sono impossibili.",
-  priceIntro: "Il costo per impermeabilizzare o rifare il tetto a Chioggia parte da 6.500€ per 100 mq. Materiali anti-salsedine, garanzia 10 anni e ispezione drone inclusi nel preventivo.",
+  priceIntro: "Il costo per impermeabilizzare o rifare il tetto a Chioggia va da 4.500 a 6.500€ (50–100 m²). Materiali anti-salsedine, garanzia 10 anni e ispezione drone inclusi nel preventivo.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Chioggia',
     intro: "A Chioggia, come a Venezia, le calli strette e i canali rendono il montaggio di ponteggi tradizionali praticamente impossibile. Tetto94 opera con rope access certificato adattato al contesto lagunare: accediamo dai tetti senza occupare suolo pubblico nelle calli.",
@@ -1832,8 +1832,8 @@ const mirano: CitySeoData = {
   afterImage: '/images/cities/mirano-after.png',
   mapsEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22840!2d12.1065!3d45.4953!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eb2000000003%3A0x3!2sMirano%20VE!5e0!3m2!1sit!2sit!4v1700000000000',
   mapsCaption: 'Interveniamo a Mirano, nel Miranese e nella Riviera del Brenta',
-  heroLongText: "A Mirano, nel cuore del Miranese e a pochi chilometri dalla Riviera del Brenta, il patrimonio di ville venete e case coloniche richiede competenze specifiche nel rispetto dei materiali storici. Tetto94 opera a Mirano con rifacimenti tetto completi a partire da 6.500€, utilizzando materiali compatibili con i vincoli paesaggistici delle ville venete.",
-  priceIntro: "Il costo del rifacimento tetto a Mirano parte da 6.500€ per abitazioni standard. Per le ville venete della Riviera del Brenta, il preventivo viene definito dopo sopralluogo drone gratuito.",
+  heroLongText: "A Mirano, nel cuore del Miranese e a pochi chilometri dalla Riviera del Brenta, il patrimonio di ville venete e case coloniche richiede competenze specifiche nel rispetto dei materiali storici. Tetto94 opera a Mirano con rifacimenti tetto completi da 4.500 a 6.500€ (50–100 m²), utilizzando materiali compatibili con i vincoli paesaggistici delle ville venete.",
+  priceIntro: "Il costo del rifacimento tetto a Mirano va da 4.500 a 6.500€ (50–100 m²) per abitazioni standard. Per le ville venete della Riviera del Brenta, il preventivo viene definito dopo sopralluogo drone gratuito.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Mirano',
     intro: "Nelle ville venete e nelle case coloniche del Miranese, un ponteggio tradizionale rovina il giardino, danneggia le recinzioni storiche e richiede settimane di allestimento. Tetto94 opera con rope access certificato: accesso diretto dalla copertura, zero danni al giardino, lavori ultimati in 2–4 giorni.",
@@ -1888,8 +1888,8 @@ const sanDonadiPiave: CitySeoData = {
   afterImage: '/images/cities/san-dona-di-piave-after.png',
   mapsEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22640!2d12.5651!3d45.6280!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477ec0000000004%3A0x4!2sSan%20Don%C3%A0%20di%20Piave%20VE!5e0!3m2!1sit!2sit!4v1700000000000',
   mapsCaption: 'Interveniamo a San Donà di Piave e in tutta la Venezia Orientale',
-  heroLongText: "A San Donà di Piave, capoluogo della Venezia Orientale, il clima pianeggiante con venti da est e precipitazioni concentrate richiede coperture con ottima tenuta idraulica. Tetto94 opera a San Donà di Piave a partire da 6.500€ con materiali certificati CE, ispezione drone gratuita e garanzia scritta 10 anni.",
-  priceIntro: "Il costo del rifacimento tetto a San Donà di Piave parte da 6.500€ per abitazioni standard della Venezia Orientale. Preventivo gratuito entro 24 ore, smaltimento e garanzia inclusi.",
+  heroLongText: "A San Donà di Piave, capoluogo della Venezia Orientale, il clima pianeggiante con venti da est e precipitazioni concentrate richiede coperture con ottima tenuta idraulica. Tetto94 opera a San Donà di Piave con prezzi da 4.500 a 6.500€ (50–100 m²), materiali certificati CE, ispezione drone gratuita e garanzia scritta 10 anni.",
+  priceIntro: "Il costo del rifacimento tetto a San Donà di Piave va da 4.500 a 6.500€ (50–100 m²) per abitazioni standard della Venezia Orientale. Preventivo gratuito entro 24 ore, smaltimento e garanzia inclusi.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a San Donà di Piave',
     intro: "Nei quartieri residenziali di San Donà di Piave e dei comuni circostanti, un ponteggio tradizionale occupa il passo carraio o il giardino per settimane. Tetto94 opera con rope access certificato: nessuna occupazione del suolo.",
@@ -1901,7 +1901,7 @@ const sanDonadiPiave: CitySeoData = {
     risparmio: 'fino all\'80%',
   },
   costiTotali: [
-    { superficie: '~60 mq', prezzoMin: '€ 4.500', prezzoMax: '€ 7.000', note: 'Casa singola standard' },
+    { superficie: '~60 mq', prezzoMin: '€ 6.500', prezzoMax: '€ 7.000', note: 'Casa singola standard' },
     { superficie: '~80 mq', prezzoMin: '€ 5.500', prezzoMax: '€ 9.200', note: 'Abitazione unifamiliare' },
     { superficie: '~100 mq', prezzoMin: '€ 6.500', prezzoMax: '€ 11.500', note: 'Villa unifamiliare' },
     { superficie: '~130 mq', prezzoMin: '€ 8.000', prezzoMax: '€ 14.800', note: 'Villetta con ampio tetto' },
@@ -1944,8 +1944,8 @@ const moglianoVeneto: CitySeoData = {
   afterImage: '/images/cities/mogliano-veneto-after.png',
   mapsEmbedSrc: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22500!2d12.2375!3d45.5650!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477ec4000000005%3A0x5!2sMogliano%20Veneto%20TV!5e0!3m2!1sit!2sit!4v1700000000000',
   mapsCaption: 'Interveniamo a Mogliano Veneto e lungo il Terraglio',
-  heroLongText: "A Mogliano Veneto, lungo lo storico Terraglio che collega Venezia a Treviso, il tessuto urbanistico di ville e residenze di pregio richiede rifacimenti tetto di alta qualità. Tetto94 opera a Mogliano Veneto a partire da 6.500€ con materiali premium, ispezione drone gratuita e garanzia scritta 10 anni per preservare il valore delle abitazioni di questa zona residenziale esclusiva.",
-  priceIntro: "Il costo del rifacimento tetto a Mogliano Veneto parte da 6.500€. Per le ville lungo il Terraglio il preventivo viene definito dopo sopralluogo drone gratuito con relazione tecnica inclusa.",
+  heroLongText: "A Mogliano Veneto, lungo lo storico Terraglio che collega Venezia a Treviso, il tessuto urbanistico di ville e residenze di pregio richiede rifacimenti tetto di alta qualità. Tetto94 opera a Mogliano Veneto con prezzi da 4.500 a 6.500€ (50–100 m²), materiali premium, ispezione drone gratuita e garanzia scritta 10 anni per preservare il valore delle abitazioni di questa zona residenziale esclusiva.",
+  priceIntro: "Il costo del rifacimento tetto a Mogliano Veneto va da 4.500 a 6.500€ (50–100 m²). Per le ville lungo il Terraglio il preventivo viene definito dopo sopralluogo drone gratuito con relazione tecnica inclusa.",
   senzaPonteggi: {
     titolo: 'Lavoriamo senza ponteggi a Mogliano Veneto',
     intro: "Nelle ville e nelle residenze di pregio lungo il Terraglio, un ponteggio tradizionale deturpa l\'estetica dell\'edificio per settimane e occupa il giardino. Tetto94 opera con rope access certificato: invisibile dalla strada, zero impatto sul giardino, massimo rispetto per le residenze esclusive del Terraglio.",

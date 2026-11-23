@@ -36,14 +36,18 @@
 //             </ol>
 //           </nav>
 
+//           <p className="t94-small -mb-3">Aggiornato a ottobre 2026</p>
+
 //           <h1 id="service-hero-title" className="t94-h1 text-balance">
 //             {sentence(service.headline)} <span className="text-t94-red">nel Nord-Est Italia</span>
 //           </h1>
 
 //           <p className="t94-lead max-w-xl">{service.subheadline}</p>
 
+//           {service.shortAnswer ? <p className="t94-body max-w-xl">{service.shortAnswer}</p> : null}
+
 //           <p className="t94-small max-w-xl">
-//             Veneto, Emilia-Romagna e Friuli-Venezia Giulia. Garanzia scritta 10 anni su ogni intervento.
+//             Veneto, Emilia-Romagna e Friuli-Venezia Giulia
 //           </p>
 
 //           {service.priceFrom ? (
@@ -149,11 +153,14 @@ export default function ServiceHero({ service }: { service: ServiceConfig }) {
 
           {service.priceFrom ? (
             <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 self-start rounded-t94 border border-t94-border bg-t94-grey px-5 py-4">
-              <span className="t94-small font-semibold">A partire da</span>
+              <span className="t94-small font-semibold">{service.priceFrom.includes('–') ? 'Prezzo' : 'A partire da'}</span>
               {service.oldPrice ? (
                 <span className="font-t94 text-[18px] text-t94-text-secondary line-through">{service.oldPrice}</span>
               ) : null}
               <span className="font-t94 text-[32px] font-bold leading-none text-t94-red">{service.priceFrom}</span>
+              {service.priceNote ? (
+                <span className="t94-small basis-full">{service.priceNote}</span>
+              ) : null}
               <span className="t94-small basis-full">Preventivo gratuito entro 24 ore</span>
             </div>
           ) : null}

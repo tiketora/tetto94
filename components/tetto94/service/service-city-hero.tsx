@@ -63,7 +63,7 @@
 //           </p>
 
 //           <p className="t94-small max-w-xl">
-//             {location.region} · Dal 1994. Garanzia scritta 10 anni su ogni intervento.
+//             {location.region} · Dal 1994
 //           </p>
 
 //           {service.priceFrom ? (
@@ -194,6 +194,9 @@ export default function ServiceCityHero({
                 <span className="font-t94 text-[18px] text-t94-text-secondary line-through">{service.oldPrice}</span>
               ) : null}
               <span className="font-t94 text-[32px] font-bold leading-none text-t94-red">{service.priceFrom}</span>
+              {service.priceNote ? (
+                <span className="t94-small basis-full">{service.priceNote}</span>
+              ) : null}
               <span className="t94-small basis-full">Preventivo gratuito entro 24 ore</span>
             </div>
           ) : null}
