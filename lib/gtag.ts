@@ -178,6 +178,17 @@
 // }
 
 // /**
+//  * Recent-activity toast interactions (GA4 only, no Ads conversion): lets us
+//  * measure whether the real-activity notifications actually drive clicks.
+//  */
+// export function trackRecentActivity(
+//   action: 'view' | 'click' | 'dismiss',
+//   type: 'offer' | 'analysis',
+// ): void {
+//   sendGA4Event(`recent_activity_${action}`, { activity_type: type })
+// }
+
+// /**
 //  * Legacy: keep reportConversion for any existing callers.
 //  * Internally delegates to trackCTAClick.
 //  * @deprecated Use trackCTAClick / trackFormSubmit / trackPhoneClick / trackWhatsAppClick instead.
@@ -185,8 +196,6 @@
 // export function reportConversion(url?: string): void {
 //   trackCTAClick('hero_desktop', url)
 // }
-
-
 /**
  * Tetto94 — Google Analytics 4 + Google Ads Tracking
  *
@@ -351,6 +360,7 @@ export function trackCTAClick(
     | 'lp_hero' | 'lp_header' | 'lp_mobile_sticky' | 'lp_footer' | 'lp_success'
     | 'roof_index_intro_hero' | 'roof_index_intro_steps' | 'roof_index_intro_sticky'
     | 'mappa_rischio' | 'mappa_rischio_footer' | 'quiz_result_map_link'
+    | 'home_risk_map' | 'home_risk_map_full'
     | 'roof_index_contact_submit'
     | `navbar_city_${string}`
     | `navbar_city_cta_${string}`
