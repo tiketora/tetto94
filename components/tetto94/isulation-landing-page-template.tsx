@@ -702,7 +702,7 @@ export default function InsulationLandingPageTemplate({ config, google = null }:
             <div className="relative order-2 lg:order-1">
               <div className="overflow-hidden rounded-[14px] border border-t94-border">
                 <Image
-                  src="/images/coibentazione-hero.png"
+                  src="/images/coibentazione-hero.jpeg"
                   alt={`Posa di isolamento termico sul tetto in ${config.region} — Tetto94`}
                   width={720}
                   height={540}
