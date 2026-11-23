@@ -225,10 +225,10 @@ export default async function RiskMapContent() {
       {/* Hero + live dashboard */}
       <section className="relative isolate overflow-hidden bg-[#0B0B0D] px-6 pb-16 pt-28 lg:pb-24 lg:pt-36">
         <div
-          className="pointer-events-none absolute inset-0 -z-10 opacity-[0.35] [background-image:linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_top,black_30%,transparent_75%)]"
+          className="pointer-events-none absolute inset-0 -z-10 [background-image:radial-gradient(ellipse_at_top,transparent_30%,#0B0B0D_75%),linear-gradient(to_right,rgba(255,255,255,0.0175)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.0175)_1px,transparent_1px)] [background-size:100%_100%,56px_56px,56px_56px]"
           aria-hidden="true"
         />
-        <div className="pointer-events-none absolute -right-24 top-10 -z-10 size-[30rem] rounded-full bg-[#EB1C26]/20 blur-[120px]" aria-hidden="true" />
+        <div className="pointer-events-none absolute -right-40 -top-10 -z-10 size-[42rem] [background-image:radial-gradient(closest-side,rgba(235,28,38,0.2),rgba(235,28,38,0.08)_55%,transparent)]" aria-hidden="true" />
 
         <div className="mx-auto max-w-7xl">
           <nav aria-label="Breadcrumb" className="font-t94 text-xs text-white/45">

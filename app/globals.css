@@ -427,3 +427,19 @@
     @apply bg-background text-foreground;
   }
 }
+
+@keyframes t94-map-ping {
+  0% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(2.2); opacity: 0; }
+  100% { transform: scale(1); opacity: 0.6; }
+}
+
+.t94-map-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: t94-map-ping 2.2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t94-map-ping { animation: none; }
+}
